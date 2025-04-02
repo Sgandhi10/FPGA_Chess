@@ -52,4 +52,17 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/test_pattern_gen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gen_elements/FIFO.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gen_elements/counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/i2c/I2C_Peripheral.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/i2c/I2C_Controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/DD2_Final_PRJ.sv
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name QIP_FILE altera_ip/vga_pll_25_175.qip
+set_global_assignment -name SIP_FILE altera_ip/vga_pll_25_175.sip
+set_global_assignment -name QIP_FILE altera_ip/Frame_Buffer.qip
