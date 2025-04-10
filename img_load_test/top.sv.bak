@@ -1,0 +1,10 @@
+/*******************************************************************************
+* File: top.sv
+* Author: Soham Gandhi
+* Date: 2025-03-27
+* Description: Top level module for vga controller
+* Version: 1.0
+*******************************************************************************/
+
+module top () 
+endmodule

@@ -1,0 +1,49 @@
+Quartus Prime Archive log --	C:/Digital_Design_2/HW_7/hw7_sgandhi25.qarlog
+
+Archive:	C:/Digital_Design_2/HW_7/hw7_sgandhi25.qar
+Date:		Mon Mar 31 19:06:18 2025
+Quartus Prime		23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+	=========== Files Selected: ===========
+C:/Digital_Design_2/HW_7/test_pattern_gen.sv
+C:/Digital_Design_2/HW_7/top.qpf
+C:/Digital_Design_2/HW_7/top.qsf
+C:/Digital_Design_2/HW_7/top.sv
+C:/Digital_Design_2/HW_7/vga_controller.sv
+C:/Digital_Design_2/HW_7/vga_pll.cmp
+C:/Digital_Design_2/HW_7/vga_pll.qip
+C:/Digital_Design_2/HW_7/vga_pll.sip
+C:/Digital_Design_2/HW_7/vga_pll.spd
+C:/Digital_Design_2/HW_7/vga_pll.v
+C:/Digital_Design_2/HW_7/vga_pll/vga_pll_0002.qip
+C:/Digital_Design_2/HW_7/vga_pll/vga_pll_0002.v
+C:/Digital_Design_2/HW_7/vga_pll_1.cmp
+C:/Digital_Design_2/HW_7/vga_pll_1.qip
+C:/Digital_Design_2/HW_7/vga_pll_1.sip
+C:/Digital_Design_2/HW_7/vga_pll_1.spd
+C:/Digital_Design_2/HW_7/vga_pll_1.v
+C:/Digital_Design_2/HW_7/vga_pll_1/vga_pll_1_0002.qip
+C:/Digital_Design_2/HW_7/vga_pll_1/vga_pll_1_0002.v
+C:/Digital_Design_2/HW_7/vga_pll_1_sim/vga_pll_1.vo
+C:/Digital_Design_2/HW_7/vga_pll_25_175.cmp
+C:/Digital_Design_2/HW_7/vga_pll_25_175.qip
+C:/Digital_Design_2/HW_7/vga_pll_25_175.sip
+C:/Digital_Design_2/HW_7/vga_pll_25_175.spd
+C:/Digital_Design_2/HW_7/vga_pll_25_175.v
+C:/Digital_Design_2/HW_7/vga_pll_25_175/vga_pll_25_175_0002.qip
+C:/Digital_Design_2/HW_7/vga_pll_25_175/vga_pll_25_175_0002.v
+C:/Digital_Design_2/HW_7/vga_pll_25_175_sim/vga_pll_25_175.vo
+C:/Digital_Design_2/HW_7/vga_pll_25_2.cmp
+C:/Digital_Design_2/HW_7/vga_pll_25_2.qip
+C:/Digital_Design_2/HW_7/vga_pll_25_2.sip
+C:/Digital_Design_2/HW_7/vga_pll_25_2.spd
+C:/Digital_Design_2/HW_7/vga_pll_25_2.v
+C:/Digital_Design_2/HW_7/vga_pll_25_2/vga_pll_25_2_0002.qip
+C:/Digital_Design_2/HW_7/vga_pll_25_2/vga_pll_25_2_0002.v
+C:/Digital_Design_2/HW_7/vga_pll_25_2_sim/vga_pll_25_2.vo
+C:/Digital_Design_2/HW_7/vga_pll_sim/vga_pll.vo
+c:/intelfpga_lite/23.1std/quartus/bin64/assignment_defaults.qdf
+	======= Total: 38 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

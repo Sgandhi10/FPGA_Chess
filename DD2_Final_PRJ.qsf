@@ -65,4 +65,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name QIP_FILE altera_ip/vga_pll_25_175.qip
 set_global_assignment -name SIP_FILE altera_ip/vga_pll_25_175.sip
-set_global_assignment -name QIP_FILE altera_ip/Frame_Buffer.qip
+set_global_assignment -name QIP_FILE altera_ip/uart_pll.qip
+set_global_assignment -name SIP_FILE altera_ip/uart_pll.sip
+set_global_assignment -name QIP_FILE altera_ip/RAM_2P.qip

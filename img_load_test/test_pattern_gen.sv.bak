@@ -1,0 +1,43 @@
+/*******************************************************************************
+* File: test_pattern_gen.sv
+* Author: Soham Gandhi
+* Date: 2025-03-27
+* Description: Test Pattern Generator for VGA
+* Version: 1.0
+*******************************************************************************/
+
+module test_pattern_gen #(
+    parameter SCREEN_WIDTH = 640,  // Screen width in pixels
+    parameter SCREEN_HEIGHT = 480, // Screen height in pixels
+    parameter COLOR_DEPTH = 8     // Color depth (bits per channel)
+) (
+    input   logic clk,               // 25 MHz clock
+    input   logic reset_n,           // Active low reset
+
+    // Optional
+    input   logic hcount,
+    input   logic vcount,
+
+    output  logic [COLOR_DEPTH-1:0] vga_r,      // Red color output
+    output  logic [COLOR_DEPTH-1:0] vga_g,      // Green color output
+    output  logic [COLOR_DEPTH-1:0] vga_b       // Blue color output
+);
+    // Create a checkerboard based on the x, y positions
+    always_ff () begin
+        if (!reset_n) begin
+            vga_r <= 0;
+            vga_g <= 0;
+            vga_b <= 0;
+        end else begin
+            if ((hcount[4:0] ^ vcount[4:0]) == 1) begin
+                vga_r <= 8'hFF; // White color
+                vga_g <= 8'hFF; // White color
+                vga_b <= 8'hFF; // White color
+            end else begin
+                vga_r <= 8'h00; // Black color
+                vga_g <= 8'h00; // Black color
+                vga_b <= 8'h00; // Black color
+            end
+        end
+    end
+endmodule
