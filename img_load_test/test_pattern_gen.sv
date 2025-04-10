@@ -13,6 +13,7 @@ module test_pattern_gen #(
 ) (
     input  logic                   vga_clk,
     input  logic                   reset_n,
+    input  logic [9:0]             SW,
 
     input  logic [9:0]             hcount,
     input  logic [9:0]             vcount,
@@ -30,6 +31,8 @@ module test_pattern_gen #(
         24'hFFFFFF   // Index 3: White
     };
 
+    logic [1:0] mapped_color_1;
+    logic [1:0] mapped_color_2;
     logic [1:0] mapped_color;
 
     // --- Flat pixel address calculation
@@ -37,11 +40,19 @@ module test_pattern_gen #(
     assign rom_address = vcount * SCREEN_WIDTH + hcount;
 
     // --- ROM Instance (startup screen bitmap)
-    startup_screen_rom startup_screen_rom_inst (
+    title_screen_rom title_rom_inst (
         .address(rom_address),
         .clock(vga_clk),
-        .q(mapped_color)
+        .q(mapped_color_1)
     );
+
+    player_screen_rom player_rom_inst (
+        .address(rom_address),
+        .clock(vga_clk),
+        .q(mapped_color_2)
+    );
+
+    assign mapped_color = (SW[0] == 1) ? mapped_color_1 : mapped_color_2;
     
     assign {vga_r, vga_g, vga_b} = {
         color_array[mapped_color][23:16],  // R

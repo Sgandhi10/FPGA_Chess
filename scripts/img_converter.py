@@ -8,8 +8,7 @@
 # Image should be 640x480 pixels.
 
 from PIL import Image
-import sys
-import math
+import os
 
 # --- 1. Define the fixed 4-color palette ---
 PALETTE = {
@@ -65,8 +64,8 @@ def convert_image_to_mif(input_path, output_path):
         f.write("END;\n")
 
     # Save and show the remapped image
-    output_img_path = output_path.replace(".mif", "_remapped.png")
-    remapped_img.save(output_img_path)
+    # output_img_path = output_path.replace(".mif", "_remapped.png")
+    # remapped_img.save(output_img_path)
 
     print(f"MIF written to: {output_path}")
     print(f"Remapped image saved to: {output_img_path}")
@@ -75,7 +74,13 @@ def convert_image_to_mif(input_path, output_path):
 # convert_image_to_mif('input.png', 'output.mif')
 
 if __name__ == "__main__":
-    convert_image_to_mif("C:\Digital_Design_2\PRJ_Final\scripts\Intro Screen.png", "C:\Digital_Design_2\PRJ_Final\scripts\Intro_Screen.mif")
+    # Create a for loop that goes through all .png in the directory and converts them to .mif and saves them in a directory
+    for file in os.listdir("C:\Digital_Design_2\PRJ_Final\images"):
+        if file.endswith(".png"):
+            input_path = os.path.join("C:\Digital_Design_2\PRJ_Final\images", file)
+            output_path = os.path.join("C:\Digital_Design_2\PRJ_Final\\bitmaps", file.replace(".png", ".mif"))
+            convert_image_to_mif(input_path, output_path)
+
     # if len(sys.argv) != 3:
     #     print("Usage: python convert_to_mif.py <input_image> <output_mif>")
     # else:

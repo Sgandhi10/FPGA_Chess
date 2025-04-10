@@ -64,6 +64,7 @@ module top #(
     ) tpg (
         .vga_clk(VGA_CLK),
         .reset_n(reset_n),
+        .SW(SW),
 
         .vga_r(VGA_R),
         .vga_g(VGA_G),
