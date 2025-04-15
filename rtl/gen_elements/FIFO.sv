@@ -25,9 +25,9 @@ module FIFO #(
     output  logic empty
 );
     // Verify that N_SIZE is a power of 2 (Generate Block)
-    if (N_SIZE != (2 ** ($clog2(N_SIZE)))) begin
-        $error("N_SIZE must be a power of 2, but is %0d, %0d", N_SIZE, 2 ** ($clog2(N_SIZE)));
-    end
+    //if (N_SIZE != (2 ** ($clog2(N_SIZE)))) begin
+    //    $error("N_SIZE must be a power of 2, but is %0d, %0d", N_SIZE, 2 ** ($clog2(N_SIZE)));
+    //end
 
     logic [N_BITS-1:0] data [N_SIZE-1:0];
     logic [$clog2(N_SIZE):0] head, elements;

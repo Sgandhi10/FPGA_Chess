@@ -1,0 +1,149 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -4.378
+TNS   : -1042.927
+
+Type  : Slow 1100mV 85C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -4.102
+TNS   : -60.955
+
+Type  : Slow 1100mV 85C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -2.818
+TNS   : -75.311
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.320
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : 0.326
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : 0.707
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.731
+TNS   : -230.498
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -0.394
+TNS   : -21.955
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -0.394
+TNS   : -12.620
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -4.458
+TNS   : -1001.215
+
+Type  : Slow 1100mV 0C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -4.274
+TNS   : -62.360
+
+Type  : Slow 1100mV 0C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -2.804
+TNS   : -72.877
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
+Slack : -0.066
+TNS   : -0.174
+
+Type  : Slow 1100mV 0C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : 0.323
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : 0.688
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.752
+TNS   : -208.571
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -0.394
+TNS   : -22.154
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -0.394
+TNS   : -12.936
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -2.439
+TNS   : -501.154
+
+Type  : Fast 1100mV 85C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -1.979
+TNS   : -27.513
+
+Type  : Fast 1100mV 85C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -1.535
+TNS   : -34.365
+
+Type  : Fast 1100mV 85C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : 0.118
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : 0.317
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.795
+TNS   : -151.832
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -0.053
+TNS   : -0.443
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -0.043
+TNS   : -0.623
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -2.103
+TNS   : -423.037
+
+Type  : Fast 1100mV 0C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -1.886
+TNS   : -26.093
+
+Type  : Fast 1100mV 0C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -1.379
+TNS   : -29.758
+
+Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
+Slack : -0.002
+TNS   : -0.002
+
+Type  : Fast 1100mV 0C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : 0.101
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : 0.285
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.812
+TNS   : -181.006
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
+Slack : -0.022
+TNS   : -0.126
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
+Slack : -0.017
+TNS   : -0.166
+
+------------------------------------------------------------
