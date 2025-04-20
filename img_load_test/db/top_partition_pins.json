@@ -16,19 +16,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "VGA_R[3]",
-					"strict" : false
-				},
-				{
 					"name" : "VGA_R[4]",
 					"strict" : false
 				},
 				{
 					"name" : "VGA_R[5]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[6]",
 					"strict" : false
 				},
 				{
@@ -72,10 +64,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "VGA_B[1]",
-					"strict" : false
-				},
-				{
 					"name" : "VGA_B[2]",
 					"strict" : false
 				},
@@ -113,6 +101,10 @@
 				},
 				{
 					"name" : "VGA_SYNC_N",
+					"strict" : false
+				},
+				{
+					"name" : "SW[1]",
 					"strict" : false
 				},
 				{

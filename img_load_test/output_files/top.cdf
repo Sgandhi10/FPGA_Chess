@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Digital_Design_2/HW_7/output_files/") File("top.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/ECE4514/DD2_Final_PRJ/img_load_test/output_files/") File("top.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

@@ -1,5 +1,5 @@
 Flow report for top
-Thu Apr 10 13:45:32 2025
+Thu Apr 17 16:56:26 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,18 +41,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Thu Apr 10 13:45:32 2025          ;
+; Flow Status                     ; Successful - Thu Apr 17 16:56:26 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; top                                            ;
 ; Top-level Entity Name           ; top                                            ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 103 / 32,070 ( < 1 % )                         ;
-; Total registers                 ; 40                                             ;
+; Logic utilization (in ALMs)     ; 385 / 32,070 ( 1 % )                           ;
+; Total registers                 ; 52                                             ;
 ; Total pins                      ; 96 / 457 ( 21 % )                              ;
 ; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 1,228,800 / 4,065,280 ( 30 % )                 ;
+; Total block memory bits         ; 2,457,600 / 4,065,280 ( 60 % )                 ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                                 ;
 ; Total HSSI RX PCSs              ; 0                                              ;
 ; Total HSSI PMA RX Deserializers ; 0                                              ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/10/2025 13:43:29 ;
+; Start date & time ; 04/17/2025 16:53:04 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top                 ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 211375646815168.174430700829340        ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 66504336589279.174492318456620         ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -93,6 +93,12 @@ https://fpgasoftware.intel.com/eula.
 ; MISC_FILE                           ; vga_pll_25_175_sim/vga_pll_25_175.vo   ; --            ; --          ; --                                ;
 ; MISC_FILE                           ; title_screen_rom_bb.v                  ; --            ; --          ; --                                ;
 ; MISC_FILE                           ; player_screen_rom_bb.v                 ; --            ; --          ; --                                ;
+; MISC_FILE                           ; chess_board_bb.v                       ; --            ; --          ; --                                ;
+; MISC_FILE                           ; chess_board_rom_bb.v                   ; --            ; --          ; --                                ;
+; MISC_FILE                           ; title_screen_rom2_bb.v                 ; --            ; --          ; --                                ;
+; MISC_FILE                           ; player_screen_rom2_bb.v                ; --            ; --          ; --                                ;
+; MISC_FILE                           ; chess_piece_rom_bb.v                   ; --            ; --          ; --                                ;
+; MISC_FILE                           ; chess_piece_rom2_bb.v                  ; --            ; --          ; --                                ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top                               ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top                               ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top                               ;
@@ -109,12 +115,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:16     ; 1.0                     ; 4861 MB             ; 00:00:37                           ;
-; Fitter               ; 00:01:09     ; 1.1                     ; 6678 MB             ; 00:02:13                           ;
-; Assembler            ; 00:00:13     ; 1.0                     ; 5233 MB             ; 00:00:13                           ;
-; Timing Analyzer      ; 00:00:14     ; 1.4                     ; 5389 MB             ; 00:00:18                           ;
-; EDA Netlist Writer   ; 00:00:03     ; 1.0                     ; 4861 MB             ; 00:00:03                           ;
-; Total                ; 00:01:55     ; --                      ; --                  ; 00:03:24                           ;
+; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 5498 MB             ; 00:00:34                           ;
+; Fitter               ; 00:02:37     ; 1.1                     ; 7886 MB             ; 00:15:21                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4886 MB             ; 00:00:08                           ;
+; Timing Analyzer      ; 00:00:08     ; 2.9                     ; 5391 MB             ; 00:00:16                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4853 MB             ; 00:00:02                           ;
+; Total                ; 00:03:16     ; --                      ; --                  ; 00:16:21                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -123,11 +129,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-Q3T8GTB  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-Q3T8GTB  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-Q3T8GTB  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-Q3T8GTB  ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer   ; DESKTOP-Q3T8GTB  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; LAPTOP-12I6K3H8  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; LAPTOP-12I6K3H8  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; LAPTOP-12I6K3H8  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; LAPTOP-12I6K3H8  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; LAPTOP-12I6K3H8  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
