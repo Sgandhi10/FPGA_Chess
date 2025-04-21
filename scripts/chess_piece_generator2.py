@@ -1,56 +1,58 @@
 from PIL import Image
 
-# Settings
-SPRITE_W, SPRITE_H = 56, 56
-ROWS, COLS = 2, 6
-TOTAL_SPRITES = ROWS * COLS
-IMG_PATH = "chess_pieces_single56.png"  # Replace with correct filename
-MIF_PATH = "chess_pieces_rom2.mif"
+# --- Config ---
+TILE_WIDTH = 56
+TILE_HEIGHT = 56
+GRID_COLS = 8
+GRID_ROWS = 4
+MIF_WIDTH = 2  # 2-bit: 0=transparent, 1=white, 2=black
 
-# Palette
 PALETTE = {
-    (0, 0, 0): 2,          # Black
-    (255, 255, 255): 3     # White
+    (255, 255, 255): 1,  # white piece
+    (0, 0, 0): 2         # black piece
 }
-TRANSPARENT_INDEX = 0
-WIDTH_BITS = 2
-DEPTH = TOTAL_SPRITES * SPRITE_W * SPRITE_H
 
-def get_palette_index(rgba):
-    r, g, b, a = rgba
-    if a < 128:
-        return TRANSPARENT_INDEX
-    return PALETTE.get((r, g, b), TRANSPARENT_INDEX)
+PALETTE_RGB = list(PALETTE.keys())
 
-# Load image
-img = Image.open(IMG_PATH).convert('RGBA')
-img_width, img_height = img.size
+def color_distance(c1, c2):
+    return sum((a - b) ** 2 for a, b in zip(c1, c2))
 
-with open(MIF_PATH, 'w') as f:
-    f.write(f"WIDTH={WIDTH_BITS};\nDEPTH={DEPTH};\n\n")
-    f.write("ADDRESS_RADIX=HEX;\nDATA_RADIX=HEX;\n\n")
-    f.write("CONTENT BEGIN\n")
+def map_to_palette_index(rgb, alpha):
+    if alpha < 128:
+        return 0  # transparent
+    if rgb in PALETTE:
+        return PALETTE[rgb]
+    closest = min(PALETTE_RGB, key=lambda c: color_distance(c, rgb))
+    print(f"⚠️ {rgb} not in palette, mapped to {closest}")
+    return PALETTE[closest]
 
-    addr = 0
-    for sprite_idx in range(TOTAL_SPRITES):
-        col = sprite_idx % COLS
-        row = sprite_idx // COLS
-        origin_x = col * SPRITE_W
-        origin_y = row * SPRITE_H + 16  # vertical offset for padding
+def convert_piece_grid_to_mif(input_path, output_path):
+    img = Image.open(input_path).convert("RGBA")
+    width, height = img.size
+    total_tiles = GRID_ROWS * GRID_COLS
+    total_pixels = TILE_WIDTH * TILE_HEIGHT * total_tiles
 
-        for y in range(SPRITE_H):
-            for x in range(SPRITE_W):
-                px = origin_x + x
-                py = origin_y + y
+    with open(output_path, "w") as f:
+        f.write(f"WIDTH={MIF_WIDTH};\nDEPTH={total_pixels};\n")
+        f.write("ADDRESS_RADIX=HEX;\nDATA_RADIX=HEX;\n\n")
+        f.write("CONTENT BEGIN\n")
 
-                if px >= img_width or py >= img_height:
-                    idx = TRANSPARENT_INDEX  # prevent out-of-range
-                else:
-                    idx = get_palette_index(img.getpixel((px, py)))
+        addr = 0
+        for row in range(GRID_ROWS):
+            for col in range(GRID_COLS):
+                for y in range(TILE_HEIGHT):
+                    for x in range(TILE_WIDTH):
+                        px = col * TILE_WIDTH + x
+                        py = row * TILE_HEIGHT + y
+                        r, g, b, a = img.getpixel((px, py))
+                        idx = map_to_palette_index((r, g, b), a)
+                        f.write(f"    {addr:05X} : {idx:X};\n")
+                        addr += 1
+        f.write("END;\n")
+    print(f"✅ MIF file created: {output_path}")
 
-                f.write(f"    {addr:05X} : {idx:X};\n")
-                addr += 1
-
-    f.write("END;\n")
-
-print(f"✅ MIF written: {MIF_PATH}")
+# Run it
+if __name__ == "__main__":
+    input_img = "chess_pieces.png"       # your exported image from Figma
+    output_mif = "chess_piece_rom.mif"
+    convert_piece_grid_to_mif(input_img, output_mif)

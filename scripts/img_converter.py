@@ -68,17 +68,17 @@ def convert_image_to_mif(input_path, output_path):
     # remapped_img.save(output_img_path)
 
     print(f"MIF written to: {output_path}")
-    print(f"Remapped image saved to: {output_img_path}")
+    print(f"Remapped image saved to: {output_path}")
 
 # Example usage:
 # convert_image_to_mif('input.png', 'output.mif')
 
 if __name__ == "__main__":
     # Create a for loop that goes through all .png in the directory and converts them to .mif and saves them in a directory
-    for file in os.listdir("C:\Digital_Design_2\PRJ_Final\images"):
+    for file in os.listdir("C:\Digital_Design_2\PRJ_Final\images\\2-bit"):
         if file.endswith(".png"):
-            input_path = os.path.join("C:\Digital_Design_2\PRJ_Final\images", file)
-            output_path = os.path.join("C:\Digital_Design_2\PRJ_Final\\bitmaps", file.replace(".png", ".mif"))
+            input_path = os.path.join("C:\Digital_Design_2\PRJ_Final\images\\2-bit", file)
+            output_path = os.path.join("C:\Digital_Design_2\PRJ_Final\\bitmaps\\2-bit", file.replace(".png", ".mif"))
             convert_image_to_mif(input_path, output_path)
 
     # if len(sys.argv) != 3:
