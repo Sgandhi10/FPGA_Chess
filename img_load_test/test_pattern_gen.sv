@@ -5,284 +5,6 @@
 * Description: Test Pattern Generator for VGA
 * Version: 1.2
 *******************************************************************************/
-
-/*module test_pattern_gen #(
-    parameter int SCREEN_WIDTH = 640,
-    parameter int SCREEN_HEIGHT = 480,
-    parameter int COLOR_DEPTH = 8  // Must be 8 for this palette
-) (
-    input  logic                   vga_clk,
-    input  logic                   reset_n,
-    input  logic [9:0]             SW,
-
-    input  logic [9:0]             hcount,
-    input  logic [9:0]             vcount,
-
-    output logic [COLOR_DEPTH-1:0] vga_r,
-    output logic [COLOR_DEPTH-1:0] vga_g,
-    output logic [COLOR_DEPTH-1:0] vga_b
-);
-
-    // --- Inline-initialized color palette (24-bit RGB)
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [4] = '{
-        24'hD9D9D9,  // Index 0: Light gray
-        24'h000000,  // Index 1: Black
-        24'h69923E,  // Index 2: Green
-        24'hFFFFFF   // Index 3: White
-    };
-
-    logic [1:0] mapped_color_1;
-    logic [1:0] mapped_color_2;
-    logic [1:0] mapped_color;
-
-    // --- Flat pixel address calculation
-    logic [18:0] rom_address;
-    assign rom_address = vcount * SCREEN_WIDTH + hcount;
-
-    // --- ROM Instance (startup screen bitmap)
-    title_screen_rom title_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(mapped_color_1)
-    );
-
-    player_screen_rom player_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(mapped_color_2)
-    );
-
-    assign mapped_color = (SW[0] == 1) ? mapped_color_1 : mapped_color_2;
-    
-    assign {vga_r, vga_g, vga_b} = {
-        color_array[mapped_color][23:16],  // R
-        color_array[mapped_color][15:8],   // G
-        color_array[mapped_color][7:0]     // B
-    };
-
-endmodule*/
-
-
-
-
-/*module test_pattern_gen #(
-    parameter int SCREEN_WIDTH = 640,
-    parameter int SCREEN_HEIGHT = 480,
-    parameter int COLOR_DEPTH = 8  // Must be 8 for this palette
-) (
-    input  logic                   vga_clk,
-    input  logic                   reset_n,
-    input  logic [9:0]             SW,
-
-    input  logic [9:0]             hcount,
-    input  logic [9:0]             vcount,
-
-    output logic [COLOR_DEPTH-1:0] vga_r,
-    output logic [COLOR_DEPTH-1:0] vga_g,
-    output logic [COLOR_DEPTH-1:0] vga_b
-);
-
-    // --- 4-color palette (2-bit index mapped to 24-bit RGB)
-        // 2-bit palette: 0 = tan, 1 = green, 2 = bg, 3 = white
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [4] = '{
-        24'hEEEED2,  // 0 – light squares
-        24'h69923E,  // 1 – dark green
-        24'h4B4847,  // 2 – background
-        24'hFFFFFF   // 3 – white text
-    };
-
-
-    // ROM outputs
-    logic [1:0] title_pixel;
-    logic [1:0] player_pixel;
-    logic [1:0] board_pixel;
-	 logic [1:0] piece_pixel;
-    logic [1:0] selected_pixel;
-
-    // Compute pixel index into ROMs
-    logic [18:0] rom_address;
-    assign rom_address = vcount * SCREEN_WIDTH + hcount;
-
-    // --- ROM instances
-    title_screen_rom2 title_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(title_pixel)
-    );
-
-    player_screen_rom2 player_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(player_pixel)
-    );
-
-    chess_board_rom board_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(board_pixel)
-    );
-	 chess_piece_rom pieces_rom (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(piece_pixel)
-    );
-
-    // --- Multiplexer: SW[1:0]
-    always_comb begin
-        case (SW[1:0])
-            2'b00: selected_pixel = title_pixel;
-            2'b01: selected_pixel = player_pixel;
-            2'b10: selected_pixel = board_pixel;
-				2'b11: selected_pixel = piece_pixel;
-           // default: selected_pixel = 2'd0;  // fallback to gray
-        endcase
-    end
-
-    // Map palette index to RGB
-    assign {vga_r, vga_g, vga_b} = {
-        color_array[selected_pixel][23:16],
-        color_array[selected_pixel][15:8],
-        color_array[selected_pixel][7:0]
-    };
-
-endmodule
-
-
-module test_pattern_gen #(
-    parameter int SCREEN_WIDTH = 640,
-    parameter int SCREEN_HEIGHT = 480,
-    parameter int COLOR_DEPTH = 8  // Must be 8 for this palette
-) (
-    input  logic                   vga_clk,
-    input  logic                   reset_n,
-    input  logic [9:0]             SW,
-    input  logic [9:0]             hcount,
-    input  logic [9:0]             vcount,
-    output logic [COLOR_DEPTH-1:0] vga_r,
-    output logic [COLOR_DEPTH-1:0] vga_g,
-    output logic [COLOR_DEPTH-1:0] vga_b
-);
-
-    // --- Color Palette: index to RGB mapping
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [4] = '{
-        24'hEEEED2,  // 0 – light square (tan)
-        24'h69923E,  // 1 – dark square (green)
-        24'h4B4847,  // 2 – background
-        24'hFFFFFF   // 3 – white/piece
-    };
-
-    // --- Constants for layout
-    localparam CHESS_TILE_SIZE = 56;
-    localparam CHESS_PIECE_SIZE = 56;
-    localparam NUM_PIECES = 32;
-    localparam CHESS_PIECE_AREA = CHESS_PIECE_SIZE * CHESS_PIECE_SIZE;
-    localparam BOARD_ORIGIN_X = 16;
-    localparam BOARD_ORIGIN_Y = 16;
-
-    // ROM output wires
-    logic [1:0] title_pixel, player_pixel, board_pixel, piece_pixel, selected_pixel;
-
-    // Addressing for all screens
-    logic [18:0] rom_address;
-    assign rom_address = vcount * SCREEN_WIDTH + hcount;
-
-    // Addressing for sprite ROM
-    logic [18:0] piece_rom_addr;
-
-
-    // Tile logic
-    logic [5:0] tile_index;
-    logic [5:0] tile_col, tile_row;
-    logic [9:0] rel_x, rel_y;
-    logic [3:0] piece_index;
-    logic in_sprite_area;
-
-    // --- ROMs
-    title_screen_rom2 title_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(title_pixel)
-    );
-
-    player_screen_rom2 player_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(player_pixel)
-    );
-
-    chess_board_rom board_rom_inst (
-        .address(rom_address),
-        .clock(vga_clk),
-        .q(board_pixel)
-    );
-
-    chess_piece_rom pieces_rom (
-        .address(piece_rom_addr),
-        .clock(vga_clk),
-        .q(piece_pixel)
-    );
-
- 
-
-    // --- Main pixel generation
-    always_comb begin
-         begin
-			 rel_x = 0;
-			rel_y = 0;
-			piece_rom_addr = 0;
-            case (SW[1:0])
-                2'b00: selected_pixel = title_pixel;
-                2'b01: selected_pixel = player_pixel;
-                2'b10: selected_pixel = board_pixel;
-					 2'b11: begin
-							//insert logic here
-							//simple rook placement
-						//start at pixel 0 and count till 40...x- row
-						//start at pixel 0 and count till 40...y- column
-						//when x=40 and y=40 stop extraction
-						
-						//GENERATE BLOCK
-						//logic [4:0] board [8] [8]
-							if ((hcount >= BOARD_ORIGIN_X && hcount < (BOARD_ORIGIN_X + CHESS_PIECE_SIZE)) &&
-								 (vcount >= BOARD_ORIGIN_Y && vcount < (BOARD_ORIGIN_Y + CHESS_PIECE_SIZE)))
-								 begin
-								 //now we are within the first sqaure of the chess board
-								 //we draw a rook
-								 //need to exract a 40x40 rook from 432x432 chess piece ROM
-								 //calculate relative positons 
-								rel_x = hcount - BOARD_ORIGIN_X;
-								rel_y = vcount - BOARD_ORIGIN_Y;
-
-								 // Compute chess ROM address
-								 
-								 piece_rom_addr = rel_y * CHESS_PIECE_SIZE + rel_x;
-
-								 // Display sprite pixel if not transparent (non-zero)
-							    selected_pixel = (piece_pixel != 2'd0) ? piece_pixel : board_pixel;
-										 
-								 end
-							else begin
-									selected_pixel = board_pixel;
-									end
-								 
-										
-					 
-							end
-                default: selected_pixel = board_pixel;
-            endcase
-        end
-    end
-
-    // --- Output RGB signals
-    assign {vga_r, vga_g, vga_b} = {
-        color_array[selected_pixel][23:16],
-        color_array[selected_pixel][15:8],
-        color_array[selected_pixel][7:0]
-    };
-
-endmodule*/
-
-
 module test_pattern_gen #(
     parameter int SCREEN_WIDTH = 640,
     parameter int SCREEN_HEIGHT = 480,
@@ -328,12 +50,11 @@ module test_pattern_gen #(
 
     logic [5:0] rel_x;
     logic [5:0] rel_y;
-	 assign tile_col = (hcount - BOARD_ORIGIN_X) / CHESS_TILE_SIZE;
+    assign tile_col = (hcount - BOARD_ORIGIN_X) / CHESS_TILE_SIZE;
     assign tile_row = (vcount - BOARD_ORIGIN_Y) / CHESS_TILE_SIZE;
 
-	 assign rel_x = hcount - (BOARD_ORIGIN_X + tile_col * CHESS_TILE_SIZE);
-	 assign rel_y = vcount - (BOARD_ORIGIN_Y + tile_row * CHESS_TILE_SIZE);
-	 
+    assign rel_x = hcount - (BOARD_ORIGIN_X + tile_col * CHESS_TILE_SIZE);
+    assign rel_y = vcount - (BOARD_ORIGIN_Y + tile_row * CHESS_TILE_SIZE);
 
     logic [3:0] piece_index;
     logic in_sprite_area;
@@ -345,7 +66,7 @@ module test_pattern_gen #(
         piece_map[0] = '{0, 1, 2, 3, 4, 2, 1, 0};
         piece_map[1] = '{5, 5, 5, 5, 5, 5, 5, 5};
         piece_map[6] = '{11, 11, 11, 11, 11, 11, 11, 11};
-        piece_map[7] = '{6, 7, 8,9,10, 8, 7, 6};
+        piece_map[7] = '{6, 7, 8, 9, 10, 8, 7, 6};
         piece_map[2] = '{default: 15};
         piece_map[3] = '{default: 15};
         piece_map[4] = '{default: 15};
@@ -353,13 +74,13 @@ module test_pattern_gen #(
     end
 
     // --- ROMs
-    title_screen_rom2 title_rom_inst (
+    title_screen_rom title_rom_inst (
         .address(rom_address),
         .clock(vga_clk),
         .q(title_pixel)
     );
 
-    player_screen_rom2 player_rom_inst (
+    player_screen_rom player_rom_inst (
         .address(rom_address),
         .clock(vga_clk),
         .q(player_pixel)
@@ -371,7 +92,7 @@ module test_pattern_gen #(
         .q(board_pixel)
     );
 
-    chess_piece_rom2 pieces_rom (
+    chess_piece_rom pieces_rom (
         .address(piece_rom_addr),
         .clock(vga_clk),
         .q(piece_pixel)
@@ -379,26 +100,25 @@ module test_pattern_gen #(
 
     // --- Main pixel generation
     always_comb begin
-		piece_rom_addr = 0;
-		selected_pixel  = board_pixel;
-		piece_index     = 0;
-		in_sprite_area  = 0;
-		
+        piece_rom_addr = 0;
+        selected_pixel = board_pixel;
+        piece_index    = 0;
+        in_sprite_area = 0;
 
         case (SW[1:0])
             2'b00: selected_pixel = title_pixel;
             2'b01: selected_pixel = player_pixel;
             2'b10: selected_pixel = board_pixel;
             2'b11: begin
-
                 if (hcount >= BOARD_ORIGIN_X && hcount < BOARD_ORIGIN_X + 8 * CHESS_TILE_SIZE &&
                     vcount >= BOARD_ORIGIN_Y && vcount < BOARD_ORIGIN_Y + 8 * CHESS_TILE_SIZE) begin
 
                     piece_index = piece_map[tile_row][tile_col];
                     in_sprite_area = (piece_index < 12);
 
-                    if (in_sprite_area) begin
-                        piece_rom_addr = piece_index * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE + rel_y * CHESS_PIECE_SIZE + rel_x;
+                    if (in_sprite_area && rel_y >= 16) begin
+                        piece_rom_addr = piece_index * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE +
+                                         (rel_y - 16) * CHESS_PIECE_SIZE + rel_x;
                         selected_pixel = (piece_pixel != 0) ? piece_pixel : board_pixel;
                     end else begin
                         selected_pixel = board_pixel;
@@ -419,7 +139,6 @@ module test_pattern_gen #(
     };
 
 endmodule
-
 
 
 

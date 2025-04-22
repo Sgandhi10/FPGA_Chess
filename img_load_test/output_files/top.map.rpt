@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top
-Thu Apr 17 16:53:26 2025
+Sun Apr 20 20:17:43 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -66,7 +66,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Apr 17 16:53:25 2025          ;
+; Analysis & Synthesis Status     ; Successful - Sun Apr 20 20:17:42 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; top                                            ;
 ; Top-level Entity Name           ; top                                            ;
@@ -192,7 +192,8 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
 ;     Processor 7            ;   0.0%      ;
-;     Processors 8-16        ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -245,14 +246,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                             ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 394                                                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 392                                                                                               ;
 ;                                             ;                                                                                                   ;
-; Combinational ALUT usage for logic          ; 636                                                                                               ;
+; Combinational ALUT usage for logic          ; 644                                                                                               ;
 ;     -- 7 input functions                    ; 3                                                                                                 ;
-;     -- 6 input functions                    ; 146                                                                                               ;
-;     -- 5 input functions                    ; 40                                                                                                ;
-;     -- 4 input functions                    ; 138                                                                                               ;
-;     -- <=3 input functions                  ; 309                                                                                               ;
+;     -- 6 input functions                    ; 134                                                                                               ;
+;     -- 5 input functions                    ; 71                                                                                                ;
+;     -- 4 input functions                    ; 120                                                                                               ;
+;     -- <=3 input functions                  ; 316                                                                                               ;
 ;                                             ;                                                                                                   ;
 ; Dedicated logic registers                   ; 44                                                                                                ;
 ;                                             ;                                                                                                   ;
@@ -267,8 +268,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                                                                                                   ;
 ; Maximum fan-out node                        ; vga_pll_25_175:pll|vga_pll_25_175_0002:vga_pll_25_175_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
 ; Maximum fan-out                             ; 350                                                                                               ;
-; Total fan-out                               ; 7281                                                                                              ;
-; Average fan-out                             ; 6.19                                                                                              ;
+; Total fan-out                               ; 7312                                                                                              ;
+; Average fan-out                             ; 6.17                                                                                              ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------------+
 
 
@@ -277,17 +278,17 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+----------------+
 ; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                              ; Entity Name         ; Library Name   ;
 +-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+----------------+
-; |top                                            ; 636 (0)             ; 44 (0)                    ; 2457600           ; 0          ; 96   ; 0            ; |top                                                                                                                                             ; top                 ; work           ;
-;    |test_pattern_gen:tpg|                       ; 603 (189)           ; 24 (0)                    ; 2457600           ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg                                                                                                                        ; test_pattern_gen    ; work           ;
+; |top                                            ; 644 (0)             ; 44 (0)                    ; 2457600           ; 0          ; 96   ; 0            ; |top                                                                                                                                             ; top                 ; work           ;
+;    |test_pattern_gen:tpg|                       ; 611 (194)           ; 24 (0)                    ; 2457600           ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg                                                                                                                        ; test_pattern_gen    ; work           ;
 ;       |chess_board_rom:board_rom_inst|          ; 47 (0)              ; 12 (0)                    ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_board_rom:board_rom_inst                                                                                         ; chess_board_rom     ; work           ;
 ;          |altsyncram:altsyncram_component|      ; 47 (0)              ; 12 (0)                    ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component                                                         ; altsyncram          ; work           ;
 ;             |altsyncram_l5h1:auto_generated|    ; 47 (0)              ; 12 (12)                   ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component|altsyncram_l5h1:auto_generated                          ; altsyncram_l5h1     ; work           ;
 ;                |decode_s2a:rden_decode|         ; 41 (41)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component|altsyncram_l5h1:auto_generated|decode_s2a:rden_decode   ; decode_s2a          ; work           ;
 ;                |mux_okb:mux2|                   ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component|altsyncram_l5h1:auto_generated|mux_okb:mux2             ; mux_okb             ; work           ;
-;       |chess_piece_rom2:pieces_rom|             ; 74 (0)              ; 12 (0)                    ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom                                                                                            ; chess_piece_rom2    ; work           ;
-;          |altsyncram:altsyncram_component|      ; 74 (0)              ; 12 (0)                    ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component                                                            ; altsyncram          ; work           ;
-;             |altsyncram_emh1:auto_generated|    ; 74 (0)              ; 12 (12)                   ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component|altsyncram_emh1:auto_generated                             ; altsyncram_emh1     ; work           ;
-;                |decode_s2a:rden_decode|         ; 46 (46)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component|altsyncram_emh1:auto_generated|decode_s2a:rden_decode      ; decode_s2a          ; work           ;
+;       |chess_piece_rom2:pieces_rom|             ; 77 (0)              ; 12 (0)                    ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom                                                                                            ; chess_piece_rom2    ; work           ;
+;          |altsyncram:altsyncram_component|      ; 77 (0)              ; 12 (0)                    ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component                                                            ; altsyncram          ; work           ;
+;             |altsyncram_emh1:auto_generated|    ; 77 (0)              ; 12 (12)                   ; 614400            ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component|altsyncram_emh1:auto_generated                             ; altsyncram_emh1     ; work           ;
+;                |decode_s2a:rden_decode|         ; 49 (49)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component|altsyncram_emh1:auto_generated|decode_s2a:rden_decode      ; decode_s2a          ; work           ;
 ;                |mux_1jb:mux2|                   ; 28 (28)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component|altsyncram_emh1:auto_generated|mux_1jb:mux2                ; mux_1jb             ; work           ;
 ;       |lpm_divide:Div0|                         ; 145 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|lpm_divide:Div0                                                                                                        ; lpm_divide          ; work           ;
 ;          |lpm_divide_kbm:auto_generated|        ; 145 (0)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|test_pattern_gen:tpg|lpm_divide:Div0|lpm_divide_kbm:auto_generated                                                                          ; lpm_divide_kbm      ; work           ;
@@ -1102,35 +1103,35 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     CLR SCLR          ; 10                          ;
 ;     ENA CLR SCLR      ; 10                          ;
 ;     plain             ; 24                          ;
-; arriav_lcell_comb     ; 639                         ;
-;     arith             ; 198                         ;
+; arriav_lcell_comb     ; 647                         ;
+;     arith             ; 206                         ;
 ;         0 data inputs ; 42                          ;
 ;         1 data inputs ; 38                          ;
-;         2 data inputs ; 14                          ;
-;         3 data inputs ; 64                          ;
-;         4 data inputs ; 40                          ;
+;         2 data inputs ; 19                          ;
+;         3 data inputs ; 66                          ;
+;         4 data inputs ; 41                          ;
 ;     extend            ; 3                           ;
 ;         7 data inputs ; 3                           ;
 ;     normal            ; 397                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 70                          ;
-;         3 data inputs ; 48                          ;
-;         4 data inputs ; 90                          ;
-;         5 data inputs ; 40                          ;
-;         6 data inputs ; 146                         ;
+;         2 data inputs ; 72                          ;
+;         3 data inputs ; 46                          ;
+;         4 data inputs ; 71                          ;
+;         5 data inputs ; 71                          ;
+;         6 data inputs ; 134                         ;
 ;     shared            ; 41                          ;
 ;         0 data inputs ; 3                           ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 21                          ;
-;         3 data inputs ; 5                           ;
+;         2 data inputs ; 22                          ;
+;         3 data inputs ; 4                           ;
 ;         4 data inputs ; 8                           ;
 ; boundary_port         ; 96                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 304                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 24.50                       ;
-; Average LUT depth     ; 14.29                       ;
+; Average LUT depth     ; 14.39                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1149,14 +1150,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Thu Apr 17 16:53:03 2025
+    Info: Processing started: Sun Apr 20 20:17:20 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top -c top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file vga_controller.sv
     Info (12023): Found entity 1: vga_controller File: C:/ECE4514/DD2_Final_PRJ/img_load_test/vga_controller.sv Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file test_pattern_gen.sv
-    Info (12023): Found entity 1: test_pattern_gen File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 286
+    Info (12023): Found entity 1: test_pattern_gen File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 426
 Warning (10275): Verilog HDL Module Instantiation warning at top.sv(56): ignored dangling comma in List of Port Connections File: C:/ECE4514/DD2_Final_PRJ/img_load_test/top.sv Line: 56
 Info (12021): Found 1 design units, including 1 entities, in source file top.sv
     Info (12023): Found entity 1: top File: C:/ECE4514/DD2_Final_PRJ/img_load_test/top.sv Line: 10
@@ -1262,16 +1263,16 @@ Warning (10230): Verilog HDL assignment warning at vga_controller.sv(41): trunca
 Warning (10230): Verilog HDL assignment warning at vga_controller.sv(42): truncated value with size 32 to match size of target (1) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/vga_controller.sv Line: 42
 Warning (10230): Verilog HDL assignment warning at vga_controller.sv(44): truncated value with size 32 to match size of target (1) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/vga_controller.sv Line: 44
 Info (12128): Elaborating entity "test_pattern_gen" for hierarchy "test_pattern_gen:tpg" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/top.sv Line: 75
-Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(320): truncated value with size 32 to match size of target (19) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 320
-Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(331): truncated value with size 32 to match size of target (3) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 331
-Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(332): truncated value with size 32 to match size of target (3) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 332
-Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(334): truncated value with size 32 to match size of target (6) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 334
-Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(335): truncated value with size 32 to match size of target (6) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 335
-Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(401): truncated value with size 32 to match size of target (19) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 401
-Warning (10030): Net "piece_map.data_a" at test_pattern_gen.sv(342) has no driver or initial value, using a default initial value '0' File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 342
-Warning (10030): Net "piece_map.waddr_a" at test_pattern_gen.sv(342) has no driver or initial value, using a default initial value '0' File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 342
-Warning (10030): Net "piece_map.we_a" at test_pattern_gen.sv(342) has no driver or initial value, using a default initial value '0' File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 342
-Info (12128): Elaborating entity "title_screen_rom2" for hierarchy "test_pattern_gen:tpg|title_screen_rom2:title_rom_inst" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 360
+Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(460): truncated value with size 32 to match size of target (19) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 460
+Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(471): truncated value with size 32 to match size of target (3) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 471
+Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(472): truncated value with size 32 to match size of target (3) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 472
+Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(474): truncated value with size 32 to match size of target (6) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 474
+Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(475): truncated value with size 32 to match size of target (6) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 475
+Warning (10230): Verilog HDL assignment warning at test_pattern_gen.sv(538): truncated value with size 32 to match size of target (19) File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 538
+Warning (10030): Net "piece_map.data_a" at test_pattern_gen.sv(481) has no driver or initial value, using a default initial value '0' File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 481
+Warning (10030): Net "piece_map.waddr_a" at test_pattern_gen.sv(481) has no driver or initial value, using a default initial value '0' File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 481
+Warning (10030): Net "piece_map.we_a" at test_pattern_gen.sv(481) has no driver or initial value, using a default initial value '0' File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 481
+Info (12128): Elaborating entity "title_screen_rom2" for hierarchy "test_pattern_gen:tpg|title_screen_rom2:title_rom_inst" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 499
 Info (12128): Elaborating entity "altsyncram" for hierarchy "test_pattern_gen:tpg|title_screen_rom2:title_rom_inst|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/title_screen_rom2.v Line: 82
 Info (12130): Elaborated megafunction instantiation "test_pattern_gen:tpg|title_screen_rom2:title_rom_inst|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/title_screen_rom2.v Line: 82
 Info (12133): Instantiated megafunction "test_pattern_gen:tpg|title_screen_rom2:title_rom_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/ECE4514/DD2_Final_PRJ/img_load_test/title_screen_rom2.v Line: 82
@@ -1298,7 +1299,7 @@ Info (12128): Elaborating entity "decode_s2a" for hierarchy "test_pattern_gen:tp
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_1jb.tdf
     Info (12023): Found entity 1: mux_1jb File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/mux_1jb.tdf Line: 23
 Info (12128): Elaborating entity "mux_1jb" for hierarchy "test_pattern_gen:tpg|title_screen_rom2:title_rom_inst|altsyncram:altsyncram_component|altsyncram_28h1:auto_generated|mux_1jb:mux2" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/altsyncram_28h1.tdf Line: 42
-Info (12128): Elaborating entity "player_screen_rom2" for hierarchy "test_pattern_gen:tpg|player_screen_rom2:player_rom_inst" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 366
+Info (12128): Elaborating entity "player_screen_rom2" for hierarchy "test_pattern_gen:tpg|player_screen_rom2:player_rom_inst" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 505
 Info (12128): Elaborating entity "altsyncram" for hierarchy "test_pattern_gen:tpg|player_screen_rom2:player_rom_inst|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/player_screen_rom2.v Line: 82
 Info (12130): Elaborated megafunction instantiation "test_pattern_gen:tpg|player_screen_rom2:player_rom_inst|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/player_screen_rom2.v Line: 82
 Info (12133): Instantiated megafunction "test_pattern_gen:tpg|player_screen_rom2:player_rom_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/ECE4514/DD2_Final_PRJ/img_load_test/player_screen_rom2.v Line: 82
@@ -1319,7 +1320,7 @@ Info (12133): Instantiated megafunction "test_pattern_gen:tpg|player_screen_rom2
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_dbh1.tdf
     Info (12023): Found entity 1: altsyncram_dbh1 File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/altsyncram_dbh1.tdf Line: 32
 Info (12128): Elaborating entity "altsyncram_dbh1" for hierarchy "test_pattern_gen:tpg|player_screen_rom2:player_rom_inst|altsyncram:altsyncram_component|altsyncram_dbh1:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "chess_board_rom" for hierarchy "test_pattern_gen:tpg|chess_board_rom:board_rom_inst" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 372
+Info (12128): Elaborating entity "chess_board_rom" for hierarchy "test_pattern_gen:tpg|chess_board_rom:board_rom_inst" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 511
 Info (12128): Elaborating entity "altsyncram" for hierarchy "test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/chess_board_rom.v Line: 82
 Info (12130): Elaborated megafunction instantiation "test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/chess_board_rom.v Line: 82
 Info (12133): Instantiated megafunction "test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/ECE4514/DD2_Final_PRJ/img_load_test/chess_board_rom.v Line: 82
@@ -1343,7 +1344,7 @@ Info (12128): Elaborating entity "altsyncram_l5h1" for hierarchy "test_pattern_g
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_okb.tdf
     Info (12023): Found entity 1: mux_okb File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/mux_okb.tdf Line: 23
 Info (12128): Elaborating entity "mux_okb" for hierarchy "test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component|altsyncram_l5h1:auto_generated|mux_okb:mux2" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/altsyncram_l5h1.tdf Line: 42
-Info (12128): Elaborating entity "chess_piece_rom2" for hierarchy "test_pattern_gen:tpg|chess_piece_rom2:pieces_rom" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 378
+Info (12128): Elaborating entity "chess_piece_rom2" for hierarchy "test_pattern_gen:tpg|chess_piece_rom2:pieces_rom" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 517
 Info (12128): Elaborating entity "altsyncram" for hierarchy "test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/chess_piece_rom2.v Line: 82
 Info (12130): Elaborated megafunction instantiation "test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/chess_piece_rom2.v Line: 82
 Info (12133): Instantiated megafunction "test_pattern_gen:tpg|chess_piece_rom2:pieces_rom|altsyncram:altsyncram_component" with the following parameter: File: C:/ECE4514/DD2_Final_PRJ/img_load_test/chess_piece_rom2.v Line: 82
@@ -11367,12 +11368,12 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component|altsyncram_l5h1:auto_generated|ram_block1a9236" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/altsyncram_l5h1.tdf Line: 203235
         Warning (14320): Synthesized away node "test_pattern_gen:tpg|chess_board_rom:board_rom_inst|altsyncram:altsyncram_component|altsyncram_l5h1:auto_generated|ram_block1a9237" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/db/altsyncram_l5h1.tdf Line: 203257
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "test_pattern_gen:tpg|piece_map" is uninferred due to inappropriate RAM size File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 342
+    Info (276004): RAM logic "test_pattern_gen:tpg|piece_map" is uninferred due to inappropriate RAM size File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 481
 Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "test_pattern_gen:tpg|Div1" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 332
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "test_pattern_gen:tpg|Div0" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 331
-Info (12130): Elaborated megafunction instantiation "test_pattern_gen:tpg|lpm_divide:Div1" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 332
-Info (12133): Instantiated megafunction "test_pattern_gen:tpg|lpm_divide:Div1" with the following parameter: File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 332
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "test_pattern_gen:tpg|Div1" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 472
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "test_pattern_gen:tpg|Div0" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 471
+Info (12130): Elaborated megafunction instantiation "test_pattern_gen:tpg|lpm_divide:Div1" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 472
+Info (12133): Instantiated megafunction "test_pattern_gen:tpg|lpm_divide:Div1" with the following parameter: File: C:/ECE4514/DD2_Final_PRJ/img_load_test/test_pattern_gen.sv Line: 472
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "6"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -11455,16 +11456,16 @@ Warning (21074): Design contains 11 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/top.sv Line: 19
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/top.sv Line: 19
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/ECE4514/DD2_Final_PRJ/img_load_test/top.sv Line: 19
-Info (21057): Implemented 1056 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1064 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 81 output pins
-    Info (21061): Implemented 655 logic cells
+    Info (21061): Implemented 663 logic cells
     Info (21064): Implemented 304 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12255 warnings
-    Info: Peak virtual memory: 5498 megabytes
-    Info: Processing ended: Thu Apr 17 16:53:26 2025
+    Info: Peak virtual memory: 5502 megabytes
+    Info: Processing ended: Sun Apr 20 20:17:43 2025
     Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:36
+    Info: Total CPU time (on all processors): 00:00:38
 
 
