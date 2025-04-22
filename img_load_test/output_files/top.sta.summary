@@ -3,11 +3,11 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 11.052
+Slack : 13.303
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.396
+Slack : 0.448
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -23,11 +23,11 @@ Slack : 18.624
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 10.347
+Slack : 12.581
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.396
+Slack : 0.421
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -43,11 +43,11 @@ Slack : 18.599
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 24.183
+Slack : 25.182
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.250
+Slack : 0.252
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -63,11 +63,11 @@ Slack : 18.741
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 25.270
+Slack : 26.243
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.234
+Slack : 0.227
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'pll|vga_pll_25_175_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'

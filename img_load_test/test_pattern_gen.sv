@@ -22,11 +22,12 @@ module test_pattern_gen #(
 );
 
     // --- Color Palette: index to RGB mapping
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [4] = '{
+    logic [(COLOR_DEPTH * 3)-1:0] color_array [5] = '{
         24'hEEEED2,  // 0 – light square (tan)
-        24'h69923E,  // 1 – dark square (green)
-        24'h4B4847,  // 2 – background
-        24'hFFFFFF   // 3 – white/piece
+        24'h4B4847,  // 1 – dark square (green)
+        24'h69923E,  // 2 – background
+        24'hFFFFFF,   // 3 – white/piece
+		  24'h000000   // 4 – transparent (will be ignored in logic)
     };
 
     // --- Constants for layout
@@ -36,14 +37,14 @@ module test_pattern_gen #(
     localparam BOARD_ORIGIN_Y = 16;
 
     // ROM output wires
-    logic [1:0] title_pixel, player_pixel, board_pixel, piece_pixel, selected_pixel;
+    logic [2:0] title_pixel, player_pixel, board_pixel, piece_pixel, selected_pixel;
 
     // Addressing for all screens
     logic [18:0] rom_address;
     assign rom_address = vcount * SCREEN_WIDTH + hcount;
 
     // Addressing for sprite ROM
-    logic [18:0] piece_rom_addr;
+    logic [15:0] piece_rom_addr;
 
     // Tile position logic
     logic [2:0] tile_row ;
@@ -117,10 +118,10 @@ module test_pattern_gen #(
                     piece_index = piece_map[tile_row][tile_col];
                     in_sprite_area = (piece_index < 12);
 
-                    if (in_sprite_area && rel_y >= 16) begin
+                    if (in_sprite_area) begin
                         piece_rom_addr = piece_index * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE +
-                                         (rel_y - 16) * CHESS_PIECE_SIZE + rel_x;
-                        selected_pixel = (piece_pixel != 0) ? piece_pixel : board_pixel;
+                                         (rel_y) * CHESS_PIECE_SIZE + rel_x;
+                        selected_pixel = (piece_pixel != 3'd4) ? piece_pixel : board_pixel;
                     end else begin
                         selected_pixel = board_pixel;
                     end

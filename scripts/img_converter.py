@@ -12,10 +12,10 @@ import os
 
 # --- 1. Define the fixed 4-color palette ---
 PALETTE = {
-    (217, 217, 217): 0,  # 0xD9D9D9 - Default
-    (0, 0, 0): 1,        # 0x000000 - Black
-    (105, 146, 62): 2,   # 0x69923e - Green
-    (255, 255, 255): 3   # 0xFFFFFF - White
+    (238, 238, 210): 3,  # #EEEED2 – light squares
+     (105, 146, 62): 2,   # #69923E – dark green squares
+     (75, 72, 71): 0,     # #4B4847 – background
+     (255, 255, 255): 1   # #FFFFFF – text
 }
 
 PALETTE_RGB = list(PALETTE.keys())

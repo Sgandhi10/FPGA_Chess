@@ -1,5 +1,5 @@
 Flow report for top
-Sun Apr 20 20:21:22 2025
+Tue Apr 22 01:31:30 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,18 +41,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Sun Apr 20 20:21:22 2025          ;
+; Flow Status                     ; Successful - Tue Apr 22 01:31:30 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; top                                            ;
 ; Top-level Entity Name           ; top                                            ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 385 / 32,070 ( 1 % )                           ;
-; Total registers                 ; 49                                             ;
+; Logic utilization (in ALMs)     ; 374 / 32,070 ( 1 % )                           ;
+; Total registers                 ; 42                                             ;
 ; Total pins                      ; 96 / 457 ( 21 % )                              ;
 ; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 2,457,600 / 4,065,280 ( 60 % )                 ;
+; Total block memory bits         ; 2,884,800 / 4,065,280 ( 71 % )                 ;
 ; Total DSP Blocks                ; 0 / 87 ( 0 % )                                 ;
 ; Total HSSI RX PCSs              ; 0                                              ;
 ; Total HSSI PMA RX Deserializers ; 0                                              ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/20/2025 20:17:20 ;
+; Start date & time ; 04/22/2025 01:27:56 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top                 ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 66504336589279.174519464054680         ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 66504336589279.174529967557612         ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -93,12 +93,8 @@ https://fpgasoftware.intel.com/eula.
 ; MISC_FILE                           ; vga_pll_25_175_sim/vga_pll_25_175.vo   ; --            ; --          ; --                                ;
 ; MISC_FILE                           ; title_screen_rom_bb.v                  ; --            ; --          ; --                                ;
 ; MISC_FILE                           ; player_screen_rom_bb.v                 ; --            ; --          ; --                                ;
-; MISC_FILE                           ; chess_board_bb.v                       ; --            ; --          ; --                                ;
 ; MISC_FILE                           ; chess_board_rom_bb.v                   ; --            ; --          ; --                                ;
-; MISC_FILE                           ; title_screen_rom2_bb.v                 ; --            ; --          ; --                                ;
-; MISC_FILE                           ; player_screen_rom2_bb.v                ; --            ; --          ; --                                ;
 ; MISC_FILE                           ; chess_piece_rom_bb.v                   ; --            ; --          ; --                                ;
-; MISC_FILE                           ; chess_piece_rom2_bb.v                  ; --            ; --          ; --                                ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top                               ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top                               ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top                               ;
@@ -115,12 +111,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:21     ; 1.0                     ; 5502 MB             ; 00:00:36                           ;
-; Fitter               ; 00:03:14     ; 1.1                     ; 7894 MB             ; 00:18:10                           ;
-; Assembler            ; 00:00:09     ; 1.0                     ; 4886 MB             ; 00:00:08                           ;
-; Timing Analyzer      ; 00:00:08     ; 2.7                     ; 5390 MB             ; 00:00:17                           ;
-; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4850 MB             ; 00:00:02                           ;
-; Total                ; 00:03:54     ; --                      ; --                  ; 00:19:13                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4971 MB             ; 00:00:26                           ;
+; Fitter               ; 00:02:59     ; 1.1                     ; 7879 MB             ; 00:21:45                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4882 MB             ; 00:00:09                           ;
+; Timing Analyzer      ; 00:00:08     ; 2.9                     ; 5387 MB             ; 00:00:17                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4860 MB             ; 00:00:02                           ;
+; Total                ; 00:03:29     ; --                      ; --                  ; 00:22:39                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
