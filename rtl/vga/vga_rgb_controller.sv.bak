@@ -1,0 +1,41 @@
+/*******************************************************************************
+* File: vga_rgb_controller.sv
+* Author: Soham Gandhi
+* Date: 2025-04-01
+* Description: This module reads data from the 2-Port RAM and outputs the value
+* Version: 1.0
+*******************************************************************************/
+
+module vga_rgb_controller #(
+    parameter SCREEN_WIDTH = 640,  // Screen width in pixels
+    parameter SCREEN_HEIGHT = 480, // Screen height in pixels
+    parameter COLOR_DEPTH = 8     // Color depth (bits per channel)
+) (
+    input logic vga_clk,
+    input logic reset_n,
+
+    // Optional
+    input   logic [9:0]             hcount,
+    input   logic [9:0]             vcount,
+
+    // 2-Port RAM
+    output  logic [18:0]            addr,
+    input   logic [23:0]            data,
+    
+    output  logic [COLOR_DEPTH-1:0] vga_r,      // Red color output
+    output  logic [COLOR_DEPTH-1:0] vga_g,      // Green color output
+    output  logic [COLOR_DEPTH-1:0] vga_b       // Blue color output
+);
+    localparam int MAX = SCREEN_HEIGHT * SCREEN_WIDTH;
+
+    always_ff @(posedge clk or negedge reset_n) begin
+        if (reset_n) begin
+            addr <= '0;
+        end else begin
+            if (hcount < SCREEN_WIDTH && vcount < SCREEN_HEIGHT)
+                addr <= addr + 'd1; 
+        end
+    end
+    
+    assign {vga_r, vga_g, vga_b} = data;
+endmodule

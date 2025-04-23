@@ -19,8 +19,8 @@ module vga_rgb_controller #(
     input   logic [9:0]             vcount,
 
     // 2-Port RAM
-    output  logic [18:0]                addr,
-    input   logic [23:0]                data,
+    output  logic [18:0]            addr,
+    input   logic [23:0]            data,
     
     output  logic [COLOR_DEPTH-1:0] vga_r,      // Red color output
     output  logic [COLOR_DEPTH-1:0] vga_g,      // Green color output
@@ -28,7 +28,7 @@ module vga_rgb_controller #(
 );
     localparam int MAX = SCREEN_HEIGHT * SCREEN_WIDTH;
 
-    always_ff @(posedge clk or negedge reset_n) begin
+    always_ff @(posedge vga_clk or negedge reset_n) begin
         if (reset_n) begin
             addr <= '0;
         end else begin

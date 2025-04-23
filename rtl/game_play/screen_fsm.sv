@@ -1,0 +1,66 @@
+/*******************************************************************************
+* File: screen_fsm.sv
+* Author: Soham Gandhi and Aniruddh Chauhan
+* Date: 2025-04-22
+* Description: Screen transitions for game play
+* Version: 1.0
+*******************************************************************************/
+
+module screen_fsm #(
+    parameter int CLK_FREQ_HZ = 50_000_000  // Clock frequency (50 MHz)
+) (
+    input  logic        clk,         // 50 MHz system clock
+    input  logic        reset_n,     // Active-low reset
+    input  logic        enter,         // Input from DE-series board (KEY[3] = Enter)
+    output logic [1:0]  state        // Current screen state
+);
+
+    typedef enum logic [1:0] {
+        STATE_TITLE   = 2'b00,
+        STATE_PLAYER  = 2'b01,
+        STATE_BOARD   = 2'b10, // 2'b10 is unused, directly goes to STATE_BOARD
+        STATE_PLAYING = 2'b11
+    } screen_state_t;
+
+    screen_state_t current_state, next_state;
+
+    logic [26:0] counter;  // Enough bits to count to 100M
+
+    // --- State Register ---
+    always_ff @(posedge clk or negedge reset_n) begin
+        if (!reset_n) begin
+            current_state <= STATE_TITLE;
+            counter <= 0;
+        end else begin
+            current_state <= next_state;
+
+            if (current_state == STATE_PLAYER)
+                counter <= counter + 1;
+            else
+                counter <= 0;
+        end
+    end
+
+    // --- Next State Logic ---
+    always_comb begin
+        next_state = current_state;
+        case (current_state)
+            STATE_TITLE: begin
+                if (enter) // Enter pressed (KEYs are active-high)
+                    next_state = STATE_PLAYER;
+            end
+            STATE_PLAYER: begin
+                if (counter >= (CLK_FREQ_HZ * 2))
+                    next_state = STATE_BOARD;
+            end
+            STATE_BOARD: begin
+                if(enter) // Enter pressed (KEYs are active-high)
+                    next_state = STATE_PLAYING;
+            end
+        endcase
+    end
+
+    // Output current state
+    assign state = current_state;
+
+endmodule
