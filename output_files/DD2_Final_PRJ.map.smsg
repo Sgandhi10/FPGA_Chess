@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at hex_counter.sv(29): always construct contains both blocking and non-blocking assignments File: C:/Digital_Design_2/PRJ_Final/rtl/game_play/hex_counter.sv Line: 29

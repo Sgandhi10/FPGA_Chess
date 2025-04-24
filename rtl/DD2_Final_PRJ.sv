@@ -5,6 +5,7 @@
 * Description:
 * Version: 1.0
 *******************************************************************************/
+import common_enums::*;
 
 module DD2_Final_PRJ  #(
     parameter SCREEN_WIDTH = 640,  // Screen width in pixels
@@ -33,8 +34,8 @@ module DD2_Final_PRJ  #(
     localparam VGA_CLK_FREQ_HZ = 25_175_000;
 
     logic [9:0] hcount, vcount;
-    logic reset_n, key1out, key2out, key3out;
-    logic [1:0] state;
+    logic reset_n, key1out, key2out, key3out, time_up;
+    screen_state_t state;
 
     // Flattened 8x8 board
     logic [3:0] board [8][8];
@@ -43,7 +44,7 @@ module DD2_Final_PRJ  #(
      initial begin
         board[0] = '{0, 1, 2, 3, 4, 2, 1, 0};
         board[1] = '{5, 5, 5, 5, 5, 5, 5, 5};
-		board[2] = '{default: 15};
+	     board[2] = '{default: 15};
         board[3] = '{default: 15};
         board[4] = '{default: 15};
         board[5] = '{default: 15};
@@ -75,7 +76,7 @@ module DD2_Final_PRJ  #(
     );
 
     keypress keypress_key3(
-        .clock(VGA_CLK),
+        .clock(CLOCK_50),
         .reset_n(reset_n),
         .key_in(KEY[3]),
         .enable_out(key3out)
@@ -95,7 +96,28 @@ module DD2_Final_PRJ  #(
         .vcount(vcount)
     );
 
-    // Test Pattern Generator instance
+    screen_fsm #(
+        .CLK_FREQ_HZ(SYS_CLK_FREQ_HZ)
+    ) screen_fsm_inst (
+        .clk(CLOCK_50),
+        .reset_n(reset_n),
+        .enter(key3out),
+        .state(state)
+    );
+
+    // === CDC Synchronization ===
+    // Synchronize the state signal to the VGA_CLK domain
+	screen_state_t state_vga;
+    state_sync #(
+        .bits(2)
+    ) state_sync_inst (
+        .clk_vga(VGA_CLK),       // VGA clock domain
+        .state_50(state),        // State signal from screen_fsm (CLOCK_50 domain)
+        .state_vga(state_vga)    // Synchronized state signal for VGA_CLK domain
+    );
+    assign LED[1:0] = state_vga; // For debugging
+    assign LED[3:2] = state; // For debugging
+
     screen_gen #(
         .SCREEN_WIDTH(SCREEN_WIDTH),
         .SCREEN_HEIGHT(SCREEN_HEIGHT),
@@ -103,8 +125,8 @@ module DD2_Final_PRJ  #(
     ) tpg (
         .vga_clk(VGA_CLK),
         .reset_n(reset_n),
-        .state(state),
-        .board(board),  // now flattened
+        .state(state_vga),
+        .board(board),
         .vga_r(VGA_R),
         .vga_g(VGA_G),
         .vga_b(VGA_B),
@@ -112,24 +134,16 @@ module DD2_Final_PRJ  #(
         .vcount(vcount)
     );
 
-    // test_pattern_gen test_pattern_gen_inst (
-    //     .vga_clk(VGA_CLK),
-    //     .reset_n(reset_n),
-    //     .SW(SW),
-    //     .hcount(hcount),
-    //     .vcount(vcount),
-    //     .vga_r(VGA_R),
-    //     .vga_g(VGA_G),
-    //     .vga_b(VGA_B)
-    // );
-
-    screen_fsm #(
-        .CLK_FREQ_HZ(VGA_CLK_FREQ_HZ)
-    ) screen_fsm_inst (
-        .clk(VGA_CLK),
+    hex_counter #(
+        .CLK_FREQ_HZ(SYS_CLK_FREQ_HZ)
+    ) hex_counter_inst (
+        .clk(CLOCK_50),
         .reset_n(reset_n),
-        .enter(key3out),
-        .state(state)
+        .state(state),
+        .mode_sel(SW[2:1]),
+        .hex0(HEX0), .hex1(HEX1), .hex2(HEX2),
+        .hex3(HEX3), .hex4(HEX4), .hex5(HEX5),
+        .time_up(time_up)
     );
 
 endmodule

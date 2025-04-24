@@ -14,7 +14,7 @@
 
 ## I/O Breakdown
 SW 0: Axis selection (x or y) <br>
-SW 1: Game Mode Sel 1 (Blitz, Bullet, Classic, etc) <br>
+SW 1: Game Mode Sel 1 (Bullet(00):1, Blitz(01):3, Rapid(10):10, Classic(11):30) <br>
 SW 2: Game Mode Sel 2 <br>
 SW 3: <br>
 SW 4: <br>

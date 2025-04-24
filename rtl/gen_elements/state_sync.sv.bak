@@ -1,0 +1,43 @@
+/*******************************************************************************
+* File: state_sync.sv
+* Author: Soham Gandhi
+* Date: 2025-04-23
+* Description: This module synchronizes a state signal from the 50 MHz clock domain to the VGA clock domain.
+* Version: 1.0
+*******************************************************************************/
+module state_sync #(
+    parameter int bits = 1
+) (
+    input wire clk_vga,       // VGA clock domain
+    input wire clk_50,        // 50 MHz clock domain (source for state)
+    input wire [bits-1:0] state_50,      // State signal in CLOCK_50 domain
+    output reg [bits-1:0] state_vga      // Synchronized state signal in VGA_CLK domain
+);
+
+    logic state_50_d, state_pulse;
+
+    always_ff @(posedge clk_50 or negedge reset_n) begin
+        if (!reset_n) begin
+            state_50_d <= 0;
+            state_pulse <= 0;
+        end else begin
+            state_50_d <= state_50;
+            state_pulse <= state_50 & ~state_50_d; // rising edge detect
+        end
+    end
+
+    logic sync1, sync2;
+
+    always_ff @(posedge clk_vga or negedge reset_n) begin
+        if (!reset_n) begin
+            sync1 <= 0;
+            sync2 <= 0;
+            state_vga <= 0;
+        end else begin
+            sync1 <= state_pulse;
+            sync2 <= sync1;
+            state_vga <= sync2; // or detect edge again if needed
+        end
+    end
+
+endmodule

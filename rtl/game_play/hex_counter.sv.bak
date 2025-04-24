@@ -1,0 +1,60 @@
+/*******************************************************************************
+* File: hex_counter.sv
+* Author: Soham Gandhi
+* Date: 2025-04-22
+* Description: This module is a counter that will show the remaining time in 
+*              normal time format. MM:SS:mm
+* Version: 1.0
+*******************************************************************************/
+module hex_counter#(
+    parameter int CLK_FREQ_HZ = 50_000_000, // Clock frequency (50 MHz)
+) (
+    input  logic        clk,         // 50 MHz system clock
+    input  logic        reset_n,     // Active-low reset
+    input  logic        start,       // Start counting (active high)
+    input  logic [1:0]  mode_sel,          // Switches for time control
+    
+    output logic [6:0]  hex0,        // Minutes
+    output logic [6:0]  hex1,        // Minutes
+    output logic [6:0]  hex2,        // Seconds
+    output logic [6:0]  hex3,        // Seconds
+    output logic [6:0]  hex4,        // Tenths of seconds
+    output logic [6:0]  hex5         // Tenths of seconds
+    output logic        time_up,    // Time up signal (active high)
+);
+    logic [36:0] counter;
+    
+    always_ff @(posedge clk, negedge reset_n) begin
+        if (reset_n) begin
+            counter <= 3*60*CLK_FREQ_HZ;
+        end else begin
+            if (start == 0)
+                case (mode_sel)
+                    0: counter <= 1*60*CLK_FREQ_HZ;
+                    1: counter <= 3*60*CLK_FREQ_HZ;
+                    2: counter <= 10*60*CLK_FREQ_HZ;
+                    3: counter <= 30*60*CLK_FREQ_HZ;
+                endcase
+            else
+                counter <= (!counter) ? 0 : counter - 1;
+        end
+    end
+    assign time_up = (counter == 0);
+
+    // Hex Display Assignments
+    assign hex0_num = (counter / 60) % 10; // Minutes
+    assign hex1_num = (counter / 60) / 10; // Minutes
+    assign hex2_num = (counter % 60) % 10; // Seconds
+    assign hex3_num = (counter % 60) / 10; // Seconds
+    assign hex4_num = (counter % 10) % 10; // Tenths of seconds
+    assign hex5_num = (counter % 10) / 10; // Tenths of seconds
+
+    // Hex Display Encoding
+    hex_display hex0_display(.hex_num(hex0_num), .hex_display(hex0));
+    hex_display hex1_display(.hex_num(hex1_num), .hex_display(hex1));
+    hex_display hex2_display(.hex_num(hex2_num), .hex_display(hex2));
+    hex_display hex3_display(.hex_num(hex3_num), .hex_display(hex3));
+    hex_display hex4_display(.hex_num(hex4_num), .hex_display(hex4));
+    hex_display hex5_display(.hex_num(hex5_num), .hex_display(hex5));
+
+endmodule

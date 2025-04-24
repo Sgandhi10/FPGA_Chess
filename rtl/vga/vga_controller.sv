@@ -26,21 +26,21 @@ module vga_controller(
             vcount <= 0;
         end else begin
             if (hcount < 799) begin
-                hcount <= hcount + 'd1;
+                hcount <= hcount + 10'd1;
             end else begin
                 hcount <= 'd0;
                 if (vcount < 524) begin
-                    vcount <= vcount + 'd1;
+                    vcount <= vcount + 10'd1;
                 end else begin
-                    vcount <= 'd0;
+                    vcount <= 10'd0;
                 end
             end
         end
     end
 
-    assign vga_hs = (hcount >= 655 & hcount < 751) ? 'd0 : 'd1;
-    assign vga_vs = (vcount >= 489 & vcount < 491) ? 'd0 : 'd1;
+    assign vga_hs = (hcount >= 655 & hcount < 751) ? 1'd0 : 1'd1;
+    assign vga_vs = (vcount >= 489 & vcount < 491) ? 1'd0 : 1'd1;
     assign vga_sync_n = vga_hs | vga_vs; // Active low sync signal
-    assign vga_blank_n = (hcount < 640 && vcount < 480) ? 'd1 : 'd0; // Active high blank signal
+    assign vga_blank_n = (hcount < 640 && vcount < 480) ? 1'd1 : 1'd0; // Active high blank signal
 
 endmodule

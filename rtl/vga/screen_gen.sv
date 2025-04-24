@@ -5,6 +5,7 @@
 * Description: Test Pattern Generator for VGA
 * Version: 1.0
 *******************************************************************************/
+import common_enums::*;
 
 module screen_gen #(
     parameter SCREEN_WIDTH = 640,  // Screen width in pixels
@@ -13,7 +14,7 @@ module screen_gen #(
 ) (
     input   logic                   vga_clk,        // 25 MHz clock
     input   logic                   reset_n,        // Active low reset
-    input   logic [2:0]             state,          // Switches
+    input   screen_state_t          state,          // System State
 
     input   logic [3:0]             board [8][8],   // Flattened 8x8 board pattern
         
@@ -100,10 +101,10 @@ module screen_gen #(
         in_sprite_area = 0;
 
         case (state)
-            2'b00: selected_pixel = title_pixel;
-            2'b01: selected_pixel = player_pixel;
-            2'b10: selected_pixel = board_pixel;
-            2'b11: begin
+            TITLE_SCREEN: selected_pixel = title_pixel;
+            PLAYER_SCREEN: selected_pixel = player_pixel;
+            SETUP_SCREEN: selected_pixel = board_pixel;
+            CHESS_SCREEN: begin
                 if (hcount >= BOARD_ORIGIN_X && hcount < BOARD_ORIGIN_X + 8 * CHESS_TILE_SIZE &&
                     vcount >= BOARD_ORIGIN_Y && vcount < BOARD_ORIGIN_Y + 8 * CHESS_TILE_SIZE) begin
 

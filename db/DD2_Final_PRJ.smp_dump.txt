@@ -1,11 +1,4 @@
 
-State Machine - |DD2_Final_PRJ|screen_fsm:screen_fsm_inst|current_state
-Name current_state.STATE_PLAYING current_state.STATE_BOARD current_state.STATE_PLAYER current_state.STATE_TITLE 
-current_state.STATE_TITLE 0 0 0 0 
-current_state.STATE_PLAYER 0 0 1 1 
-current_state.STATE_BOARD 0 1 0 1 
-current_state.STATE_PLAYING 1 0 0 1 
-
 State Machine - |DD2_Final_PRJ|keypress:keypress_key3|key_state
 Name key_state.KEY_UNPRESSED key_state.KEY_RELEASED key_state.KEY_PRESSED 
 key_state.KEY_UNPRESSED 0 0 0 

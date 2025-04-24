@@ -155,21 +155,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_SYNC_N
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/test_pattern_gen.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/game_play/screen_fsm.sv
-set_global_assignment -name VERILOG_FILE rtl/gen_elements/keypress.v
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_rgb_controller.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/screen_gen.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_controller.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/gen_elements/FIFO.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/DD2_Final_PRJ.sv
-set_global_assignment -name QIP_FILE altera_ip/vga_pll_25_175.qip
-set_global_assignment -name SIP_FILE altera_ip/vga_pll_25_175.sip
-set_global_assignment -name QIP_FILE altera_ip/RAM_2P.qip
-set_global_assignment -name QIP_FILE altera_ip/ROMs/title_screen_rom.qip
-set_global_assignment -name QIP_FILE altera_ip/ROMs/player_screen_rom.qip
-set_global_assignment -name QIP_FILE altera_ip/ROMs/chess_board_rom.qip
-set_global_assignment -name QIP_FILE altera_ip/ROMs/chess_piece_rom.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity top -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity top -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -entity top -section_id Top
@@ -270,4 +255,24 @@ set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity top -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gen_elements/state_sync.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/game_play/hex_display.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/game_play/hex_counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/common_enums.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/test_pattern_gen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/game_play/screen_fsm.sv
+set_global_assignment -name VERILOG_FILE rtl/gen_elements/keypress.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_rgb_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/screen_gen.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/gen_elements/FIFO.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/DD2_Final_PRJ.sv
+set_global_assignment -name QIP_FILE altera_ip/vga_pll_25_175.qip
+set_global_assignment -name SIP_FILE altera_ip/vga_pll_25_175.sip
+set_global_assignment -name QIP_FILE altera_ip/RAM_2P.qip
+set_global_assignment -name QIP_FILE altera_ip/ROMs/title_screen_rom.qip
+set_global_assignment -name QIP_FILE altera_ip/ROMs/player_screen_rom.qip
+set_global_assignment -name QIP_FILE altera_ip/ROMs/chess_board_rom.qip
+set_global_assignment -name QIP_FILE altera_ip/ROMs/chess_piece_rom.qip
+set_global_assignment -name SDC_FILE DD2_Final_PRJ.sdc
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

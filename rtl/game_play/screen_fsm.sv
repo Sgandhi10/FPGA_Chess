@@ -5,62 +5,51 @@
 * Description: Screen transitions for game play
 * Version: 1.0
 *******************************************************************************/
+import common_enums::*;
 
 module screen_fsm #(
-    parameter int CLK_FREQ_HZ = 50_000_000  // Clock frequency (50 MHz)
+    parameter int CLK_FREQ_HZ = 50_000_000
 ) (
-    input  logic        clk,         // 50 MHz system clock
-    input  logic        reset_n,     // Active-low reset
-    input  logic        enter,         // Input from DE-series board (KEY[3] = Enter)
-    output logic [1:0]  state        // Current screen state
+    input  logic        clk,
+    input  logic        reset_n,
+    input  logic        enter,
+    output screen_state_t  state
 );
 
-    typedef enum logic [1:0] {
-        STATE_TITLE   = 2'b00,
-        STATE_PLAYER  = 2'b01,
-        STATE_BOARD   = 2'b10, // 2'b10 is unused, directly goes to STATE_BOARD
-        STATE_PLAYING = 2'b11
-    } screen_state_t;
+    screen_state_t next_state;
+    logic [26:0] counter;
 
-    screen_state_t current_state, next_state;
-
-    logic [26:0] counter;  // Enough bits to count to 100M
-
-    // --- State Register ---
     always_ff @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
-            current_state <= STATE_TITLE;
-            counter <= 0;
+            counter       <= 0;
+            state         <= TITLE_SCREEN;
         end else begin
-            current_state <= next_state;
+            state <= next_state;
 
-            if (current_state == STATE_PLAYER)
-                counter <= counter + 1;
+            // Update counter
+            if (state == PLAYER_SCREEN)
+                counter <= counter + 27'd1;
             else
                 counter <= 0;
         end
     end
-
-    // --- Next State Logic ---
+    
     always_comb begin
-        next_state = current_state;
-        case (current_state)
-            STATE_TITLE: begin
-                if (enter) // Enter pressed (KEYs are active-high)
-                    next_state = STATE_PLAYER;
-            end
-            STATE_PLAYER: begin
-                if (counter >= (CLK_FREQ_HZ * 2))
-                    next_state = STATE_BOARD;
-            end
-            STATE_BOARD: begin
-                if(enter) // Enter pressed (KEYs are active-high)
-                    next_state = STATE_PLAYING;
-            end
+        // Next state logic
+        case (state)
+            TITLE_SCREEN:
+                next_state = enter ? PLAYER_SCREEN : TITLE_SCREEN;
+
+            PLAYER_SCREEN:
+                next_state = (counter >= (CLK_FREQ_HZ * 2)) ? SETUP_SCREEN : PLAYER_SCREEN;
+
+            SETUP_SCREEN:
+                next_state = enter ? CHESS_SCREEN : SETUP_SCREEN;
+
+            CHESS_SCREEN:
+                next_state = CHESS_SCREEN;
+            default:
+                next_state = TITLE_SCREEN;
         endcase
     end
-
-    // Output current state
-    assign state = current_state;
-
 endmodule
