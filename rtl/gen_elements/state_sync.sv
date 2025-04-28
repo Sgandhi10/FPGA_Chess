@@ -12,7 +12,6 @@ module state_sync #(
     input  wire [bits-1:0]     state_50,   // Signal from CLOCK_50 domain
     output reg  [bits-1:0]     state_vga   // Synchronized signal in VGA_CLK domain
 );
-
     // Two-stage sync registers
     (* syn_synchronizer = "true" *) reg [bits-1:0] sync1;
     (* syn_synchronizer = "true" *) reg [bits-1:0] sync2;
