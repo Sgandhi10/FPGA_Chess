@@ -16,7 +16,7 @@
 SW 0: Axis selection (x or y) <br>
 SW 1: Game Mode Sel 1 (Bullet(00):1, Blitz(01):3, Rapid(10):10, Classic(11):30) <br>
 SW 2: Game Mode Sel 2 <br>
-SW 3: <br>
+SW 3: Player (White/Black)
 SW 4: <br>
 SW 5: <br>
 SW 6: <br>

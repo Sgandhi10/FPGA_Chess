@@ -1,2 +1,0 @@
-# Ignore false paths across clocks
-set_false_path -from [get_clocks {clk_50}] -to [get_clocks {clk_vga}]

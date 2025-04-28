@@ -7,7 +7,7 @@
 *******************************************************************************/
 import common_enums::*;
 
-module DD2_Final_PRJ  #(
+module top  #(
     parameter SCREEN_WIDTH = 640,  // Screen width in pixels
     parameter SCREEN_HEIGHT = 480, // Screen height in pixels
     parameter COLOR_DEPTH = 8      // Color depth (bits per channel)
@@ -36,20 +36,44 @@ module DD2_Final_PRJ  #(
     logic [9:0] hcount, vcount;
     logic reset_n, key1out, key2out, key3out, time_up;
     screen_state_t state;
+    logic player; // 0 for white, 1 for black
 
     // Flattened 8x8 board
     logic [3:0] board [8][8];
+    logic [3:0] temp_board [8][8];
 
-    // Initialize board
-     initial begin
+    // Determine starting board position based on player
+    initial begin
         board[0] = '{0, 1, 2, 3, 4, 2, 1, 0};
         board[1] = '{5, 5, 5, 5, 5, 5, 5, 5};
-	     board[2] = '{default: 15};
+	    board[2] = '{default: 15};
         board[3] = '{default: 15};
         board[4] = '{default: 15};
         board[5] = '{default: 15};
         board[6] = '{11, 11, 11, 11, 11, 11, 11, 11};
         board[7] = '{6, 7, 8, 9, 10, 8, 7, 6};
+    end
+    // always_comb begin
+    //     // Default board
+    //     board[0] = '{0, 1, 2, 3, 4, 2, 1, 0};
+    //     board[1] = '{5, 5, 5, 5, 5, 5, 5, 5};
+	//     board[2] = '{default: 15};
+    //     board[3] = '{default: 15};
+    //     board[4] = '{default: 15};
+    //     board[5] = '{default: 15};
+    //     board[6] = '{11, 11, 11, 11, 11, 11, 11, 11};
+    //     board[7] = '{6, 7, 8, 9, 10, 8, 7, 6};
+    //     if (player) begin
+    //         board[0] = '{6, 7, 8, 9, 10, 8, 7, 6};
+    //         board[1] = '{default: 11};
+    //         board[6] = '{default: 5};
+    //         board[7] = '{0, 1, 2, 3, 4, 2, 1, 0};
+    //     end
+    // end
+
+    logic [3:0] piece_select [8][8];
+    initial begin
+        piece_select = '{default: 15};
     end
 
     assign reset_n = KEY[0]; // Active low reset
@@ -96,14 +120,23 @@ module DD2_Final_PRJ  #(
         .vcount(vcount)
     );
 
+    // === FSM for screen transitions ===
     screen_fsm #(
         .CLK_FREQ_HZ(SYS_CLK_FREQ_HZ)
     ) screen_fsm_inst (
         .clk(CLOCK_50),
         .reset_n(reset_n),
         .enter(key3out),
-        .state(state)
+        .state(state),
     );
+
+    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n) begin
+            player <= 0; // Start with white player
+        end else if (state ==  SETUP_SCREEN) begin
+            player <= SW[3]; // Toggle player on key press
+        end
+    end
 
     // === CDC Synchronization ===
     // Synchronize the state signal to the VGA_CLK domain

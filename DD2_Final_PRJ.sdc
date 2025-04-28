@@ -1,1 +1,0 @@
-set_false_path -from [get_registers *screen_fsm_inst|state*] -to [get_registers *state_sync_inst|sync1*]
