@@ -1,9 +1,9 @@
 /*******************************************************************************
-* File: test_pattern_gen.sv
+* File: screen_gen.sv
 * Author: Soham Gandhi and Ani
 * Date: 2025-04-22
 * Description: Test Pattern Generator for VGA
-* Version: 1.0
+* Version: 2.0
 *******************************************************************************/
 import common_enums::*;
 

@@ -1,1 +1,1 @@
-set_false_path -from [get_registers *state_sync_inst|state_vga*] -to [get_registers *state_sync_inst|state_50*]
+set_false_path -from [get_registers *state_sync_inst|sync1*] -to [get_registers *state_sync_inst|sync1*]

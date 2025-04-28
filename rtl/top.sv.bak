@@ -115,12 +115,8 @@ module top  #(
         .state_50(state),        // State signal from screen_fsm (CLOCK_50 domain)
         .state_vga(state_vga)    // Synchronized state signal for VGA_CLK domain
     );
-
-    // For debugging purposes, assign the state to LEDs
-    assign LED[1:0] = state_vga; 
-    assign LED[3:2] = state; 
-	 assign LED[4] = player;
-    assign LED[9:5] = disp_board[0][0]; // For debugging
+    assign LED[1:0] = state_vga; // For debugging
+    assign LED[3:2] = state; // For debugging
 
     // === Board Controller ===
     board board_inst(

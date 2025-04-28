@@ -1,0 +1,65 @@
+/*******************************************************************************
+* File: board.sv
+* Author: Soham Gandhi
+* Date: 2025-04-27
+* Description: Controls the game board
+* Version: 1.0
+*******************************************************************************/
+import common_enums::*;
+
+module board (
+    input logic         CLOCK_50,
+    input logic         reset_n,
+    input logic         player,
+    input logic         curr_player,
+    input logic         dir,
+    input logic         state,       
+
+    input logic         key1out, // + dir
+    input logic         key2out, // - dir
+    input logic         key3out, // + enter
+
+    input logic [3:0]   board_in [8][8], // 8x8 board input
+
+    output logic [3:0]  board_in [8][8],
+    output logic        square_highlight [8][8], // 8x8 board output
+);
+
+    // 2D array to hold the board state
+    logic [3:0] board [8][8];
+
+    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n) begin
+            // Starting board
+            board[0] = '{0, 1, 2, 3, 4, 2, 1, 0};
+            board[1] = '{default: 5};
+            board[2] = '{default: 15};
+            board[3] = '{default: 15};
+            board[4] = '{default: 15};
+            board[5] = '{default: 15};
+            board[6] = '{default: 11};
+            board[7] = '{6, 7, 8, 9, 10, 8, 7, 6};
+        
+            // square_highlighting
+            square_highlight = '{default: 0};       
+        end else begin
+            if (state == SETUP_SCREEN) begin
+                // Based on player (Black or White) switch player
+                board[0] = '{0, 1, 2, 3, 4, 2, 1, 0};
+                board[1] = '{default: 5};
+
+                board[6] = '{default: 11};
+                board[7] = '{6, 7, 8, 9, 10, 8, 7, 6};
+
+                if (player) begin
+                    board[7] = '{0, 1, 2, 3, 4, 2, 1, 0};
+                    board[6] = '{default: 5};
+
+                    board[1] = '{default: 11};
+                    board[0] = '{6, 7, 8, 9, 10, 8, 7, 6};
+                end
+            end
+        end
+    end
+
+endmodule
