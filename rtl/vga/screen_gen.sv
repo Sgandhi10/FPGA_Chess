@@ -1,6 +1,6 @@
 /*******************************************************************************
 * File: screen_gen.sv
-* Author: Soham Gandhi and Ani
+* Author: Soham Gandhi and Aniruddh Chauhan
 * Date: 2025-04-22
 * Description: Test Pattern Generator for VGA
 * Version: 2.0
