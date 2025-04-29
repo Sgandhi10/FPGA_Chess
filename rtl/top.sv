@@ -15,10 +15,14 @@ module top  #(
     input   logic        CLOCK_50,
     input   logic [3:0]  KEY,
     
-    // For future use
+    // I/O
     input   logic [9:0]  SW,
     output  logic [6:0]  HEX5, HEX4, HEX3, HEX2, HEX1, HEX0,
     output  logic [9:0]  LED,
+
+    // UART Communication
+    input   logic        RX,
+    output  logic        TX,
 
     // VGA signals
     output logic [COLOR_DEPTH-1:0]  VGA_R,
@@ -117,9 +121,8 @@ module top  #(
     );
 
     // For debugging purposes, assign the state to LEDs
-    assign LED[1:0] = state;  
-	assign LED[4] = square_highlight[3][3];
-    assign LED[5] = curr_player;
+    assign LED[1:0] = state; 
+    assign LED[4] = curr_player;
 
     move_state_t move_state;
     assign LED[3:2] = move_state;
@@ -147,6 +150,28 @@ module top  #(
 
         // debug
         .move_state(move_state)
+    );
+
+    // === UART Communication ===
+    UART #(
+        .DATA_WIDTH(16),
+        .BAUD_RATE(115200),
+        .CLOCK_FREQ(50_000_000),
+        .PARITY(1),
+        .OVERSAMPLE(16)
+    ) uart_inst (
+        .clk(CLOCK_50),
+        .rst_n(reset_n),
+        
+        .data_valid(),
+        .data_in_tx(),
+        .tx(TX),
+
+        .rx(RX),
+        .req_data(),
+        .data_out_rx(),
+        .pending_data_rx(),
+        .parity_error_rx(LED[9])
     );
 
     // Temp Stable Board handler

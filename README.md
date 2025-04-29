@@ -1,16 +1,17 @@
 ## UART
-8 bits has max of 256 possibilities
+15: Piece Move
+14: Unused
+13-11: oldx
+10-8: oldy
+7-5: newx
+4-2: newy
+1-0: unused
 
-32 Pieces on a chess board --> Need 5 bits to indicate what piece is being moved
---> Will use 6 bits for extra bits needed for pawn promotion
-64 Spots on the board --> Need 6 bits to indicate a position on the board
-
-3 bits for different operations
-
-0x00: Start Game <br>
-0x01: Game Time (optional) <br>
-0x02: Send Piece Move <br>
-0x03: Read Piece Move 
+15: Game State
+14: Unused
+13: Player
+12-11: Game Mode
+10-0: Unused
 
 ## I/O Breakdown
 SW 0: Axis selection (x or y) <br>

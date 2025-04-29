@@ -67,9 +67,6 @@ module screen_gen #(
     assign rel_x = hcount - (BOARD_ORIGIN_X + tile_col * CHESS_TILE_SIZE);
     assign rel_y = vcount - (BOARD_ORIGIN_Y + tile_row * CHESS_TILE_SIZE);
 
-    logic [3:0] piece_index;
-    logic in_sprite_area;
-
     // Piece layout (12 sprites in ROM): index from 0–11
     // --- ROMs
     title_screen_rom title_rom_inst (
@@ -100,8 +97,6 @@ module screen_gen #(
     always_comb begin
         piece_rom_addr = 0;
         selected_pixel = board_pixel;
-        piece_index    = 0;
-        in_sprite_area = 0;
 
         case (state)
             TITLE_SCREEN: selected_pixel = title_pixel;
@@ -114,11 +109,8 @@ module screen_gen #(
                     if (square_highlight[tile_row][tile_col] == 1)
                         selected_pixel = (board_pixel == 1) ? 6 : 5;
 
-                    piece_index = board[tile_row][tile_col];
-                    in_sprite_area = (piece_index < 12);
-
-                    if (in_sprite_area) begin
-                        piece_rom_addr = piece_index * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE +
+                    if (board[tile_row][tile_col] < 12) begin
+                        piece_rom_addr = board[tile_row][tile_col] * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE +
                                          (rel_y) * CHESS_PIECE_SIZE + rel_x;
                         if (piece_pixel != 3'd4)
                             selected_pixel = piece_pixel;
