@@ -19,28 +19,31 @@ module vga_controller(
     output logic [9:0] hcount,     // Current pixel x-coordinate
     output logic [9:0] vcount      // Current pixel y-coordinate
 );
+    logic [9:0] hcount_int, vcount_int;
     // Increment counters for horizontal and vertical sync
     always_ff @(posedge vga_clk or negedge reset_n) begin
         if (!reset_n) begin
-            hcount <= 0;
-            vcount <= 0;
+            hcount_int <= 0;
+            vcount_int <= 0;
         end else begin
-            if (hcount < 799) begin
-                hcount <= hcount + 10'd1;
+            if (hcount_int < 799) begin
+                hcount_int <= hcount_int + 10'd1;
             end else begin
-                hcount <= 'd0;
-                if (vcount < 524) begin
-                    vcount <= vcount + 10'd1;
+                hcount_int <= 'd0;
+                if (vcount_int < 524) begin
+                    vcount_int <= vcount_int + 10'd1;
                 end else begin
-                    vcount <= 10'd0;
+                    vcount_int <= 10'd0;
                 end
             end
         end
     end
 
-    assign vga_hs = (hcount >= 655 & hcount < 751) ? 1'd0 : 1'd1;
-    assign vga_vs = (vcount >= 489 & vcount < 491) ? 1'd0 : 1'd1;
-    assign vga_sync_n = vga_hs | vga_vs; // Active low sync signal
-    assign vga_blank_n = (hcount < 640 && vcount < 480) ? 1'd1 : 1'd0; // Active high blank signal
+    assign vga_hs = (hcount_int >= 655 && hcount_int < 751) ? 1'd0 : 1'd1;
+    assign vga_vs = (vcount_int >= 489 && vcount_int < 491) ? 1'd0 : 1'd1;
+    assign vga_sync_n = vga_hs | vga_vs;
+    assign vga_blank_n = (hcount_int < 640 && vcount_int < 480) ? 1'd1 : 1'd0;
 
+    assign hcount = (hcount_int < 640) ? hcount_int : 0;
+    assign vcount = (vcount_int < 480) ? vcount_int : 0;
 endmodule
