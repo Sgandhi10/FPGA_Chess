@@ -17,7 +17,8 @@ module screen_gen #(
     input   screen_state_t          state,          // System State
 
     input   logic [3:0]             board [8][8],   // Flattened 8x8 board pattern
-        
+    input   logic                   square_highlight [8][8],    
+
     // Optional
     input   logic [9:0]             hcount,         // Horizontal Pixel Count
     input   logic [9:0]             vcount,         // Vertical Pixel Count
@@ -28,12 +29,14 @@ module screen_gen #(
 );
    
     // --- Color Palette: index to RGB mapping
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [5] = '{
+    logic [(COLOR_DEPTH * 3)-1:0] color_array [7] = '{
         24'hEEEED2,  // 0 – light square (tan)
         24'h4B4847,  // 1 – dark square (green)
         24'h69923E,  // 2 – background
         24'hFFFFFF,  // 3 – white/piece
-        24'h000000   // 4 – transparent (will be ignored in logic)
+        24'h000000,  // 4 – transparent (will be ignored in logic)
+        24'hF5F682,  // 5 - light square highlight
+        24'hB9CA43   // 6 - dark square highlight
     };
 
     // --- Constants for layout
@@ -107,6 +110,9 @@ module screen_gen #(
             CHESS_SCREEN: begin
                 if (hcount >= BOARD_ORIGIN_X && hcount < BOARD_ORIGIN_X + 8 * CHESS_TILE_SIZE &&
                     vcount >= BOARD_ORIGIN_Y && vcount < BOARD_ORIGIN_Y + 8 * CHESS_TILE_SIZE) begin
+                    
+                    if (square_highlight[tile_row][tile_col] == 1)
+                        selected_pixel = (board_pixel == 1) ? 6 : 5;
 
                     piece_index = board[tile_row][tile_col];
                     in_sprite_area = (piece_index < 12);
@@ -114,12 +120,9 @@ module screen_gen #(
                     if (in_sprite_area) begin
                         piece_rom_addr = piece_index * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE +
                                          (rel_y) * CHESS_PIECE_SIZE + rel_x;
-                        selected_pixel = (piece_pixel != 3'd4) ? piece_pixel : board_pixel;
-                    end else begin
-                        selected_pixel = board_pixel;
+                        if (piece_pixel != 3'd4)
+                            selected_pixel = piece_pixel;
                     end
-                end else begin
-                    selected_pixel = board_pixel;
                 end
             end
             default: selected_pixel = board_pixel;

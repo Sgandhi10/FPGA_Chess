@@ -13,50 +13,157 @@ module board (
     input logic             player,
     input logic             curr_player,
     input logic             dir,
-    input screen_state_t    state,       
+    input screen_state_t    sys_state,       
 
-    input logic         key1out, // + dir
-    input logic         key2out, // - dir
-    input logic         key3out, // + enter
+    input logic         key1out, // - dir
+    input logic         key2out, // + dir
+    input logic         key3out, // enter
 
-    input logic [3:0]   board_in [8][8], // 8x8 board input
+    input logic [3:0]   stable_board [8][8], // 8x8 board input
 
-    output logic [3:0]  board_out [8][8],
-    output logic        square_highlight [8][8] // 8x8 board output
+    output logic [3:0]  disp_board [8][8],
+    output logic        square_highlight [8][8], // 8x8 board output
+    output logic        moved,
+
+    // Debug
+    output move_state_t move_state
 );
+    // move_state_t move_state;
+    logic [2:0] x_pos, y_pos, old_xpos, old_ypos;
+    logic [3:0] updated_board [8][8];
+    logic [3:0] sel_val;
+    logic [2:0] stall;
 
     always_ff @(posedge CLOCK_50 or negedge reset_n) begin
         if (!reset_n) begin
-            // Initialize board_out on reset
-            board_out[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
-            board_out[1] <= '{default: 11};
-            board_out[6] <= '{default: 5};
-            board_out[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+            // Initialize disp_board on reset
+            disp_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+            disp_board[1] <= '{default: 11};
+            disp_board[6] <= '{default: 5};
+            disp_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
 
             // Set middle rows to default (15)
             for (int i = 2; i <= 5; i++) begin
-                board_out[i] <= '{default: 15};
-            end
-        end else if (state == SETUP_SCREEN) begin
-            // Setup screen based on player
-            if (player) begin
-                board_out[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
-                board_out[1] <= '{default: 11};
-                board_out[6] <= '{default: 5};
-                board_out[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
-            end else begin
-                board_out[0] <= '{0, 1, 2, 3, 4, 2, 1, 0};
-                board_out[1] <= '{default: 5};
-                board_out[6] <= '{default: 11};
-                board_out[7] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                disp_board[i] <= '{default: 15};
             end
 
-            // Always initialize middle rows
-            for (int i = 2; i <= 5; i++) begin
-                board_out[i] <= '{default: 15};
+            x_pos <= 3;
+            y_pos <= 3;
+
+            old_xpos <= 3;
+            old_ypos <= 3;
+
+            move_state <= PLAYER_SEL;
+            moved <= 0;
+            stall <= 0;
+
+            sel_val <= 15;
+        end else begin
+            if (sys_state == SETUP_SCREEN) begin
+                // Setup screen based on player
+                if (player) begin
+                    disp_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                    disp_board[1] <= '{default: 11};
+                    disp_board[6] <= '{default: 5};
+                    disp_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+                end else begin
+                    disp_board[0] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+                    disp_board[1] <= '{default: 5};
+                    disp_board[6] <= '{default: 11};
+                    disp_board[7] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                end
+
+                // Always initialize middle rows
+                for (int i = 2; i <= 5; i++) begin
+                    disp_board[i] <= '{default: 15};
+                end
+            end else if (sys_state == CHESS_SCREEN) begin
+                // Finite State Machine for move selection
+                case (move_state) 
+                    PLAYER_SEL: begin
+                        disp_board <= stable_board;
+                        moved <= 0;
+                        if (player == curr_player) begin
+                            disp_board <= stable_board;
+                            move_state <= PIECE_SEL;
+                            x_pos <= 3;
+                            y_pos <= 3;
+                            stall <= 0;
+                        end
+                    end
+                    PIECE_SEL: begin
+                        if (dir) begin
+                            if (key1out)
+                                x_pos <= x_pos - 1;
+                            else if (key2out)
+                                x_pos <= x_pos + 1;
+                        end else begin
+                            if (key1out)
+                                y_pos <= y_pos + 1;
+                            else if (key2out)
+                                y_pos <= y_pos - 1; 
+                        end
+                        if (key3out) begin
+                            if (disp_board[x_pos][y_pos] != 15 &&
+                                ((disp_board[x_pos][y_pos] > 5 && ~player) || 
+                                (disp_board[x_pos][y_pos] <= 5  &&  player))) 
+                            begin
+                                old_xpos  <= x_pos;
+                                old_ypos  <= y_pos;
+                                sel_val   <= disp_board[x_pos][y_pos];
+                                move_state <= POS_SEL;
+                            end
+                        end
+                    end
+                    POS_SEL: begin
+                        disp_board <= updated_board;
+                        if (dir) begin
+                            if (key1out)
+                                x_pos <= x_pos - 1;
+                            else if (key2out)
+                                x_pos <= x_pos + 1;
+                        end else begin
+                            if (key1out)
+                                y_pos <= y_pos + 1;
+                            else if (key2out)
+                                y_pos <= y_pos - 1; 
+                        end
+                        if (key3out) begin
+                            if (disp_board[x_pos][y_pos] == 15 || ((disp_board[x_pos][y_pos] <= 5 && player) || 
+                                (disp_board[x_pos][y_pos] > 5  &&  ~player))) 
+                            begin
+                                move_state <= MOVE_VAL;
+                            end else if (((disp_board[x_pos][y_pos] > 5 && player) || 
+                                (disp_board[x_pos][y_pos] <= 5  &&  ~player))) begin
+                                move_state <= PLAYER_SEL;
+                            end
+                        end
+                    end
+                    MOVE_VAL: begin
+                        // if valid
+                        disp_board <= updated_board;
+                        moved <= 1'b1;
+                        if (stall == 7) begin
+                            // update board
+                            moved <= 1'b0;
+                            move_state <= PLAYER_SEL;
+                        end
+                        stall <= stall + 1;
+                    end
+                    default: /* do nothing */;
+                endcase
             end
         end
     end
 
+    always_comb begin
+        square_highlight = '{default: 0};
+        if (player == curr_player) begin
+            square_highlight[x_pos][y_pos] = 1;
+        end
 
+        updated_board = stable_board;
+        updated_board[old_xpos][old_ypos] = 15;
+        updated_board[x_pos][y_pos] = sel_val;
+    end
 endmodule

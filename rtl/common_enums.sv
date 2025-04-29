@@ -13,4 +13,11 @@ package common_enums;
         SETUP_SCREEN,
         CHESS_SCREEN
     } screen_state_t;
+
+    typedef enum logic [1:0] {
+        PLAYER_SEL,
+        PIECE_SEL,
+        POS_SEL,
+        MOVE_VAL
+    } move_state_t;
 endpackage

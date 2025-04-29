@@ -38,10 +38,10 @@ module top  #(
     screen_state_t state;
     logic player, curr_player; // 0 for white, 1 for black
 
-    // Flattened 8x8 board
+    // 8x8 boards
     logic [3:0] stable_board        [8][8];
     logic [3:0] disp_board          [8][8];
-    logic       square_highlight    [8][8]; // 2D array for the chess board
+    logic       square_highlight    [8][8]; 
 
     assign reset_n = KEY[0]; // Active low reset
 
@@ -117,10 +117,13 @@ module top  #(
     );
 
     // For debugging purposes, assign the state to LEDs
-    assign LED[1:0] = state_vga; 
-    assign LED[3:2] = state; 
-	 assign LED[4] = player;
-    assign LED[9:5] = disp_board[0][0]; // For debugging
+    assign LED[1:0] = state;  
+	assign LED[4] = square_highlight[3][3];
+    assign LED[5] = curr_player;
+
+    move_state_t move_state;
+    assign LED[3:2] = move_state;
+    logic moved;
 
     // === Board Controller ===
     board board_inst(
@@ -130,17 +133,38 @@ module top  #(
         .player(player),
         .curr_player(curr_player),
         .dir(SW[0]), 
-        .state(state),
+        .sys_state(state),
         
         .key1out(key1out), // + dir
         .key2out(key2out), // - dir
         .key3out(key3out), // + enter
 
-        .board_in(stable_board), // 8x8 board input
+        .stable_board(stable_board), // 8x8 board input
 
-        .board_out(disp_board), // 8x8 board output
-        .square_highlight(square_highlight) // 8x8 board output
+        .disp_board(disp_board), // 8x8 board output
+        .square_highlight(square_highlight), // 8x8 board output
+        .moved(moved),
+
+        // debug
+        .move_state(move_state)
     );
+
+    // Temp Stable Board handler
+    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+        if (~reset_n) begin
+            for (int i = 0; i < 8; i++)
+                stable_board[i] <= '{default: 0};
+            curr_player <= 0;
+        end
+        else begin
+            if (state == SETUP_SCREEN) begin
+                stable_board <= disp_board;   
+            end else if (moved) begin
+                curr_player = ~player;
+                stable_board <= disp_board;
+            end
+        end
+    end
 
     screen_gen #(
         .SCREEN_WIDTH(SCREEN_WIDTH),
@@ -151,6 +175,7 @@ module top  #(
         .reset_n(reset_n),
         .state(state_vga),
         .board(disp_board),
+        .square_highlight(square_highlight),
         .vga_r(VGA_R),
         .vga_g(VGA_G),
         .vga_b(VGA_B),

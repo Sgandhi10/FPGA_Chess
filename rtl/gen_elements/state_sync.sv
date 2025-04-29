@@ -13,9 +13,10 @@ module state_sync #(
     output reg  [bits-1:0]     state_vga   // Synchronized signal in VGA_CLK domain
 );
     // Two-stage sync registers
-    (* syn_synchronizer = "true" *) reg [bits-1:0] sync1;
-    (* syn_synchronizer = "true" *) reg [bits-1:0] sync2;
-
+    reg [bits-1:0] sync1;
+    reg [bits-1:0] sync2;
+    
+    (* altera_attribute = "-name SYNCHRONIZER_IDENTIFICATION FORCED" *) 
     always_ff @(posedge clk_vga) begin
         sync1     <= state_50;   // First stage
         sync2     <= sync1;      // Second stage
