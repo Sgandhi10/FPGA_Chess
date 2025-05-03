@@ -13,7 +13,7 @@ module hex_counter #(
 )(
     input  logic             clk,         // 50 MHz system clock
     input  logic             reset_n,     // Active-low reset
-    input  screen_state_t    state,       // FSM screen state
+    input  logic             start,       // Start counter
     input  logic [1:0]       mode_sel,    // Mode selector for initial time
     output logic [6:0]       hex0, hex1, hex2, hex3, hex4, hex5,
     output logic             time_up      // Active-high when countdown ends
@@ -46,17 +46,15 @@ module hex_counter #(
             clk_counter <= 0;
             start_flag  <= 0;
         end else begin
-            if (state == SETUP_SCREEN) begin
+            // Load time once when entering CHESS_SCREEN
+            if (!start_flag && start) begin
+                total_cs <= initial_time;
+                start_flag <= 1;
+            end else if (!start_flag) begin
                 total_cs <= initial_time;
             end
-
-            // Load time once when entering CHESS_SCREEN
-            if (state == CHESS_SCREEN && !start_flag) begin
-                total_cs   <= initial_time;
-                start_flag <= 1;
-            end
-
-            if (state == CHESS_SCREEN && total_cs > 0) begin
+            
+            if (start_flag && total_cs > 0) begin
                 clk_counter <= clk_counter + 1;
                 if (clk_counter == (CLK_FREQ_HZ / 100 - 1)) begin
                     clk_counter <= 0;
@@ -65,8 +63,7 @@ module hex_counter #(
             end
         end
     end
-
-    // Output time_up signal
+    
     assign time_up = (total_cs == 0);
 
     // Convert total_cs to MM:SS:mm

@@ -13,7 +13,10 @@ module screen_fsm #(
     input  logic        clk,
     input  logic        reset_n,
     input  logic        enter,
-    output screen_state_t  state
+    input  logic        override,
+
+    output screen_state_t  state,
+    output logic        setup_complete
 );
 
     screen_state_t next_state;
@@ -36,16 +39,27 @@ module screen_fsm #(
     
     always_comb begin
         // Next state logic
+        setup_complete = 0;
         case (state)
-            TITLE_SCREEN:
+            TITLE_SCREEN: begin
                 next_state = enter ? PLAYER_SCREEN : TITLE_SCREEN;
-
-            PLAYER_SCREEN:
+                if (override)
+                    next_state = CHESS_SCREEN;
+            end
+            PLAYER_SCREEN: begin
                 next_state = (counter >= (CLK_FREQ_HZ * 2)) ? SETUP_SCREEN : PLAYER_SCREEN;
-
-            SETUP_SCREEN:
-                next_state = enter ? CHESS_SCREEN : SETUP_SCREEN;
-
+                if (override)
+                    next_state = CHESS_SCREEN;
+            end
+            SETUP_SCREEN: begin
+                next_state = SETUP_SCREEN;
+                if (enter) begin
+                    setup_complete = 1;
+                    next_state = CHESS_SCREEN;
+                end 
+                if (override)
+                    next_state = CHESS_SCREEN;
+            end
             CHESS_SCREEN:
                 next_state = CHESS_SCREEN;
             default:

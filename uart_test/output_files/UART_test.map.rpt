@@ -1,5 +1,5 @@
 Analysis & Synthesis report for UART_test
-Mon Apr 14 20:06:21 2025
+Thu May  1 16:20:46 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -60,13 +60,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Apr 14 20:06:21 2025          ;
+; Analysis & Synthesis Status     ; Successful - Thu May  1 16:20:46 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; UART_test                                      ;
 ; Top-level Entity Name           ; UART_test                                      ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 391                                            ;
+; Total registers                 ; 473                                            ;
 ; Total pins                      ; 27                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
@@ -180,7 +180,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -204,25 +205,25 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 264            ;
+; Estimate of Logic utilization (ALMs needed) ; 314            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 299            ;
+; Combinational ALUT usage for logic          ; 315            ;
 ;     -- 7 input functions                    ; 2              ;
-;     -- 6 input functions                    ; 138            ;
-;     -- 5 input functions                    ; 20             ;
-;     -- 4 input functions                    ; 21             ;
-;     -- <=3 input functions                  ; 118            ;
+;     -- 6 input functions                    ; 157            ;
+;     -- 5 input functions                    ; 24             ;
+;     -- 4 input functions                    ; 22             ;
+;     -- <=3 input functions                  ; 110            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 391            ;
+; Dedicated logic registers                   ; 473            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 27             ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 339            ;
-; Total fan-out                               ; 2631           ;
-; Average fan-out                             ; 3.54           ;
+; Maximum fan-out                             ; 409            ;
+; Total fan-out                               ; 3045           ;
+; Average fan-out                             ; 3.62           ;
 +---------------------------------------------+----------------+
 
 
@@ -231,13 +232,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                          ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------+-------------+--------------+
-; |UART_test                 ; 299 (0)             ; 391 (9)                   ; 0                 ; 0          ; 27   ; 0            ; |UART_test                                   ; UART_test   ; work         ;
-;    |UART:uart_inst|        ; 297 (3)             ; 380 (5)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst                    ; UART        ; work         ;
-;       |Baud_Tick:baud_gen| ; 69 (69)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|Baud_Tick:baud_gen ; Baud_Tick   ; work         ;
-;       |FIFO:fifo_rx|       ; 84 (84)             ; 145 (145)                 ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_rx       ; FIFO        ; work         ;
-;       |FIFO:fifo_tx|       ; 80 (80)             ; 145 (145)                 ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_tx       ; FIFO        ; work         ;
-;       |UART_RX:uart_rx|    ; 36 (36)             ; 28 (28)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_RX:uart_rx    ; UART_RX     ; work         ;
-;       |UART_TX:uart_tx|    ; 25 (25)             ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_TX:uart_tx    ; UART_TX     ; work         ;
+; |UART_test                 ; 315 (0)             ; 473 (11)                  ; 0                 ; 0          ; 27   ; 0            ; |UART_test                                   ; UART_test   ; work         ;
+;    |UART:uart_inst|        ; 313 (3)             ; 460 (5)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst                    ; UART        ; work         ;
+;       |Baud_Tick:baud_gen| ; 68 (68)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|Baud_Tick:baud_gen ; Baud_Tick   ; work         ;
+;       |FIFO:fifo_rx|       ; 94 (94)             ; 179 (179)                 ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_rx       ; FIFO        ; work         ;
+;       |FIFO:fifo_tx|       ; 90 (90)             ; 179 (179)                 ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_tx       ; FIFO        ; work         ;
+;       |UART_RX:uart_rx|    ; 37 (37)             ; 31 (31)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_RX:uart_rx    ; UART_RX     ; work         ;
+;       |UART_TX:uart_tx|    ; 21 (21)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_TX:uart_tx    ; UART_TX     ; work         ;
 ;    |keypress:k1|           ; 2 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |UART_test|keypress:k1                       ; keypress    ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -283,21 +284,24 @@ Encoding Type:  One-Hot
 +-------------------------+-------------------------+------------------------+-----------------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                          ;
-+----------------------------------------------------+----------------------------------------+
-; Register name                                      ; Reason for Removal                     ;
-+----------------------------------------------------+----------------------------------------+
-; UART:uart_inst|UART_RX:uart_rx|current_state~9     ; Lost fanout                            ;
-; UART:uart_inst|UART_RX:uart_rx|current_state~10    ; Lost fanout                            ;
-; UART:uart_inst|UART_TX:uart_tx|current_state~9     ; Lost fanout                            ;
-; UART:uart_inst|UART_TX:uart_tx|current_state~10    ; Lost fanout                            ;
-; keypress:k1|key_state.KEY_UNPRESSED                ; Lost fanout                            ;
-; UART:uart_inst|FIFO:fifo_rx|head[4]                ; Lost fanout                            ;
-; UART:uart_inst|FIFO:fifo_tx|head[4]                ; Lost fanout                            ;
-; UART:uart_inst|UART_TX:uart_tx|oversample_count[3] ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 8              ;                                        ;
-+----------------------------------------------------+----------------------------------------+
++----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                       ;
++----------------------------------------------------+-----------------------------------------------------+
+; Register name                                      ; Reason for Removal                                  ;
++----------------------------------------------------+-----------------------------------------------------+
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[0..5]     ; Lost fanout                                         ;
+; UART:uart_inst|FIFO:fifo_tx|data_out[1..5]         ; Merged with UART:uart_inst|FIFO:fifo_tx|data_out[0] ;
+; UART:uart_inst|FIFO:fifo_tx|data_out[0]            ; Stuck at GND due to stuck port data_in              ;
+; UART:uart_inst|UART_RX:uart_rx|current_state~9     ; Lost fanout                                         ;
+; UART:uart_inst|UART_RX:uart_rx|current_state~10    ; Lost fanout                                         ;
+; UART:uart_inst|UART_TX:uart_tx|current_state~9     ; Lost fanout                                         ;
+; UART:uart_inst|UART_TX:uart_tx|current_state~10    ; Lost fanout                                         ;
+; keypress:k1|key_state.KEY_UNPRESSED                ; Lost fanout                                         ;
+; UART:uart_inst|FIFO:fifo_rx|head[4]                ; Lost fanout                                         ;
+; UART:uart_inst|FIFO:fifo_tx|head[4]                ; Lost fanout                                         ;
+; UART:uart_inst|UART_TX:uart_tx|oversample_count[3] ; Stuck at GND due to stuck port data_in              ;
+; Total Number of Removed Registers = 20             ;                                                     ;
++----------------------------------------------------+-----------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -305,12 +309,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 391   ;
-; Number of registers using Synchronous Clear  ; 3     ;
-; Number of registers using Synchronous Load   ; 32    ;
-; Number of registers using Asynchronous Clear ; 135   ;
+; Total registers                              ; 473   ;
+; Number of registers using Synchronous Clear  ; 11    ;
+; Number of registers using Synchronous Load   ; 45    ;
+; Number of registers using Asynchronous Clear ; 153   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 330   ;
+; Number of registers using Clock Enable       ; 412   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -330,16 +334,16 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |UART_test|UART:uart_inst|FIFO:fifo_rx|data_out[6]            ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |UART_test|UART:uart_inst|FIFO:fifo_tx|data_out[2]            ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |UART_test|UART:uart_inst|FIFO:fifo_rx|data_out[10]           ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |UART_test|UART:uart_inst|FIFO:fifo_tx|data_out[13]           ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |UART_test|UART:uart_inst|FIFO:fifo_rx|head[0]                ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |UART_test|UART:uart_inst|FIFO:fifo_tx|head[0]                ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |UART_test|UART:uart_inst|UART_TX:uart_tx|bit_index[1]        ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |UART_test|UART:uart_inst|UART_TX:uart_tx|shift_reg[6]        ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |UART_test|UART:uart_inst|UART_TX:uart_tx|shift_reg[1]        ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |UART_test|UART:uart_inst|UART_TX:uart_tx|shift_reg[6]        ;
 ; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |UART_test|UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]   ;
-; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |UART_test|UART:uart_inst|UART_RX:uart_rx|oversample_count[1] ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |UART_test|UART:uart_inst|UART_RX:uart_rx|oversample_count[0] ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |UART_test|UART:uart_inst|UART_RX:uart_rx|Selector12          ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |UART_test|UART:uart_inst|UART_RX:uart_rx|Selector11          ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |UART_test|UART:uart_inst|UART_RX:uart_rx|Selector13          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 
 
@@ -360,8 +364,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+----------+---------------------------------+
 ; Parameter Name ; Value    ; Type                            ;
 +----------------+----------+---------------------------------+
-; DATA_WIDTH     ; 8        ; Signed Integer                  ;
-; BAUD_RATE      ; 9600     ; Signed Integer                  ;
+; DATA_WIDTH     ; 16       ; Signed Integer                  ;
+; BAUD_RATE      ; 115200   ; Signed Integer                  ;
 ; CLOCK_FREQ     ; 50000000 ; Signed Integer                  ;
 ; PARITY         ; 1        ; Signed Integer                  ;
 ; OVERSAMPLE     ; 16       ; Signed Integer                  ;
@@ -374,7 +378,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+----------+----------------------------------------------------+
 ; Parameter Name ; Value    ; Type                                               ;
 +----------------+----------+----------------------------------------------------+
-; BAUD_RATE      ; 9600     ; Signed Integer                                     ;
+; BAUD_RATE      ; 115200   ; Signed Integer                                     ;
 ; CLOCK_FREQ     ; 50000000 ; Signed Integer                                     ;
 ; OVERSAMPLE     ; 16       ; Signed Integer                                     ;
 +----------------+----------+----------------------------------------------------+
@@ -386,7 +390,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-------------------------------------------------+
 ; Parameter Name ; Value ; Type                                            ;
 +----------------+-------+-------------------------------------------------+
-; N_BITS         ; 8     ; Signed Integer                                  ;
+; N_BITS         ; 16    ; Signed Integer                                  ;
 ; N_SIZE         ; 16    ; Signed Integer                                  ;
 +----------------+-------+-------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -397,8 +401,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+----------+-------------------------------------------------+
 ; Parameter Name ; Value    ; Type                                            ;
 +----------------+----------+-------------------------------------------------+
-; DATA_WIDTH     ; 8        ; Signed Integer                                  ;
-; BAUD_RATE      ; 9600     ; Signed Integer                                  ;
+; DATA_WIDTH     ; 16       ; Signed Integer                                  ;
+; BAUD_RATE      ; 115200   ; Signed Integer                                  ;
 ; CLOCK_FREQ     ; 50000000 ; Signed Integer                                  ;
 ; PARITY         ; 1        ; Signed Integer                                  ;
 ; OVERSAMPLE     ; 16       ; Signed Integer                                  ;
@@ -411,7 +415,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-------------------------------------------------+
 ; Parameter Name ; Value ; Type                                            ;
 +----------------+-------+-------------------------------------------------+
-; N_BITS         ; 8     ; Signed Integer                                  ;
+; N_BITS         ; 16    ; Signed Integer                                  ;
 ; N_SIZE         ; 16    ; Signed Integer                                  ;
 +----------------+-------+-------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -422,8 +426,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+----------+-------------------------------------------------+
 ; Parameter Name ; Value    ; Type                                            ;
 +----------------+----------+-------------------------------------------------+
-; DATA_WIDTH     ; 8        ; Signed Integer                                  ;
-; BAUD_RATE      ; 9600     ; Signed Integer                                  ;
+; DATA_WIDTH     ; 16       ; Signed Integer                                  ;
+; BAUD_RATE      ; 115200   ; Signed Integer                                  ;
 ; CLOCK_FREQ     ; 50000000 ; Signed Integer                                  ;
 ; PARITY         ; 1        ; Signed Integer                                  ;
 ; OVERSAMPLE     ; 16       ; Signed Integer                                  ;
@@ -449,13 +453,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "UART:uart_inst"                                                                                ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                             ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
-; parity_error_rx ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:uart_inst"                                                                                  ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; data_in_tx[5..0]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; data_out_rx[5..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; parity_error_rx   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -463,33 +469,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 391                         ;
+; arriav_ff             ; 473                         ;
 ;     CLR               ; 45                          ;
 ;     CLR SLD           ; 16                          ;
-;     ENA               ; 256                         ;
-;     ENA CLR           ; 55                          ;
-;     ENA CLR SCLR      ; 3                           ;
-;     ENA CLR SLD       ; 16                          ;
-; arriav_lcell_comb     ; 301                         ;
-;     arith             ; 63                          ;
-;         1 data inputs ; 62                          ;
-;         2 data inputs ; 1                           ;
+;     ENA               ; 320                         ;
+;     ENA CLR           ; 52                          ;
+;     ENA CLR SCLR      ; 11                          ;
+;     ENA CLR SLD       ; 29                          ;
+; arriav_lcell_comb     ; 316                         ;
+;     arith             ; 62                          ;
+;         1 data inputs ; 60                          ;
+;         2 data inputs ; 2                           ;
 ;     extend            ; 2                           ;
 ;         7 data inputs ; 2                           ;
-;     normal            ; 228                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 5                           ;
+;     normal            ; 244                         ;
+;         1 data inputs ; 6                           ;
 ;         2 data inputs ; 24                          ;
-;         3 data inputs ; 19                          ;
-;         4 data inputs ; 21                          ;
-;         5 data inputs ; 20                          ;
-;         6 data inputs ; 138                         ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 22                          ;
+;         5 data inputs ; 24                          ;
+;         6 data inputs ; 157                         ;
 ;     shared            ; 8                           ;
 ;         2 data inputs ; 8                           ;
 ; boundary_port         ; 27                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.20                        ;
-; Average LUT depth     ; 2.47                        ;
+; Max LUT depth         ; 5.10                        ;
+; Average LUT depth     ; 2.41                        ;
 +-----------------------+-----------------------------+
 
 
@@ -498,7 +503,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -508,7 +513,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Mon Apr 14 20:06:02 2025
+    Info: Processing started: Thu May  1 16:20:36 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UART_test -c UART_test
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -527,9 +532,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file /digita
 Info (12021): Found 1 design units, including 1 entities, in source file uart_test.sv
     Info (12023): Found entity 1: UART_test File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 9
 Info (12127): Elaborating entity "UART_test" for the top level hierarchy
-Warning (10034): Output port "LED[9..8]" at UART_test.sv(15) has no driver File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 15
 Info (12128): Elaborating entity "keypress" for hierarchy "keypress:k1" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 41
-Info (12128): Elaborating entity "UART" for hierarchy "UART:uart_inst" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 55
+Info (12128): Elaborating entity "UART" for hierarchy "UART:uart_inst" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 61
 Info (12128): Elaborating entity "Baud_Tick" for hierarchy "UART:uart_inst|Baud_Tick:baud_gen" File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART.sv Line: 45
 Warning (10230): Verilog HDL assignment warning at Baud_Tick.sv(47): truncated value with size 64 to match size of target (32) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/Baud_Tick.sv Line: 47
 Info (12128): Elaborating entity "FIFO" for hierarchy "UART:uart_inst|FIFO:fifo_tx" File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART.sv Line: 64
@@ -539,21 +543,18 @@ Warning (10230): Verilog HDL assignment warning at FIFO.sv(59): truncated value 
 Warning (10230): Verilog HDL assignment warning at FIFO.sv(64): truncated value with size 32 to match size of target (5) File: C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/FIFO.sv Line: 64
 Info (12128): Elaborating entity "UART_TX" for hierarchy "UART:uart_inst|UART_TX:uart_tx" File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART.sv Line: 84
 Warning (10230): Verilog HDL assignment warning at UART_TX.sv(42): truncated value with size 32 to match size of target (4) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_TX.sv Line: 42
-Warning (10230): Verilog HDL assignment warning at UART_TX.sv(95): truncated value with size 32 to match size of target (4) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_TX.sv Line: 95
+Warning (10230): Verilog HDL assignment warning at UART_TX.sv(95): truncated value with size 32 to match size of target (5) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_TX.sv Line: 95
 Info (12128): Elaborating entity "UART_RX" for hierarchy "UART:uart_inst|UART_RX:uart_rx" File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART.sv Line: 151
 Warning (10230): Verilog HDL assignment warning at UART_RX.sv(71): truncated value with size 32 to match size of target (6) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv Line: 71
 Warning (10230): Verilog HDL assignment warning at UART_RX.sv(83): truncated value with size 32 to match size of target (6) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv Line: 83
-Warning (10230): Verilog HDL assignment warning at UART_RX.sv(90): truncated value with size 32 to match size of target (4) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv Line: 90
+Warning (10230): Verilog HDL assignment warning at UART_RX.sv(90): truncated value with size 32 to match size of target (5) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv Line: 90
 Warning (10230): Verilog HDL assignment warning at UART_RX.sv(101): truncated value with size 32 to match size of target (6) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv Line: 101
 Warning (10230): Verilog HDL assignment warning at UART_RX.sv(114): truncated value with size 32 to match size of target (6) File: C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv Line: 114
 Info (276014): Found 2 instances of uninferred RAM logic
     Info (276007): RAM logic "UART:uart_inst|FIFO:fifo_rx|data" is uninferred due to asynchronous read logic File: C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/FIFO.sv Line: 32
     Info (276007): RAM logic "UART:uart_inst|FIFO:fifo_tx|data" is uninferred due to asynchronous read logic File: C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/FIFO.sv Line: 32
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LED[8]" is stuck at GND File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 15
-    Warning (13410): Pin "LED[9]" is stuck at GND File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 15
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Info (17049): 13 registers lost all their fanouts during netlist optimizations.
 Warning (20013): Ignored 24 assignments for entity "top" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity top -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity top -section_id Top was ignored
@@ -582,20 +583,18 @@ Warning (20013): Ignored 24 assignments for entity "top" -- entity does not exis
 Info (144001): Generated suppressed messages file C:/Digital_Design_2/PRJ_Final/uart_test/output_files/UART_test.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 4 input pin(s) that do not drive logic
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 11
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 11
-    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 14
-    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Digital_Design_2/PRJ_Final/uart_test/UART_test.sv Line: 14
-Info (21057): Implemented 601 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 700 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 11 output pins
-    Info (21061): Implemented 574 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
-    Info: Peak virtual memory: 4840 megabytes
-    Info: Processing ended: Mon Apr 14 20:06:21 2025
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:39
+    Info (21061): Implemented 673 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 41 warnings
+    Info: Peak virtual memory: 4857 megabytes
+    Info: Processing ended: Thu May  1 16:20:46 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:22
 
 
 +------------------------------------------+

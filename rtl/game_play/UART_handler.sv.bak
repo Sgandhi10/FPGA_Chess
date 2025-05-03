@@ -1,0 +1,145 @@
+/*******************************************************************************
+* File: UART_handler.sv
+* Author: Soham Gandhi
+* Date: 2025-05-01
+* Description: This module handles all the communication aspects for the UART 
+* protocol. This module is meant to help separate the UART aspects from the other 
+* aspects, and keep the top level module clean.
+* Version: 1.0
+*******************************************************************************/
+import common_enums::*;
+
+module UART_handler(
+    // System Signals
+    input clk,
+    input reset_n,
+
+    input  logic [3:0]  disp_board[8][8],
+    input  logic [11:0] output_packet,
+
+    output logic [3:0]  stable_board[8][8],
+    output logic        parity_error_rx,
+    output logic        override,
+    output logic        start_counter,
+    output logic        player,
+    output logic        curr_player,
+
+
+    // RX/TX
+    input  logic RX,
+    output logic TX
+);
+    // TX
+    logic data_in_valid;
+    logic [15:0] data_in_tx;
+
+    // RX
+    logic req_data, pending_data_rx;
+    logic [15:0] data_out_rx;
+
+    UART #(
+        .DATA_WIDTH(16),
+        .BAUD_RATE(115200),
+        .CLOCK_FREQ(50_000_000),
+        .PARITY(1),
+        .OVERSAMPLE(16)
+    ) uart_inst (
+        .clk(clk),
+        .rst_n(reset_n),
+        
+        .data_valid(data_in_valid),
+        .data_in_tx(data_in_tx),
+        .tx(TX),
+
+        .rx(RX),
+        .req_data(req_data),
+        .data_out_rx(data_out_rx),
+        .pending_data_rx(pending_data_rx),
+        .parity_error_rx()
+    );
+
+    uart_state_t uart_state;
+    logic start_counter;
+    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+        if (~reset_n) begin
+            req_data <= 0;
+            player <= 0;
+            override <= 0;
+            start_counter <= 0;
+
+            // Stable Board default (player 0)
+            stable_board[0] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+            stable_board[1] <= '{default: 5};
+            stable_board[2] <= '{default: 15};
+            stable_board[3] <= '{default: 15};
+            stable_board[4] <= '{default: 15};
+            stable_board[5] <= '{default: 15};
+            stable_board[6] <= '{default: 11};
+            stable_board[7] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+
+            curr_player <= 0;
+            data_in_tx <= '0;
+            uart_state <= WAIT_DATA;
+        end else begin
+            // RX Port Handler
+            case(uart_state) 
+                WAIT_DATA: begin
+                    if (pending_data_rx) begin
+                        req_data <= 1;
+                        uart_state <= REQ_DATA;
+                    end
+                end
+                REQ_DATA: begin
+                    req_data <= 0;
+                    if (data_out_rx[15:14] == 2'b10) begin
+                        player <= ~data_out_rx[13];
+                        override <= 1;
+                        if (~data_out_rx[13]) begin
+                            stable_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                            stable_board[1] <= '{default: 11};
+                            stable_board[6] <= '{default: 5};
+                            stable_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+                        
+                            uart_state <= HANDLE_DATA;
+                        end
+                    end else if (data_out_rx[15:14] == 2'b00) begin
+                        // implement move
+                        stable_board[data_out_rx[7:5]][data_out_rx[4:2]] <= stable_board[data_out_rx[13:11]][data_out_rx[10:8]];
+                        stable_board[data_out_rx[13:11]][data_out_rx[10:8]] <= 15;
+
+                        curr_player <= ~curr_player;
+                        uart_state <= HANDLE_DATA;
+                        start_counter <= 1;
+                    end
+                end
+                HANDLE_DATA: begin
+                    override <= 0;
+                    uart_state <= WAIT_DATA;
+                end
+            endcase
+
+            // TX Port Handler
+            if (setup_complete) begin
+                player <= SW[3]; // Toggle player on key press
+                data_in_tx <= {2'b10, SW[3], SW[2:1], 11'b0};
+                data_in_valid <= 1;
+
+                // Setup Stable board
+                if (SW[3]) begin
+                    stable_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                    stable_board[1] <= '{default: 11};
+                    stable_board[6] <= '{default: 5};
+                    stable_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+                end
+            end else if (moved) begin
+                start_counter <= 1;
+                curr_player = ~player;
+                stable_board <= disp_board;
+                data_in_tx <= {2'b00, output_packet, 2'b00};
+                data_in_valid <= 1;
+            end else begin
+                data_in_valid <= 0;
+            end
+        end
+    end
+endmodule

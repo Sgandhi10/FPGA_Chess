@@ -92,22 +92,18 @@ module top  #(
     );
 
     // === FSM for screen transitions ===
+    logic setup_complete, override;
     screen_fsm #(
         .CLK_FREQ_HZ(SYS_CLK_FREQ_HZ)
     ) screen_fsm_inst (
         .clk(CLOCK_50),
         .reset_n(reset_n),
         .enter(key3out),
-        .state(state),
-    );
+        .override(override),
 
-    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
-        if (!reset_n) begin
-            player <= 0; // Start with white player
-        end else if (state ==  SETUP_SCREEN) begin
-            player <= SW[3]; // Toggle player on key press
-        end
-    end
+        .state(state),
+        .setup_complete(setup_complete)
+    );
 
     // === CDC Synchronization ===
     // Synchronize the state signal to the VGA_CLK domain
@@ -126,7 +122,9 @@ module top  #(
 
     move_state_t move_state;
     assign LED[3:2] = move_state;
+
     logic moved;
+    logic [11:0] output_packet;
 
     // === Board Controller ===
     board board_inst(
@@ -147,49 +145,39 @@ module top  #(
         .disp_board(disp_board), // 8x8 board output
         .square_highlight(square_highlight), // 8x8 board output
         .moved(moved),
+        .output_packet(output_packet),
 
         // debug
         .move_state(move_state)
     );
 
-    // === UART Communication ===
-    UART #(
-        .DATA_WIDTH(16),
-        .BAUD_RATE(115200),
-        .CLOCK_FREQ(50_000_000),
-        .PARITY(1),
-        .OVERSAMPLE(16)
-    ) uart_inst (
+    // === Communication ===
+    logic start_counter;
+    logic [15:0] data_out_rx;
+    logic [1:0] mode_sel;
+    UART_handler uart_handler_inst (
         .clk(CLOCK_50),
-        .rst_n(reset_n),
-        
-        .data_valid(),
-        .data_in_tx(),
-        .tx(TX),
+        .reset_n(reset_n),
 
-        .rx(RX),
-        .req_data(),
-        .data_out_rx(),
-        .pending_data_rx(),
-        .parity_error_rx(LED[9])
+        .disp_board(disp_board),
+        .output_packet(output_packet),
+        .SW(SW[3:1]),
+        .setup_complete(setup_complete),
+        .moved(moved),
+
+        .stable_board(stable_board),
+        .parity_error_rx(LED[9]),
+        .override(override),
+        .start_counter(start_counter),
+        .player(player),
+        .curr_player(curr_player), 
+        .data_out_rx(data_out_rx),
+        .mode_sel(mode_sel),
+
+        .RX(RX),
+        .TX(TX)
     );
 
-    // Temp Stable Board handler
-    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
-        if (~reset_n) begin
-            for (int i = 0; i < 8; i++)
-                stable_board[i] <= '{default: 0};
-            curr_player <= 0;
-        end
-        else begin
-            if (state == SETUP_SCREEN) begin
-                stable_board <= disp_board;   
-            end else if (moved) begin
-                curr_player = ~player;
-                stable_board <= disp_board;
-            end
-        end
-    end
 
     screen_gen #(
         .SCREEN_WIDTH(SCREEN_WIDTH),
@@ -208,13 +196,15 @@ module top  #(
         .vcount(vcount)
     );
 
+
+    // assign mode_sel = (data_out_rx[15:14] == 2'b10) ? data_out_rx[12:11] : SW[2:1];
     hex_counter #(
         .CLK_FREQ_HZ(SYS_CLK_FREQ_HZ)
     ) hex_counter_inst (
         .clk(CLOCK_50),
         .reset_n(reset_n),
-        .state(state),
-        .mode_sel(SW[2:1]),
+        .start(start_counter),
+        .mode_sel(mode_sel),
         .hex0(HEX0), .hex1(HEX1), .hex2(HEX2),
         .hex3(HEX3), .hex4(HEX4), .hex5(HEX5),
         .time_up(time_up)

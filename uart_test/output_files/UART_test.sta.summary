@@ -3,147 +3,147 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -4.378
-TNS   : -1042.927
+Slack : -4.732
+TNS   : -1303.755
 
 Type  : Slow 1100mV 85C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : -4.102
-TNS   : -60.955
+Slack : -4.328
+TNS   : -105.626
 
 Type  : Slow 1100mV 85C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : -2.818
-TNS   : -75.311
+Slack : -2.445
+TNS   : -78.909
 
 Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.320
+Slack : 0.140
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : 0.326
+Slack : 0.357
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : 0.707
+Slack : 0.584
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.731
-TNS   : -230.498
+Slack : -0.700
+TNS   : -275.958
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
 Slack : -0.394
-TNS   : -21.955
+TNS   : -25.015
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
 Slack : -0.394
-TNS   : -12.620
+TNS   : -16.525
 
 Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -4.458
-TNS   : -1001.215
+Slack : -4.570
+TNS   : -1253.057
 
 Type  : Slow 1100mV 0C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : -4.274
-TNS   : -62.360
+Slack : -4.466
+TNS   : -106.310
 
 Type  : Slow 1100mV 0C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : -2.804
-TNS   : -72.877
+Slack : -2.505
+TNS   : -76.718
 
 Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
-Slack : -0.066
-TNS   : -0.174
+Slack : -0.182
+TNS   : -0.199
 
 Type  : Slow 1100mV 0C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : 0.323
+Slack : 0.334
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : 0.688
+Slack : 0.560
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.752
-TNS   : -208.571
+Slack : -0.727
+TNS   : -249.867
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
 Slack : -0.394
-TNS   : -22.154
+TNS   : -24.426
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
 Slack : -0.394
-TNS   : -12.936
+TNS   : -16.108
 
 Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -2.439
-TNS   : -501.154
+Slack : -2.637
+TNS   : -647.479
 
 Type  : Fast 1100mV 85C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : -1.979
-TNS   : -27.513
+Slack : -2.069
+TNS   : -48.742
 
 Type  : Fast 1100mV 85C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : -1.535
-TNS   : -34.365
+Slack : -1.454
+TNS   : -35.063
 
 Type  : Fast 1100mV 85C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : 0.118
+Slack : 0.152
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.180
+Slack : 0.181
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : 0.317
+Slack : 0.306
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.795
-TNS   : -151.832
+Slack : -0.762
+TNS   : -181.550
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : -0.053
-TNS   : -0.443
+Slack : -0.068
+TNS   : -0.684
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : -0.043
-TNS   : -0.623
+Slack : 0.062
+TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -2.103
-TNS   : -423.037
+Slack : -2.232
+TNS   : -542.731
 
 Type  : Fast 1100mV 0C Model Setup 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : -1.886
-TNS   : -26.093
+Slack : -1.974
+TNS   : -45.596
 
 Type  : Fast 1100mV 0C Model Setup 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : -1.379
-TNS   : -29.758
+Slack : -1.317
+TNS   : -29.778
 
 Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
-Slack : -0.002
-TNS   : -0.002
+Slack : -0.031
+TNS   : -0.049
 
 Type  : Fast 1100mV 0C Model Hold 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : 0.101
+Slack : 0.124
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : 0.285
+Slack : 0.279
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.812
-TNS   : -181.006
+Slack : -0.790
+TNS   : -216.726
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|Baud_Tick:baud_gen|baud_tick'
-Slack : -0.022
-TNS   : -0.126
+Slack : -0.011
+TNS   : -0.084
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UART:uart_inst|UART_TX:uart_tx|baud_clk'
-Slack : -0.017
-TNS   : -0.166
+Slack : 0.091
+TNS   : 0.000
 
 ------------------------------------------------------------

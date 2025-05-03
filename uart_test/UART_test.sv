@@ -20,17 +20,17 @@ module UART_test (
 );
     // Internal signals
     logic rst_n, clk;
-    logic [7:0] data_in_tx;
+    logic [15:0] data_in_tx;
     logic data_valid;
     logic req_data;
-    logic [7:0] data_out_rx;
+    logic [15:0] data_out_rx;
     logic pending_data_rx;
     logic parity_error_rx;
 
     // Active low reset
     assign rst_n = KEY[0]; 
     assign clk = CLOCK_50;
-    assign data_in_tx = SW[7:0]; // 8-bit data to be sent over UART
+    assign data_in_tx = {SW[9:0], 6'd0}; // 16-bit data to be sent over UART
 
     // Key press handling
     keypress k1 (
@@ -41,7 +41,13 @@ module UART_test (
     );
     
     // UART instance
-    UART uart_inst (
+    UART #(
+		  .DATA_WIDTH(16),
+        .BAUD_RATE(115200),
+        .CLOCK_FREQ(50_000_000),
+        .PARITY(1),
+        .OVERSAMPLE(16)
+	 ) uart_inst (
         .clk(clk),
         .rst_n(rst_n),
         .data_valid(data_valid),
@@ -58,7 +64,7 @@ module UART_test (
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             req_data <= 0;
-            LED[7:0] <= 0;
+            LED[9:0] <= 0;
         end
         else begin
             req_data <= 0;
@@ -66,7 +72,7 @@ module UART_test (
                 req_data <= 1;
             end
             if (req_data) begin
-                LED[7:0] <= data_out_rx; // Display received data on LEDs
+                LED[9:0] <= data_out_rx[15:6]; // Display received data on LEDs
             end
         end
     end

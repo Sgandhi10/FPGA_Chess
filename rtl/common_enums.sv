@@ -20,4 +20,10 @@ package common_enums;
         POS_SEL,
         MOVE_VAL
     } move_state_t;
+
+    typedef enum logic [1:0] {
+        WAIT_DATA,
+        REQ_DATA,
+        HANDLE_DATA
+    } uart_state_t;
 endpackage

@@ -1,12 +1,12 @@
-Fitter Status : Successful - Mon Apr 14 20:07:26 2025
+Fitter Status : Successful - Thu May  1 16:21:33 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : UART_test
 Top-level Entity Name : UART_test
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 238 / 32,070 ( < 1 % )
-Total registers : 401
+Logic utilization (in ALMs) : 269 / 32,070 ( < 1 % )
+Total registers : 483
 Total pins : 27 / 457 ( 6 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 4,065,280 ( 0 % )

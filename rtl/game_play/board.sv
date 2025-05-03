@@ -24,6 +24,7 @@ module board (
     output logic [3:0]  disp_board [8][8],
     output logic        square_highlight [8][8], // 8x8 board output
     output logic        moved,
+    output logic [11:0] output_packet,
 
     // Debug
     output move_state_t move_state
@@ -59,25 +60,7 @@ module board (
 
             sel_val <= 15;
         end else begin
-            if (sys_state == SETUP_SCREEN) begin
-                // Setup screen based on player
-                if (player) begin
-                    disp_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
-                    disp_board[1] <= '{default: 11};
-                    disp_board[6] <= '{default: 5};
-                    disp_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
-                end else begin
-                    disp_board[0] <= '{0, 1, 2, 3, 4, 2, 1, 0};
-                    disp_board[1] <= '{default: 5};
-                    disp_board[6] <= '{default: 11};
-                    disp_board[7] <= '{6, 7, 8, 9, 10, 8, 7, 6};
-                end
-
-                // Always initialize middle rows
-                for (int i = 2; i <= 5; i++) begin
-                    disp_board[i] <= '{default: 15};
-                end
-            end else if (sys_state == CHESS_SCREEN) begin
+            if (sys_state == CHESS_SCREEN) begin
                 // Finite State Machine for move selection
                 case (move_state) 
                     PLAYER_SEL: begin
@@ -129,12 +112,12 @@ module board (
                                 y_pos <= y_pos - 1; 
                         end
                         if (key3out) begin
-                            if (disp_board[x_pos][y_pos] == 15 || ((disp_board[x_pos][y_pos] <= 5 && player) || 
-                                (disp_board[x_pos][y_pos] > 5  &&  ~player))) 
+                            if (stable_board[x_pos][y_pos] == 15 || ((stable_board[x_pos][y_pos] > 5 && player) || 
+                                (stable_board[x_pos][y_pos] <= 5  &&  ~player))) 
                             begin
                                 move_state <= MOVE_VAL;
-                            end else if (((disp_board[x_pos][y_pos] > 5 && player) || 
-                                (disp_board[x_pos][y_pos] <= 5  &&  ~player))) begin
+                            end else if (((stable_board[x_pos][y_pos] <= 5 && player) || 
+                                (stable_board[x_pos][y_pos] > 5  &&  ~player))) begin
                                 move_state <= PLAYER_SEL;
                             end
                         end
@@ -165,5 +148,7 @@ module board (
         updated_board = stable_board;
         updated_board[old_xpos][old_ypos] = 15;
         updated_board[x_pos][y_pos] = sel_val;
+
+        output_packet = {old_xpos, old_ypos, x_pos, y_pos};
     end
 endmodule

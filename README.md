@@ -1,14 +1,14 @@
 ## UART
-15: Piece Move
-14: Unused
+15: Piece Move (0)
+14: Unused (0)
 13-11: oldx
 10-8: oldy
 7-5: newx
 4-2: newy
-1-0: unused
+1-0: unused (0)
 
-15: Game State
-14: Unused
+15: Game State (1)
+14: Unused (0)
 13: Player
 12-11: Game Mode
 10-0: Unused

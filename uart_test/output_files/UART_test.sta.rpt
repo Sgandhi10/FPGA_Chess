@@ -1,5 +1,5 @@
 Timing Analyzer report for UART_test
-Mon Apr 14 20:07:57 2025
+Thu May  1 16:21:47 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -100,14 +100,14 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.34        ;
+; Average used               ; 1.38        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  11.5%      ;
-;     Processor 3            ;  11.4%      ;
-;     Processor 4            ;  11.2%      ;
+;     Processor 2            ;  12.8%      ;
+;     Processor 3            ;  12.6%      ;
+;     Processor 4            ;  12.3%      ;
 +----------------------------+-------------+
 
 
@@ -127,9 +127,9 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+---------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                  ; Note ;
 +------------+-----------------+---------------------------------------------+------+
-; 185.94 MHz ; 185.94 MHz      ; CLOCK_50                                    ;      ;
-; 261.92 MHz ; 261.92 MHz      ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ;      ;
-; 361.66 MHz ; 361.66 MHz      ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ;      ;
+; 174.46 MHz ; 174.46 MHz      ; CLOCK_50                                    ;      ;
+; 290.28 MHz ; 290.28 MHz      ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ;      ;
+; 384.76 MHz ; 384.76 MHz      ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ;      ;
 +------------+-----------------+---------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -145,9 +145,9 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -4.378 ; -1042.927     ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -4.102 ; -60.955       ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -2.818 ; -75.311       ;
+; CLOCK_50                                    ; -4.732 ; -1303.755     ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -4.328 ; -105.626      ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -2.445 ; -78.909       ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -156,9 +156,9 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------+-------+---------------+
 ; Clock                                       ; Slack ; End Point TNS ;
 +---------------------------------------------+-------+---------------+
-; CLOCK_50                                    ; 0.320 ; 0.000         ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.326 ; 0.000         ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.707 ; 0.000         ;
+; CLOCK_50                                    ; 0.140 ; 0.000         ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.357 ; 0.000         ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.584 ; 0.000         ;
 +---------------------------------------------+-------+---------------+
 
 
@@ -179,9 +179,9 @@ No paths to report.
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -0.731 ; -230.498      ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.394 ; -21.955       ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -0.394 ; -12.620       ;
+; CLOCK_50                                    ; -0.700 ; -275.958      ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.394 ; -25.015       ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -0.394 ; -16.525       ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -197,9 +197,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +------------+-----------------+---------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                  ; Note ;
 +------------+-----------------+---------------------------------------------+------+
-; 183.22 MHz ; 183.22 MHz      ; CLOCK_50                                    ;      ;
-; 262.88 MHz ; 262.88 MHz      ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ;      ;
-; 364.96 MHz ; 364.96 MHz      ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ;      ;
+; 179.53 MHz ; 179.53 MHz      ; CLOCK_50                                    ;      ;
+; 285.31 MHz ; 285.31 MHz      ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ;      ;
+; 381.1 MHz  ; 381.1 MHz       ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ;      ;
 +------------+-----------------+---------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -209,9 +209,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -4.458 ; -1001.215     ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -4.274 ; -62.360       ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -2.804 ; -72.877       ;
+; CLOCK_50                                    ; -4.570 ; -1253.057     ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -4.466 ; -106.310      ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -2.505 ; -76.718       ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -220,9 +220,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -0.066 ; -0.174        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.323  ; 0.000         ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.688  ; 0.000         ;
+; CLOCK_50                                    ; -0.182 ; -0.199        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.334  ; 0.000         ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.560  ; 0.000         ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -243,9 +243,9 @@ No paths to report.
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -0.752 ; -208.571      ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.394 ; -22.154       ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -0.394 ; -12.936       ;
+; CLOCK_50                                    ; -0.727 ; -249.867      ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.394 ; -24.426       ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -0.394 ; -16.108       ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -261,9 +261,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -2.439 ; -501.154      ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -1.979 ; -27.513       ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -1.535 ; -34.365       ;
+; CLOCK_50                                    ; -2.637 ; -647.479      ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -2.069 ; -48.742       ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -1.454 ; -35.063       ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -272,9 +272,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------------------------------------+-------+---------------+
 ; Clock                                       ; Slack ; End Point TNS ;
 +---------------------------------------------+-------+---------------+
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.118 ; 0.000         ;
-; CLOCK_50                                    ; 0.180 ; 0.000         ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.317 ; 0.000         ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.152 ; 0.000         ;
+; CLOCK_50                                    ; 0.181 ; 0.000         ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.306 ; 0.000         ;
 +---------------------------------------------+-------+---------------+
 
 
@@ -295,9 +295,9 @@ No paths to report.
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -0.795 ; -151.832      ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.053 ; -0.443        ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -0.043 ; -0.623        ;
+; CLOCK_50                                    ; -0.762 ; -181.550      ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.068 ; -0.684        ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.062  ; 0.000         ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -313,9 +313,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -2.103 ; -423.037      ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -1.886 ; -26.093       ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -1.379 ; -29.758       ;
+; CLOCK_50                                    ; -2.232 ; -542.731      ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -1.974 ; -45.596       ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -1.317 ; -29.778       ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -324,9 +324,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -0.002 ; -0.002        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.101  ; 0.000         ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.285  ; 0.000         ;
+; CLOCK_50                                    ; -0.031 ; -0.049        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 0.124  ; 0.000         ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.279  ; 0.000         ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -347,9 +347,9 @@ No paths to report.
 +---------------------------------------------+--------+---------------+
 ; Clock                                       ; Slack  ; End Point TNS ;
 +---------------------------------------------+--------+---------------+
-; CLOCK_50                                    ; -0.812 ; -181.006      ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.022 ; -0.126        ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -0.017 ; -0.166        ;
+; CLOCK_50                                    ; -0.790 ; -216.726      ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -0.011 ; -0.084        ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 0.091  ; 0.000         ;
 +---------------------------------------------+--------+---------------+
 
 
@@ -365,14 +365,14 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+-----------+--------+----------+---------+---------------------+
 ; Clock                                        ; Setup     ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
 +----------------------------------------------+-----------+--------+----------+---------+---------------------+
-; Worst-case Slack                             ; -4.458    ; -0.066 ; N/A      ; N/A     ; -0.812              ;
-;  CLOCK_50                                    ; -4.458    ; -0.066 ; N/A      ; N/A     ; -0.812              ;
-;  UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -2.818    ; 0.101  ; N/A      ; N/A     ; -0.394              ;
-;  UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -4.274    ; 0.285  ; N/A      ; N/A     ; -0.394              ;
-; Design-wide TNS                              ; -1179.193 ; -0.174 ; 0.0      ; 0.0     ; -265.073            ;
-;  CLOCK_50                                    ; -1042.927 ; -0.174 ; N/A      ; N/A     ; -230.498            ;
-;  UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -75.311   ; 0.000  ; N/A      ; N/A     ; -22.154             ;
-;  UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -62.360   ; 0.000  ; N/A      ; N/A     ; -12.936             ;
+; Worst-case Slack                             ; -4.732    ; -0.182 ; N/A      ; N/A     ; -0.790              ;
+;  CLOCK_50                                    ; -4.732    ; -0.182 ; N/A      ; N/A     ; -0.790              ;
+;  UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -2.505    ; 0.124  ; N/A      ; N/A     ; -0.394              ;
+;  UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -4.466    ; 0.279  ; N/A      ; N/A     ; -0.394              ;
+; Design-wide TNS                              ; -1488.29  ; -0.199 ; 0.0      ; 0.0     ; -317.498            ;
+;  CLOCK_50                                    ; -1303.755 ; -0.199 ; N/A      ; N/A     ; -275.958            ;
+;  UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; -78.909   ; 0.000  ; N/A      ; N/A     ; -25.015             ;
+;  UART:uart_inst|UART_TX:uart_tx|baud_clk     ; -106.310  ; 0.000  ; N/A      ; N/A     ; -16.525             ;
 +----------------------------------------------+-----------+--------+----------+---------+---------------------+
 
 
@@ -402,18 +402,18 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+--------------+-----------------+-----------------+
 ; KEY[2]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[3]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[8]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[9]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; CLOCK_50 ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[0]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; RXD      ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[6]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[7]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[1]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[2]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[3]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[8]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[9]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[4]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[5]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
-; SW[6]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[3]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[2]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; SW[1]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; SW[0]    ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 ; KEY[1]   ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
 +----------+--------------+-----------------+-----------------+
@@ -500,13 +500,13 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                  ; To Clock                                    ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                    ; CLOCK_50                                    ; 13552    ; 0        ; 0        ; 0        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; CLOCK_50                                    ; 288      ; 0        ; 0        ; 0        ;
+; CLOCK_50                                    ; CLOCK_50                                    ; 14841    ; 0        ; 0        ; 0        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; CLOCK_50                                    ; 356      ; 0        ; 0        ; 0        ;
 ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; CLOCK_50                                    ; 3        ; 0        ; 0        ; 0        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 405      ; 0        ; 0        ; 0        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 450      ; 0        ; 0        ; 0        ;
 ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 1        ; 1        ; 0        ; 0        ;
-; CLOCK_50                                    ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 32       ; 0        ; 0        ; 0        ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 78       ; 0        ; 0        ; 0        ;
+; CLOCK_50                                    ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 45       ; 0        ; 0        ; 0        ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 126      ; 0        ; 0        ; 0        ;
 +---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -516,13 +516,13 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                  ; To Clock                                    ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                    ; CLOCK_50                                    ; 13552    ; 0        ; 0        ; 0        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; CLOCK_50                                    ; 288      ; 0        ; 0        ; 0        ;
+; CLOCK_50                                    ; CLOCK_50                                    ; 14841    ; 0        ; 0        ; 0        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; CLOCK_50                                    ; 356      ; 0        ; 0        ; 0        ;
 ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; CLOCK_50                                    ; 3        ; 0        ; 0        ; 0        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 405      ; 0        ; 0        ; 0        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 450      ; 0        ; 0        ; 0        ;
 ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 1        ; 1        ; 0        ; 0        ;
-; CLOCK_50                                    ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 32       ; 0        ; 0        ; 0        ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 78       ; 0        ; 0        ; 0        ;
+; CLOCK_50                                    ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 45       ; 0        ; 0        ; 0        ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 126      ; 0        ; 0        ; 0        ;
 +---------------------------------------------+---------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -546,10 +546,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 11    ; 11   ;
-; Unconstrained Input Port Paths  ; 554   ; 554  ;
-; Unconstrained Output Ports      ; 9     ; 9    ;
-; Unconstrained Output Port Paths ; 9     ; 9    ;
+; Unconstrained Input Ports       ; 13    ; 13   ;
+; Unconstrained Input Port Paths  ; 670   ; 670  ;
+; Unconstrained Output Ports      ; 11    ; 11   ;
+; Unconstrained Output Port Paths ; 11    ; 11   ;
 +---------------------------------+-------+------+
 
 
@@ -580,6 +580,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SW[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[8]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[9]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -596,6 +598,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; LED[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[8]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[9]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; TXD         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
@@ -616,6 +620,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; SW[5]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[6]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; SW[7]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[8]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; SW[9]      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -632,6 +638,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; LED[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED[6]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LED[7]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[8]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LED[9]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; TXD         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +-------------+---------------------------------------------------------------------------------------+
 
@@ -642,7 +650,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Mon Apr 14 20:07:48 2025
+    Info: Processing started: Thu May  1 16:21:41 2025
 Info: Command: quartus_sta UART_test -c UART_test
 Info: qsta_default_script.tcl version: #1
 Warning (20013): Ignored 24 assignments for entity "top" -- entity does not exist in design
@@ -686,27 +694,27 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.378
+Info (332146): Worst-case setup slack is -4.732
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.378           -1042.927 CLOCK_50 
-    Info (332119):    -4.102             -60.955 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-    Info (332119):    -2.818             -75.311 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-Info (332146): Worst-case hold slack is 0.320
+    Info (332119):    -4.732           -1303.755 CLOCK_50 
+    Info (332119):    -4.328            -105.626 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):    -2.445             -78.909 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+Info (332146): Worst-case hold slack is 0.140
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.320               0.000 CLOCK_50 
-    Info (332119):     0.326               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):     0.707               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):     0.140               0.000 CLOCK_50 
+    Info (332119):     0.357               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):     0.584               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is -0.731
+Info (332146): Worst-case minimum pulse width slack is -0.700
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.731            -230.498 CLOCK_50 
-    Info (332119):    -0.394             -21.955 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):    -0.394             -12.620 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-Info (332114): Report Metastability: Found 8 synchronizer chains.
+    Info (332119):    -0.700            -275.958 CLOCK_50 
+    Info (332119):    -0.394             -25.015 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):    -0.394             -16.525 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+Info (332114): Report Metastability: Found 10 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
@@ -714,27 +722,27 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.458
+Info (332146): Worst-case setup slack is -4.570
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.458           -1001.215 CLOCK_50 
-    Info (332119):    -4.274             -62.360 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-    Info (332119):    -2.804             -72.877 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-Info (332146): Worst-case hold slack is -0.066
+    Info (332119):    -4.570           -1253.057 CLOCK_50 
+    Info (332119):    -4.466            -106.310 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):    -2.505             -76.718 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+Info (332146): Worst-case hold slack is -0.182
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.066              -0.174 CLOCK_50 
-    Info (332119):     0.323               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):     0.688               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):    -0.182              -0.199 CLOCK_50 
+    Info (332119):     0.334               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):     0.560               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is -0.752
+Info (332146): Worst-case minimum pulse width slack is -0.727
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.752            -208.571 CLOCK_50 
-    Info (332119):    -0.394             -22.154 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):    -0.394             -12.936 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-Info (332114): Report Metastability: Found 8 synchronizer chains.
+    Info (332119):    -0.727            -249.867 CLOCK_50 
+    Info (332119):    -0.394             -24.426 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):    -0.394             -16.108 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+Info (332114): Report Metastability: Found 10 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
@@ -742,60 +750,60 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.439
+Info (332146): Worst-case setup slack is -2.637
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.439            -501.154 CLOCK_50 
-    Info (332119):    -1.979             -27.513 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-    Info (332119):    -1.535             -34.365 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-Info (332146): Worst-case hold slack is 0.118
+    Info (332119):    -2.637            -647.479 CLOCK_50 
+    Info (332119):    -2.069             -48.742 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):    -1.454             -35.063 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+Info (332146): Worst-case hold slack is 0.152
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.118               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):     0.180               0.000 CLOCK_50 
-    Info (332119):     0.317               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):     0.152               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):     0.181               0.000 CLOCK_50 
+    Info (332119):     0.306               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is -0.795
+Info (332146): Worst-case minimum pulse width slack is -0.762
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.795            -151.832 CLOCK_50 
-    Info (332119):    -0.053              -0.443 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):    -0.043              -0.623 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-Info (332114): Report Metastability: Found 8 synchronizer chains.
+    Info (332119):    -0.762            -181.550 CLOCK_50 
+    Info (332119):    -0.068              -0.684 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):     0.062               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+Info (332114): Report Metastability: Found 10 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.103
+Info (332146): Worst-case setup slack is -2.232
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.103            -423.037 CLOCK_50 
-    Info (332119):    -1.886             -26.093 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-    Info (332119):    -1.379             -29.758 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-Info (332146): Worst-case hold slack is -0.002
+    Info (332119):    -2.232            -542.731 CLOCK_50 
+    Info (332119):    -1.974             -45.596 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):    -1.317             -29.778 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+Info (332146): Worst-case hold slack is -0.031
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.002              -0.002 CLOCK_50 
-    Info (332119):     0.101               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):     0.285               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+    Info (332119):    -0.031              -0.049 CLOCK_50 
+    Info (332119):     0.124               0.000 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):     0.279               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
-Info (332146): Worst-case minimum pulse width slack is -0.812
+Info (332146): Worst-case minimum pulse width slack is -0.790
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.812            -181.006 CLOCK_50 
-    Info (332119):    -0.022              -0.126 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
-    Info (332119):    -0.017              -0.166 UART:uart_inst|UART_TX:uart_tx|baud_clk 
-Info (332114): Report Metastability: Found 8 synchronizer chains.
+    Info (332119):    -0.790            -216.726 CLOCK_50 
+    Info (332119):    -0.011              -0.084 UART:uart_inst|Baud_Tick:baud_gen|baud_tick 
+    Info (332119):     0.091               0.000 UART:uart_inst|UART_TX:uart_tx|baud_clk 
+Info (332114): Report Metastability: Found 10 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 31 warnings
-    Info: Peak virtual memory: 5357 megabytes
-    Info: Processing ended: Mon Apr 14 20:07:57 2025
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Peak virtual memory: 5358 megabytes
+    Info: Processing ended: Thu May  1 16:21:47 2025
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:07
 
 

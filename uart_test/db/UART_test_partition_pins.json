@@ -36,6 +36,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "LED[8]",
+					"strict" : false
+				},
+				{
+					"name" : "LED[9]",
+					"strict" : false
+				},
+				{
 					"name" : "TXD",
 					"strict" : false
 				},
@@ -52,19 +60,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "SW[6]",
+					"strict" : false
+				},
+				{
 					"name" : "SW[7]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[1]",
+					"name" : "SW[8]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[2]",
-					"strict" : false
-				},
-				{
-					"name" : "SW[3]",
+					"name" : "SW[9]",
 					"strict" : false
 				},
 				{
@@ -76,7 +84,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "SW[6]",
+					"name" : "SW[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[1]",
 					"strict" : false
 				},
 				{

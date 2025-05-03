@@ -1,5 +1,5 @@
 Fitter report for UART_test
-Mon Apr 14 20:07:26 2025
+Thu May  1 16:21:33 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -64,15 +64,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +---------------------------------+------------------------------------------------+
-; Fitter Status                   ; Successful - Mon Apr 14 20:07:26 2025          ;
+; Fitter Status                   ; Successful - Thu May  1 16:21:33 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; UART_test                                      ;
 ; Top-level Entity Name           ; UART_test                                      ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 238 / 32,070 ( < 1 % )                         ;
-; Total registers                 ; 401                                            ;
+; Logic utilization (in ALMs)     ; 269 / 32,070 ( < 1 % )                         ;
+; Total registers                 ; 483                                            ;
 ; Total pins                      ; 27 / 457 ( 6 % )                               ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                          ;
@@ -159,30 +159,30 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.7%      ;
-;     Processor 3            ;   1.7%      ;
+;     Processor 2            ;   1.6%      ;
+;     Processor 3            ;   1.6%      ;
 ;     Processor 4            ;   1.6%      ;
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Netlist Optimizations                                                                                                                                                                                                                                                            ;
-+----------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+--------------------------------------------------------------+------------------+-----------------------+
-; Node                                               ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                                             ; Destination Port ; Destination Port Name ;
-+----------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+--------------------------------------------------------------+------------------+-----------------------+
-; CLOCK_50~inputCLKENA0                              ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                              ;                  ;                       ;
-; KEY[0]~inputCLKENA0                                ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                              ;                  ;                       ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[17]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|Baud_Tick:baud_gen|accumulator[17]~DUPLICATE  ;                  ;                       ;
-; UART:uart_inst|FIFO:fifo_tx|elements[0]            ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|elements[0]~DUPLICATE            ;                  ;                       ;
-; UART:uart_inst|FIFO:fifo_tx|elements[2]            ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|elements[2]~DUPLICATE            ;                  ;                       ;
-; UART:uart_inst|FIFO:fifo_tx|elements[3]            ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|elements[3]~DUPLICATE            ;                  ;                       ;
-; UART:uart_inst|FIFO:fifo_tx|head[1]                ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|head[1]~DUPLICATE                ;                  ;                       ;
-; UART:uart_inst|FIFO:fifo_tx|head[3]                ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|head[3]~DUPLICATE                ;                  ;                       ;
-; UART:uart_inst|UART_RX:uart_rx|bit_index[0]        ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_RX:uart_rx|bit_index[0]~DUPLICATE        ;                  ;                       ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[2]        ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_RX:uart_rx|shift_reg[2]~DUPLICATE        ;                  ;                       ;
-; UART:uart_inst|UART_TX:uart_tx|oversample_count[0] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_TX:uart_tx|oversample_count[0]~DUPLICATE ;                  ;                       ;
-; UART:uart_inst|UART_TX:uart_tx|oversample_count[1] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_TX:uart_tx|oversample_count[1]~DUPLICATE ;                  ;                       ;
-+----------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+--------------------------------------------------------------+------------------+-----------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Netlist Optimizations                                                                                                                                                                                                                                                                      ;
++---------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------------------------------------+------------------+-----------------------+
+; Node                                                    ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                                                  ; Destination Port ; Destination Port Name ;
++---------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------------------------------------+------------------+-----------------------+
+; CLOCK_50~inputCLKENA0                                   ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                                   ;                  ;                       ;
+; KEY[0]~inputCLKENA0                                     ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                                                   ;                  ;                       ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[16]       ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|Baud_Tick:baud_gen|accumulator[16]~DUPLICATE       ;                  ;                       ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[17]       ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|Baud_Tick:baud_gen|accumulator[17]~DUPLICATE       ;                  ;                       ;
+; UART:uart_inst|FIFO:fifo_tx|elements[2]                 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|elements[2]~DUPLICATE                 ;                  ;                       ;
+; UART:uart_inst|FIFO:fifo_tx|elements[4]                 ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|elements[4]~DUPLICATE                 ;                  ;                       ;
+; UART:uart_inst|FIFO:fifo_tx|head[1]                     ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|FIFO:fifo_tx|head[1]~DUPLICATE                     ;                  ;                       ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[3]             ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_RX:uart_rx|bit_index[3]~DUPLICATE             ;                  ;                       ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[4]             ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_RX:uart_rx|bit_index[4]~DUPLICATE             ;                  ;                       ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[12]            ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_RX:uart_rx|shift_reg[12]~DUPLICATE            ;                  ;                       ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT~DUPLICATE ;                  ;                       ;
+; UART:uart_inst|UART_TX:uart_tx|oversample_count[0]      ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; UART:uart_inst|UART_TX:uart_tx|oversample_count[0]~DUPLICATE      ;                  ;                       ;
++---------------------------------------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------------------------------------+------------------+-----------------------+
 
 
 +---------------------------------------------------------------------------------------------+
@@ -341,8 +341,8 @@ https://fpgasoftware.intel.com/eula.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 747 ) ; 0.00 % ( 0 / 747 )         ; 0.00 % ( 0 / 747 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 747 ) ; 0.00 % ( 0 / 747 )         ; 0.00 % ( 0 / 747 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 845 ) ; 0.00 % ( 0 / 845 )         ; 0.00 % ( 0 / 845 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 845 ) ; 0.00 % ( 0 / 845 )         ; 0.00 % ( 0 / 845 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -365,7 +365,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 747 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 845 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -381,14 +381,14 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 +-------------------------------------------------------------+--------------------+-------+
 ; Resource                                                    ; Usage              ; %     ;
 +-------------------------------------------------------------+--------------------+-------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 238 / 32,070       ; < 1 % ;
-; ALMs needed [=A-B+C]                                        ; 238                ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 300 / 32,070       ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 86                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 108                ;       ;
-;         [c] ALMs used for registers                         ; 106                ;       ;
+; Logic utilization (ALMs needed / total ALMs on device)      ; 269 / 32,070       ; < 1 % ;
+; ALMs needed [=A-B+C]                                        ; 269                ;       ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 345 / 32,070       ; 1 %   ;
+;         [a] ALMs used for LUT logic and registers           ; 100                ;       ;
+;         [b] ALMs used for LUT logic                         ; 112                ;       ;
+;         [c] ALMs used for registers                         ; 133                ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 62 / 32,070        ; < 1 % ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 76 / 32,070        ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32,070         ; 0 %   ;
 ;         [a] Due to location constrained logic               ; 0                  ;       ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
@@ -397,24 +397,24 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 ;                                                             ;                    ;       ;
 ; Difficulty packing design                                   ; Low                ;       ;
 ;                                                             ;                    ;       ;
-; Total LABs:  partially or completely used                   ; 46 / 3,207         ; 1 %   ;
-;     -- Logic LABs                                           ; 46                 ;       ;
+; Total LABs:  partially or completely used                   ; 49 / 3,207         ; 2 %   ;
+;     -- Logic LABs                                           ; 49                 ;       ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
 ;                                                             ;                    ;       ;
-; Combinational ALUT usage for logic                          ; 300                ;       ;
+; Combinational ALUT usage for logic                          ; 316                ;       ;
 ;     -- 7 input functions                                    ; 2                  ;       ;
-;     -- 6 input functions                                    ; 138                ;       ;
-;     -- 5 input functions                                    ; 20                 ;       ;
-;     -- 4 input functions                                    ; 21                 ;       ;
-;     -- <=3 input functions                                  ; 119                ;       ;
-; Combinational ALUT usage for route-throughs                 ; 88                 ;       ;
+;     -- 6 input functions                                    ; 157                ;       ;
+;     -- 5 input functions                                    ; 24                 ;       ;
+;     -- 4 input functions                                    ; 22                 ;       ;
+;     -- <=3 input functions                                  ; 111                ;       ;
+; Combinational ALUT usage for route-throughs                 ; 126                ;       ;
 ;                                                             ;                    ;       ;
-; Dedicated logic registers                                   ; 401                ;       ;
+; Dedicated logic registers                                   ; 483                ;       ;
 ;     -- By type:                                             ;                    ;       ;
-;         -- Primary logic registers                          ; 384 / 64,140       ; < 1 % ;
-;         -- Secondary logic registers                        ; 17 / 64,140        ; < 1 % ;
+;         -- Primary logic registers                          ; 465 / 64,140       ; < 1 % ;
+;         -- Secondary logic registers                        ; 18 / 64,140        ; < 1 % ;
 ;     -- By function:                                         ;                    ;       ;
-;         -- Design implementation registers                  ; 391                ;       ;
+;         -- Design implementation registers                  ; 473                ;       ;
 ;         -- Routing optimization registers                   ; 10                 ;       ;
 ;                                                             ;                    ;       ;
 ; Virtual pins                                                ; 0                  ;       ;
@@ -471,11 +471,11 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 ; Impedance control blocks                                    ; 0 / 4              ; 0 %   ;
 ; Hard Memory Controllers                                     ; 0 / 2              ; 0 %   ;
 ; Average interconnect usage (total/H/V)                      ; 0.4% / 0.4% / 0.3% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 5.5% / 6.1% / 4.0% ;       ;
-; Maximum fan-out                                             ; 344                ;       ;
-; Highest non-global fan-out                                  ; 36                 ;       ;
-; Total fan-out                                               ; 2755               ;       ;
-; Average fan-out                                             ; 3.26               ;       ;
+; Peak interconnect usage (total/H/V)                         ; 5.7% / 6.4% / 4.4% ;       ;
+; Maximum fan-out                                             ; 413                ;       ;
+; Highest non-global fan-out                                  ; 39                 ;       ;
+; Total fan-out                                               ; 3210               ;       ;
+; Average fan-out                                             ; 3.27               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
 
@@ -484,14 +484,14 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 +-------------------------------------------------------------+-----------------------+--------------------------------+
 ; Statistic                                                   ; Top                   ; hard_block:auto_generated_inst ;
 +-------------------------------------------------------------+-----------------------+--------------------------------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 238 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
-; ALMs needed [=A-B+C]                                        ; 238                   ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 300 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 86                    ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 108                   ; 0                              ;
-;         [c] ALMs used for registers                         ; 106                   ; 0                              ;
+; Logic utilization (ALMs needed / total ALMs on device)      ; 269 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
+; ALMs needed [=A-B+C]                                        ; 269                   ; 0                              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 345 / 32070 ( 1 % )   ; 0 / 32070 ( 0 % )              ;
+;         [a] ALMs used for LUT logic and registers           ; 100                   ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 112                   ; 0                              ;
+;         [c] ALMs used for registers                         ; 133                   ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                     ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 62 / 32070 ( < 1 % )  ; 0 / 32070 ( 0 % )              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 76 / 32070 ( < 1 % )  ; 0 / 32070 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32070 ( 0 % )     ; 0 / 32070 ( 0 % )              ;
 ;         [a] Due to location constrained logic               ; 0                     ; 0                              ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                     ; 0                              ;
@@ -500,27 +500,27 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 ;                                                             ;                       ;                                ;
 ; Difficulty packing design                                   ; Low                   ; Low                            ;
 ;                                                             ;                       ;                                ;
-; Total LABs:  partially or completely used                   ; 46 / 3207 ( 1 % )     ; 0 / 3207 ( 0 % )               ;
-;     -- Logic LABs                                           ; 46                    ; 0                              ;
+; Total LABs:  partially or completely used                   ; 49 / 3207 ( 2 % )     ; 0 / 3207 ( 0 % )               ;
+;     -- Logic LABs                                           ; 49                    ; 0                              ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
-; Combinational ALUT usage for logic                          ; 300                   ; 0                              ;
+; Combinational ALUT usage for logic                          ; 316                   ; 0                              ;
 ;     -- 7 input functions                                    ; 2                     ; 0                              ;
-;     -- 6 input functions                                    ; 138                   ; 0                              ;
-;     -- 5 input functions                                    ; 20                    ; 0                              ;
-;     -- 4 input functions                                    ; 21                    ; 0                              ;
-;     -- <=3 input functions                                  ; 119                   ; 0                              ;
-; Combinational ALUT usage for route-throughs                 ; 88                    ; 0                              ;
+;     -- 6 input functions                                    ; 157                   ; 0                              ;
+;     -- 5 input functions                                    ; 24                    ; 0                              ;
+;     -- 4 input functions                                    ; 22                    ; 0                              ;
+;     -- <=3 input functions                                  ; 111                   ; 0                              ;
+; Combinational ALUT usage for route-throughs                 ; 126                   ; 0                              ;
 ; Memory ALUT usage                                           ; 0                     ; 0                              ;
 ;     -- 64-address deep                                      ; 0                     ; 0                              ;
 ;     -- 32-address deep                                      ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Dedicated logic registers                                   ; 0                     ; 0                              ;
 ;     -- By type:                                             ;                       ;                                ;
-;         -- Primary logic registers                          ; 384 / 64140 ( < 1 % ) ; 0 / 64140 ( 0 % )              ;
-;         -- Secondary logic registers                        ; 17 / 64140 ( < 1 % )  ; 0 / 64140 ( 0 % )              ;
+;         -- Primary logic registers                          ; 465 / 64140 ( < 1 % ) ; 0 / 64140 ( 0 % )              ;
+;         -- Secondary logic registers                        ; 18 / 64140 ( < 1 % )  ; 0 / 64140 ( 0 % )              ;
 ;     -- By function:                                         ;                       ;                                ;
-;         -- Design implementation registers                  ; 391                   ; 0                              ;
+;         -- Design implementation registers                  ; 473                   ; 0                              ;
 ;         -- Routing optimization registers                   ; 10                    ; 0                              ;
 ;                                                             ;                       ;                                ;
 ;                                                             ;                       ;                                ;
@@ -538,8 +538,8 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 ;     -- Registered Output Connections                        ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Internal Connections                                        ;                       ;                                ;
-;     -- Total Connections                                    ; 2761                  ; 0                              ;
-;     -- Registered Connections                               ; 978                   ; 0                              ;
+;     -- Total Connections                                    ; 3216                  ; 0                              ;
+;     -- Registered Connections                               ; 1130                  ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; External Connections                                        ;                       ;                                ;
 ;     -- Top                                                  ; 0                     ; 0                              ;
@@ -571,8 +571,8 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 ; Name     ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
-; CLOCK_50 ; AF14  ; 3B       ; 32           ; 0            ; 0            ; 345                   ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
-; KEY[0]   ; AA14  ; 3B       ; 36           ; 0            ; 0            ; 177                   ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; CLOCK_50 ; AF14  ; 3B       ; 32           ; 0            ; 0            ; 414                   ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; KEY[0]   ; AA14  ; 3B       ; 36           ; 0            ; 0            ; 195                   ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; KEY[1]   ; AA15  ; 3B       ; 36           ; 0            ; 17           ; 2                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; KEY[2]   ; W15   ; 3B       ; 40           ; 0            ; 0            ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; KEY[3]   ; Y16   ; 3B       ; 40           ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
@@ -585,8 +585,8 @@ The pin-out file can be found in C:/Digital_Design_2/PRJ_Final/uart_test/output_
 ; SW[5]    ; AD12  ; 3A       ; 16           ; 0            ; 17           ; 17                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[6]    ; AE11  ; 3A       ; 4            ; 0            ; 34           ; 17                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[7]    ; AC9   ; 3A       ; 4            ; 0            ; 0            ; 17                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
-; SW[8]    ; AD10  ; 3A       ; 4            ; 0            ; 17           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
-; SW[9]    ; AE12  ; 3A       ; 2            ; 0            ; 57           ; 0                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; SW[8]    ; AD10  ; 3A       ; 4            ; 0            ; 17           ; 17                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; SW[9]    ; AE12  ; 3A       ; 2            ; 0            ; 57           ; 17                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 
 
@@ -1560,13 +1560,13 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+----------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                          ; Entity Name ; Library Name ;
 +----------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+----------------------------------------------+-------------+--------------+
-; |UART_test                 ; 237.5 (0.8)          ; 300.0 (4.8)                      ; 62.5 (3.9)                                        ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 300 (1)             ; 401 (9)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 27   ; 0            ; |UART_test                                   ; UART_test   ; work         ;
-;    |UART:uart_inst|        ; 235.7 (2.2)          ; 294.3 (2.5)                      ; 58.6 (0.3)                                        ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 297 (3)             ; 390 (5)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst                    ; UART        ; work         ;
-;       |Baud_Tick:baud_gen| ; 38.0 (38.0)          ; 38.0 (38.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 69 (69)             ; 34 (34)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|Baud_Tick:baud_gen ; Baud_Tick   ; work         ;
-;       |FIFO:fifo_rx|       ; 88.0 (88.0)          ; 105.3 (105.3)                    ; 17.2 (17.2)                                       ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 84 (84)             ; 145 (145)                 ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_rx       ; FIFO        ; work         ;
-;       |FIFO:fifo_tx|       ; 69.1 (69.1)          ; 102.9 (102.9)                    ; 33.8 (33.8)                                       ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 80 (80)             ; 150 (150)                 ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_tx       ; FIFO        ; work         ;
-;       |UART_RX:uart_rx|    ; 23.8 (23.8)          ; 24.7 (24.7)                      ; 0.8 (0.8)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 36 (36)             ; 30 (30)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_RX:uart_rx    ; UART_RX     ; work         ;
-;       |UART_TX:uart_tx|    ; 14.5 (14.5)          ; 20.9 (20.9)                      ; 6.4 (6.4)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 25 (25)             ; 26 (26)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_TX:uart_tx    ; UART_TX     ; work         ;
+; |UART_test                 ; 269.0 (0.8)          ; 344.0 (5.8)                      ; 75.0 (5.0)                                        ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 316 (1)             ; 483 (11)                  ; 0 (0)         ; 0                 ; 0     ; 0          ; 27   ; 0            ; |UART_test                                   ; UART_test   ; work         ;
+;    |UART:uart_inst|        ; 267.2 (2.2)          ; 337.2 (2.2)                      ; 70.0 (0.0)                                        ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 313 (3)             ; 470 (5)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst                    ; UART        ; work         ;
+;       |Baud_Tick:baud_gen| ; 37.5 (37.5)          ; 37.5 (37.5)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 68 (68)             ; 35 (35)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|Baud_Tick:baud_gen ; Baud_Tick   ; work         ;
+;       |FIFO:fifo_rx|       ; 93.3 (93.3)          ; 128.7 (128.7)                    ; 35.3 (35.3)                                       ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 94 (94)             ; 179 (179)                 ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_rx       ; FIFO        ; work         ;
+;       |FIFO:fifo_tx|       ; 92.1 (92.1)          ; 119.3 (119.3)                    ; 27.2 (27.2)                                       ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 90 (90)             ; 182 (182)                 ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|FIFO:fifo_tx       ; FIFO        ; work         ;
+;       |UART_RX:uart_rx|    ; 23.5 (23.5)          ; 27.5 (27.5)                      ; 4.0 (4.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 37 (37)             ; 34 (34)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_RX:uart_rx    ; UART_RX     ; work         ;
+;       |UART_TX:uart_tx|    ; 18.5 (18.5)          ; 22.0 (22.0)                      ; 3.5 (3.5)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 21 (21)             ; 35 (35)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|UART:uart_inst|UART_TX:uart_tx    ; UART_TX     ; work         ;
 ;    |keypress:k1|           ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 2 (2)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |UART_test|keypress:k1                       ; keypress    ; work         ;
 +----------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+----------------------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -1579,8 +1579,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------+----------+----+------+------+----+------+-------+--------+------------------------+--------------------------+
 ; KEY[2]   ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[3]   ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[8]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[9]    ; Input    ; -- ; --   ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; LED[0]   ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LED[1]   ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LED[2]   ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
@@ -1592,17 +1590,19 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; LED[8]   ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LED[9]   ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; TXD      ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
-; CLOCK_50 ; Input    ; -- ; (0)  ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; CLOCK_50 ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[0]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; RXD      ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; RXD      ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[6]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[7]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[1]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[2]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[3]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[4]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[8]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[9]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[4]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[5]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[6]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[0]    ; Input    ; -- ; (0)  ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[3]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[2]    ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[1]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[0]    ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[1]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 +----------+----------+----+------+------+----+------+-------+--------+------------------------+--------------------------+
 
@@ -1614,263 +1614,297 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------+-------------------+---------+
 ; KEY[2]                                                      ;                   ;         ;
 ; KEY[3]                                                      ;                   ;         ;
-; SW[8]                                                       ;                   ;         ;
-; SW[9]                                                       ;                   ;         ;
 ; CLOCK_50                                                    ;                   ;         ;
-;      - UART:uart_inst|Baud_Tick:baud_gen|baud_tick          ; 1                 ; 0       ;
+;      - UART:uart_inst|Baud_Tick:baud_gen|baud_tick          ; 0                 ; 0       ;
 ; KEY[0]                                                      ;                   ;         ;
 ;      - UART:uart_inst|UART_TX:uart_tx|baud_clk              ; 0                 ; 0       ;
 ;      - UART:uart_inst|Baud_Tick:baud_gen|baud_tick          ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~170                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~172                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~174                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~175                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~176                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~177                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~178                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~179                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~181                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~182                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~183                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~184                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~186                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~187                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~188                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_rx|data~189                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~170                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~172                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~174                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~175                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~176                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~177                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~178                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~179                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~181                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~182                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~183                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~184                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~186                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~187                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~188                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~189                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~212                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~214                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~216                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~217                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~218                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~219                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~220                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~221                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~223                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~224                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~225                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~226                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~228                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~229                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~230                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_rx|data~231                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~212                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~213                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~215                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~217                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~219                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~220                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~221                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~222                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~224                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~225                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~226                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~227                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~228                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~229                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~230                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~231                 ; 0                 ; 0       ;
 ;      - KEY[0]~inputCLKENA0                                  ; 0                 ; 0       ;
 ; RXD                                                         ;                   ;         ;
-;      - UART:uart_inst|UART_RX:uart_rx|LessThan1~0           ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector13~0          ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|oversample_count[1]~0 ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]~0   ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector8~0           ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector9~0           ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector10~0          ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Add1~0                ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector12~3          ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector7~1           ; 1                 ; 0       ;
-;      - UART:uart_inst|UART_RX:uart_rx|Selector11~2          ; 1                 ; 0       ;
-; SW[7]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[7]              ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~7                   ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~39                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~71                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~103                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~15                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~47                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~79                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~23                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~31                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~63                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~95                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~127                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~119feeder           ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~111feeder           ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~87feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~55feeder            ; 0                 ; 0       ;
-; SW[1]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[1]              ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~33                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~65                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~41                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~73                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~105                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~17                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~113                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~25                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~57                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~121                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~89feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~1feeder             ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~9feeder             ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~49feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~81feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~97feeder            ; 1                 ; 0       ;
-; SW[2]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[2]              ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~2                   ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~34                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~10                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~42                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~18                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~26                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~58                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~90                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~98feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~74feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~50feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~114feeder           ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~66feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~82feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~106feeder           ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~122feeder           ; 0                 ; 0       ;
-; SW[3]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[3]              ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~3                   ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~35                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~67                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~99                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~43                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~75                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~107                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~19                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~51                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~83                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~115                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~91                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~123                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~27feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~59feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~11feeder            ; 1                 ; 0       ;
-; SW[4]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[4]              ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~36                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~68                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~100                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~12                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~44                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~76                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~20                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~52                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~84                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~116                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~28                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~60                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~92                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~124                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~4feeder             ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~108feeder           ; 0                 ; 0       ;
-; SW[5]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[5]              ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~5                   ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~37                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~69                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~13                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~45                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~77                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~53                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~117                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~29                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~61                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~125                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~101feeder           ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~93feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~85feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~109feeder           ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~21feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|LessThan1~0           ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector13~2          ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|oversample_count[0]~0 ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]~0   ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector8~0           ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector9~0           ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector10~0          ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Add1~0                ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector12~2          ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector7~1           ; 0                 ; 0       ;
+;      - UART:uart_inst|UART_RX:uart_rx|Selector13~4          ; 0                 ; 0       ;
 ; SW[6]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[6]              ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~38                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~70                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~102                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~78                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~22                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~118                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~94                  ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~126                 ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~30feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~62feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~14feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~54feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~6feeder             ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~110feeder           ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~86feeder            ; 0                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~46feeder            ; 0                 ; 0       ;
-; SW[0]                                                       ;                   ;         ;
-;      - UART:uart_inst|FIFO:fifo_tx|data_out[0]              ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~0                   ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~32                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~64                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~96                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~8                   ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~40                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~72                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[12]             ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~6                   ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~46                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~86                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~126                 ; 1                 ; 0       ;
 ;      - UART:uart_inst|FIFO:fifo_tx|data~16                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~112                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~88                  ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~120                 ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~80feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~56                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~96                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~26                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~66                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~146                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~36                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~76                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~116                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~156                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~136feeder           ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~106feeder           ; 1                 ; 0       ;
+; SW[7]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[13]             ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~7                   ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~87                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~17                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~57                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~97                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~67                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~107                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~147                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~37                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~117                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~127feeder           ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~27feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~137feeder           ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~47feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~77feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~157feeder           ; 0                 ; 0       ;
+; SW[8]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[14]             ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~8                   ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~48                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~88                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~18                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~58                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~98                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~138                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~28                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~108                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~148                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~38                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~118                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~158                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~128feeder           ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~68feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~78feeder            ; 0                 ; 0       ;
+; SW[9]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[15]             ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~9                   ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~49                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~89                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~129                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~19                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~59                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~139                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~29                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~149                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~39                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~119                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~159                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~99feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~79feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~109feeder           ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~69feeder            ; 0                 ; 0       ;
+; SW[4]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[10]             ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~4                   ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~84                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~124                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~14                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~54                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~94                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~24                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~144                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~34                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~74                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~114                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~154                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~134feeder           ; 1                 ; 0       ;
 ;      - UART:uart_inst|FIFO:fifo_tx|data~104feeder           ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~48feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~56feeder            ; 1                 ; 0       ;
-;      - UART:uart_inst|FIFO:fifo_tx|data~24feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~64feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~44feeder            ; 1                 ; 0       ;
+; SW[5]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[11]             ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~5                   ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~85                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~125                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~15                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~55                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~65                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~105                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~145                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~35                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~115                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~155                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~45feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~95feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~75feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~135feeder           ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~25feeder            ; 1                 ; 0       ;
+; SW[3]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[9]              ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~43                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~83                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~123                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~13                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~53                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~93                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~133                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~103                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~143                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~113                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~153                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~23feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~3feeder             ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~33feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~63feeder            ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~73feeder            ; 0                 ; 0       ;
+; SW[2]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[8]              ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~2                   ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~42                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~122                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~12                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~52                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~92                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~22                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~62                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~142                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~32                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~72                  ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~112                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~152                 ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~132feeder           ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~102feeder           ; 0                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~82feeder            ; 0                 ; 0       ;
+; SW[1]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[7]              ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~41                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~121                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~11                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~51                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~61                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~141                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~71                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~111                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~151                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~91feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~101feeder           ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~1feeder             ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~31feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~81feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~21feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~131feeder           ; 1                 ; 0       ;
+; SW[0]                                                       ;                   ;         ;
+;      - UART:uart_inst|FIFO:fifo_tx|data_out[6]              ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~40                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~80                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~120                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~10                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~50                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~130                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~20                  ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~140                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~110                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~150                 ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~0feeder             ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~90feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~100feeder           ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~60feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~30feeder            ; 1                 ; 0       ;
+;      - UART:uart_inst|FIFO:fifo_tx|data~70feeder            ; 1                 ; 0       ;
 ; KEY[1]                                                      ;                   ;         ;
 ;      - keypress:k1|key_next_state.KEY_RELEASED~0            ; 0                 ; 0       ;
 ;      - keypress:k1|Selector1~0                              ; 0                 ; 0       ;
 +-------------------------------------------------------------+-------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                                                 ;
-+--------------------------------------------------------+--------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
-; Name                                                   ; Location           ; Fan-Out ; Usage                    ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------------------------------------------------------+--------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
-; CLOCK_50                                               ; PIN_AF14           ; 2       ; Clock                    ; no     ; --                   ; --               ; --                        ;
-; CLOCK_50                                               ; PIN_AF14           ; 344     ; Clock                    ; yes    ; Global Clock         ; GCLK4            ; --                        ;
-; KEY[0]                                                 ; PIN_AA14           ; 35      ; Async. clear             ; no     ; --                   ; --               ; --                        ;
-; KEY[0]                                                 ; PIN_AA14           ; 143     ; Async. clear             ; yes    ; Global Clock         ; GCLK5            ; --                        ;
-; UART:uart_inst|Baud_Tick:baud_gen|LessThan0~3          ; LABCELL_X46_Y1_N36 ; 34      ; Clock enable, Sync. load ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick            ; FF_X47_Y3_N35      ; 36      ; Clock                    ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data_out[6]~1              ; LABCELL_X57_Y1_N21 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data_out~0                 ; LABCELL_X56_Y1_N24 ; 8       ; Sync. load               ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~170                   ; LABCELL_X55_Y3_N39 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~172                   ; LABCELL_X56_Y2_N24 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~174                   ; LABCELL_X53_Y3_N0  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~175                   ; LABCELL_X56_Y2_N45 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~176                   ; LABCELL_X56_Y2_N12 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~177                   ; LABCELL_X56_Y2_N42 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~178                   ; LABCELL_X53_Y3_N24 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~179                   ; LABCELL_X56_Y2_N0  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~181                   ; LABCELL_X57_Y2_N39 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~182                   ; LABCELL_X55_Y3_N21 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~183                   ; LABCELL_X57_Y4_N57 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~184                   ; LABCELL_X55_Y1_N3  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~186                   ; LABCELL_X55_Y4_N3  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~187                   ; LABCELL_X55_Y4_N42 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~188                   ; LABCELL_X56_Y4_N3  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_rx|data~189                   ; LABCELL_X56_Y4_N42 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data_out[2]~1              ; LABCELL_X10_Y2_N57 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data_out~0                 ; LABCELL_X10_Y2_N42 ; 8       ; Sync. load               ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~170                   ; LABCELL_X11_Y2_N21 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~172                   ; LABCELL_X10_Y4_N48 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~174                   ; LABCELL_X11_Y2_N45 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~175                   ; LABCELL_X9_Y4_N36  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~176                   ; LABCELL_X11_Y2_N48 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~177                   ; LABCELL_X10_Y2_N48 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~178                   ; LABCELL_X10_Y4_N18 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~179                   ; LABCELL_X9_Y4_N9   ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~181                   ; LABCELL_X11_Y2_N33 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~182                   ; MLABCELL_X8_Y3_N45 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~183                   ; LABCELL_X11_Y2_N24 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~184                   ; LABCELL_X11_Y1_N48 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~186                   ; LABCELL_X9_Y3_N6   ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~187                   ; LABCELL_X11_Y2_N0  ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~188                   ; LABCELL_X10_Y2_N18 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|FIFO:fifo_tx|data~189                   ; LABCELL_X11_Y4_N12 ; 8       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|UART_RX:uart_rx|bit_index[0]~0          ; LABCELL_X56_Y3_N48 ; 14      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[1]~0   ; LABCELL_X53_Y3_N57 ; 6       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]~0     ; LABCELL_X57_Y3_N30 ; 5       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk                ; FF_X25_Y2_N32      ; 21      ; Clock                    ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|UART_TX:uart_tx|bit_index[1]~0          ; MLABCELL_X8_Y3_N30 ; 11      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-; UART:uart_inst|UART_TX:uart_tx|current_state.DATA_BITS ; FF_X7_Y3_N41       ; 16      ; Sync. clear              ; no     ; --                   ; --               ; --                        ;
-; req_data                                               ; FF_X56_Y1_N56      ; 14      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
-+--------------------------------------------------------+--------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                                                  ;
++--------------------------------------------------------+---------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
+; Name                                                   ; Location            ; Fan-Out ; Usage                    ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++--------------------------------------------------------+---------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
+; CLOCK_50                                               ; PIN_AF14            ; 2       ; Clock                    ; no     ; --                   ; --               ; --                        ;
+; CLOCK_50                                               ; PIN_AF14            ; 413     ; Clock                    ; yes    ; Global Clock         ; GCLK4            ; --                        ;
+; KEY[0]                                                 ; PIN_AA14            ; 35      ; Async. clear             ; no     ; --                   ; --               ; --                        ;
+; KEY[0]                                                 ; PIN_AA14            ; 161     ; Async. clear             ; yes    ; Global Clock         ; GCLK7            ; --                        ;
+; UART:uart_inst|Baud_Tick:baud_gen|LessThan0~3          ; MLABCELL_X47_Y2_N54 ; 35      ; Clock enable, Sync. load ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick            ; FF_X53_Y2_N38       ; 39      ; Clock                    ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data_out[10]~1             ; LABCELL_X56_Y3_N12  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data_out~0                 ; LABCELL_X57_Y2_N57  ; 10      ; Sync. load               ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~212                   ; LABCELL_X55_Y5_N36  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~214                   ; LABCELL_X56_Y4_N54  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~216                   ; LABCELL_X56_Y3_N39  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~217                   ; LABCELL_X56_Y4_N51  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~218                   ; LABCELL_X55_Y1_N0   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~219                   ; LABCELL_X56_Y4_N48  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~220                   ; LABCELL_X57_Y3_N12  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~221                   ; LABCELL_X56_Y4_N42  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~223                   ; LABCELL_X56_Y5_N12  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~224                   ; LABCELL_X57_Y4_N15  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~225                   ; LABCELL_X57_Y4_N57  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~226                   ; LABCELL_X57_Y3_N39  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~228                   ; LABCELL_X53_Y3_N12  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~229                   ; LABCELL_X56_Y4_N0   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~230                   ; LABCELL_X56_Y4_N6   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_rx|data~231                   ; LABCELL_X56_Y3_N51  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data_out[13]~1             ; LABCELL_X10_Y3_N6   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data_out~0                 ; LABCELL_X9_Y3_N48   ; 10      ; Sync. load               ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~212                   ; LABCELL_X10_Y2_N24  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~213                   ; LABCELL_X10_Y2_N30  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~215                   ; MLABCELL_X8_Y3_N0   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~217                   ; LABCELL_X9_Y1_N36   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~219                   ; LABCELL_X10_Y3_N33  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~220                   ; LABCELL_X10_Y3_N0   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~221                   ; LABCELL_X9_Y1_N42   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~222                   ; MLABCELL_X8_Y3_N21  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~224                   ; LABCELL_X11_Y3_N36  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~225                   ; LABCELL_X10_Y3_N12  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~226                   ; LABCELL_X10_Y3_N21  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~227                   ; LABCELL_X10_Y3_N57  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~228                   ; LABCELL_X10_Y3_N3   ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~229                   ; LABCELL_X10_Y3_N48  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~230                   ; LABCELL_X9_Y1_N0    ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|FIFO:fifo_tx|data~231                   ; LABCELL_X10_Y3_N42  ; 10      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[4]~0          ; LABCELL_X56_Y2_N15  ; 18      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[0]~0   ; LABCELL_X56_Y2_N27  ; 6       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]~0     ; LABCELL_X57_Y2_N39  ; 5       ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk                ; FF_X18_Y2_N56       ; 31      ; Clock                    ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.DATA_BITS ; FF_X13_Y2_N17       ; 25      ; Sync. clear, Sync. load  ; no     ; --                   ; --               ; --                        ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[1]~0          ; LABCELL_X13_Y2_N39  ; 20      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
+; req_data                                               ; FF_X57_Y2_N26       ; 16      ; Clock enable             ; no     ; --                   ; --               ; --                        ;
++--------------------------------------------------------+---------------------+---------+--------------------------+--------+----------------------+------------------+---------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------+
@@ -1878,8 +1912,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------+----------+---------+----------------------+------------------+---------------------------+
 ; Name     ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +----------+----------+---------+----------------------+------------------+---------------------------+
-; CLOCK_50 ; PIN_AF14 ; 344     ; Global Clock         ; GCLK4            ; --                        ;
-; KEY[0]   ; PIN_AA14 ; 143     ; Global Clock         ; GCLK5            ; --                        ;
+; CLOCK_50 ; PIN_AF14 ; 413     ; Global Clock         ; GCLK4            ; --                        ;
+; KEY[0]   ; PIN_AA14 ; 161     ; Global Clock         ; GCLK7            ; --                        ;
 +----------+----------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1888,14 +1922,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+---------------------------+
 ; Routing Resource Type                       ; Usage                     ;
 +---------------------------------------------+---------------------------+
-; Block interconnects                         ; 1,047 / 289,320 ( < 1 % ) ;
-; C12 interconnects                           ; 20 / 13,420 ( < 1 % )     ;
-; C2 interconnects                            ; 368 / 119,108 ( < 1 % )   ;
-; C4 interconnects                            ; 195 / 56,300 ( < 1 % )    ;
+; Block interconnects                         ; 1,147 / 289,320 ( < 1 % ) ;
+; C12 interconnects                           ; 6 / 13,420 ( < 1 % )      ;
+; C2 interconnects                            ; 389 / 119,108 ( < 1 % )   ;
+; C4 interconnects                            ; 193 / 56,300 ( < 1 % )    ;
 ; DQS bus muxes                               ; 0 / 25 ( 0 % )            ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )            ;
 ; DQS-9 I/O buses                             ; 0 / 25 ( 0 % )            ;
-; Direct links                                ; 135 / 289,320 ( < 1 % )   ;
+; Direct links                                ; 124 / 289,320 ( < 1 % )   ;
 ; Global clocks                               ; 2 / 16 ( 13 % )           ;
 ; HPS SDRAM PLL inputs                        ; 0 / 1 ( 0 % )             ;
 ; HPS SDRAM PLL outputs                       ; 0 / 1 ( 0 % )             ;
@@ -1951,13 +1985,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HPS_INTERFACE_TPIU_TRACE_INPUTs             ; 0 / 2 ( 0 % )             ;
 ; HPS_INTERFACE_TPIU_TRACE_OUTPUTs            ; 0 / 33 ( 0 % )            ;
 ; Horizontal periphery clocks                 ; 0 / 72 ( 0 % )            ;
-; Local interconnects                         ; 151 / 84,580 ( < 1 % )    ;
+; Local interconnects                         ; 141 / 84,580 ( < 1 % )    ;
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )            ;
-; R14 interconnects                           ; 193 / 12,676 ( 2 % )      ;
-; R14/C12 interconnect drivers                ; 200 / 20,720 ( < 1 % )    ;
-; R3 interconnects                            ; 553 / 130,992 ( < 1 % )   ;
-; R6 interconnects                            ; 603 / 266,960 ( < 1 % )   ;
-; Spine clocks                                ; 5 / 360 ( 1 % )           ;
+; R14 interconnects                           ; 143 / 12,676 ( 1 % )      ;
+; R14/C12 interconnect drivers                ; 143 / 20,720 ( < 1 % )    ;
+; R3 interconnects                            ; 575 / 130,992 ( < 1 % )   ;
+; R6 interconnects                            ; 689 / 266,960 ( < 1 % )   ;
+; Spine clocks                                ; 4 / 360 ( 1 % )           ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )        ;
 +---------------------------------------------+---------------------------+
 
@@ -2022,8 +2056,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Total Fail         ; 0         ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ;
 ; KEY[2]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; KEY[3]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[8]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[9]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LED[0]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LED[1]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; LED[2]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
@@ -2038,13 +2070,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; CLOCK_50           ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; KEY[0]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; RXD                ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[6]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[7]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[1]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[2]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[3]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[8]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[9]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[4]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[5]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
-; SW[6]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[3]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[2]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
+; SW[1]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; SW[0]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 ; KEY[1]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ;
 +--------------------+-----------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
@@ -2098,12 +2132,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------+---------------------------------------------+-------------------+
 ; Source Clock(s)                                          ; Destination Clock(s)                        ; Delay Added in ns ;
 +----------------------------------------------------------+---------------------------------------------+-------------------+
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick              ; CLOCK_50                                    ; 434.0             ;
-; UART:uart_inst|Baud_Tick:baud_gen|baud_tick              ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 39.4              ;
-; CLOCK_50,UART:uart_inst|Baud_Tick:baud_gen|baud_tick     ; CLOCK_50                                    ; 33.6              ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk                  ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 29.4              ;
-; CLOCK_50,UART:uart_inst|Baud_Tick:baud_gen|baud_tick,I/O ; CLOCK_50                                    ; 24.2              ;
-; CLOCK_50                                                 ; CLOCK_50                                    ; 17.6              ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick              ; CLOCK_50                                    ; 506.6             ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick              ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick ; 37.1              ;
+; CLOCK_50,UART:uart_inst|Baud_Tick:baud_gen|baud_tick,I/O ; CLOCK_50                                    ; 33.3              ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk                  ; UART:uart_inst|UART_TX:uart_tx|baud_clk     ; 30.1              ;
+; CLOCK_50,UART:uart_inst|Baud_Tick:baud_gen|baud_tick     ; CLOCK_50                                    ; 26.3              ;
+; CLOCK_50                                                 ; CLOCK_50                                    ; 17.2              ;
 +----------------------------------------------------------+---------------------------------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
@@ -2114,106 +2148,106 @@ This will disable optimization of problematic paths and expose them for further 
 +---------------------------------------------------------+---------------------------------------------------------+-------------------+
 ; Source Register                                         ; Destination Register                                    ; Delay Added in ns ;
 +---------------------------------------------------------+---------------------------------------------------------+-------------------+
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[3]             ; UART:uart_inst|FIFO:fifo_rx|data~75                     ; 3.338             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[6]             ; UART:uart_inst|FIFO:fifo_rx|data~62                     ; 3.270             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[5]             ; UART:uart_inst|FIFO:fifo_rx|data~61                     ; 3.270             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[4]             ; UART:uart_inst|FIFO:fifo_rx|data~36                     ; 3.270             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[1]             ; UART:uart_inst|FIFO:fifo_rx|data~65                     ; 3.270             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[2]             ; UART:uart_inst|FIFO:fifo_rx|data~66                     ; 3.256             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[0]             ; UART:uart_inst|FIFO:fifo_rx|data~72                     ; 3.230             ;
-; UART:uart_inst|UART_TX:uart_tx|tx_busy                  ; UART:uart_inst|start                                    ; 3.196             ;
-; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; UART:uart_inst|FIFO:fifo_rx|data~87                     ; 3.195             ;
-; UART:uart_inst|UART_RX:uart_rx|current_state.STOP_BIT   ; UART:uart_inst|data_valid_rx_d                          ; 3.172             ;
-; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 2.886             ;
-; UART:uart_inst|data_valid_rx_d                          ; UART:uart_inst|FIFO:fifo_rx|head[3]                     ; 2.442             ;
-; UART:uart_inst|FIFO:fifo_rx|elements[1]                 ; UART:uart_inst|FIFO:fifo_rx|data~59                     ; 1.644             ;
-; UART:uart_inst|FIFO:fifo_rx|elements[2]                 ; UART:uart_inst|FIFO:fifo_rx|data~59                     ; 1.644             ;
-; req_data                                                ; UART:uart_inst|FIFO:fifo_rx|data~59                     ; 1.644             ;
-; UART:uart_inst|FIFO:fifo_rx|elements[0]                 ; UART:uart_inst|FIFO:fifo_rx|data~59                     ; 1.644             ;
-; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; UART:uart_inst|FIFO:fifo_rx|data~59                     ; 1.644             ;
-; UART:uart_inst|FIFO:fifo_rx|elements[3]                 ; UART:uart_inst|FIFO:fifo_rx|data~59                     ; 1.644             ;
-; UART:uart_inst|UART_TX:uart_tx|oversample_count[2]      ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 1.443             ;
-; UART:uart_inst|UART_TX:uart_tx|oversample_count[1]      ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 1.443             ;
-; UART:uart_inst|UART_TX:uart_tx|oversample_count[0]      ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 1.443             ;
-; UART:uart_inst|FIFO:fifo_rx|head[3]                     ; UART:uart_inst|FIFO:fifo_rx|data~80                     ; 1.320             ;
-; UART:uart_inst|FIFO:fifo_rx|head[0]                     ; UART:uart_inst|FIFO:fifo_rx|data~80                     ; 1.320             ;
-; UART:uart_inst|FIFO:fifo_rx|head[1]                     ; UART:uart_inst|FIFO:fifo_rx|data~80                     ; 1.320             ;
-; UART:uart_inst|FIFO:fifo_rx|head[2]                     ; UART:uart_inst|FIFO:fifo_rx|data~80                     ; 1.320             ;
-; KEY[0]                                                  ; UART:uart_inst|FIFO:fifo_rx|data~80                     ; 1.320             ;
-; UART:uart_inst|UART_TX:uart_tx|bit_index[0]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 1.030             ;
-; UART:uart_inst|UART_TX:uart_tx|bit_index[1]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 1.008             ;
-; UART:uart_inst|UART_TX:uart_tx|current_state.IDLE       ; UART:uart_inst|UART_TX:uart_tx|current_state.START_BIT  ; 0.986             ;
-; UART:uart_inst|UART_TX:uart_tx|bit_index[3]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.976             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[5]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[4]             ; 0.957             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[1]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[0]             ; 0.957             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[0]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; 0.955             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[4]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[3]             ; 0.953             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[3]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[2]             ; 0.950             ;
-; UART:uart_inst|UART_TX:uart_tx|current_state.STOP_BIT   ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.948             ;
-; UART:uart_inst|UART_TX:uart_tx|current_state.DATA_BITS  ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.929             ;
-; UART:uart_inst|UART_TX:uart_tx|bit_index[2]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.928             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[0]             ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.920             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[1]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; 0.917             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[6]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[5]             ; 0.898             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[2]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[1]             ; 0.898             ;
-; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.891             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.882             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.844             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[3]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.838             ;
-; UART:uart_inst|UART_TX:uart_tx|shift_reg[7]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[6]             ; 0.712             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_sum[1]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; 0.697             ;
-; UART:uart_inst|UART_RX:uart_rx|current_state.IDLE       ; UART:uart_inst|UART_RX:uart_rx|oversample_sum[0]        ; 0.697             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_count[5]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.691             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_sum[3]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; 0.674             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[29]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.647             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_sum[2]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; 0.637             ;
-; UART:uart_inst|UART_RX:uart_rx|current_state.DATA_BITS  ; UART:uart_inst|UART_RX:uart_rx|bit_index[1]             ; 0.600             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_sum[0]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; 0.595             ;
-; UART:uart_inst|UART_RX:uart_rx|current_state.START_BIT  ; UART:uart_inst|UART_RX:uart_rx|current_state.DATA_BITS  ; 0.572             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[28]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[27]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[26]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[25]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[24]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[23]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[22]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[21]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[20]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[19]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[18]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[17]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[16]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.565             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[1]        ; UART:uart_inst|Baud_Tick:baud_gen|accumulator[31]       ; 0.541             ;
-; UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; 0.505             ;
-; UART:uart_inst|UART_TX:uart_tx|current_state.START_BIT  ; UART:uart_inst|UART_TX:uart_tx|current_state.DATA_BITS  ; 0.495             ;
-; UART:uart_inst|UART_RX:uart_rx|bit_index[2]             ; UART:uart_inst|UART_RX:uart_rx|bit_index[3]             ; 0.491             ;
-; UART:uart_inst|UART_RX:uart_rx|bit_index[0]             ; UART:uart_inst|UART_RX:uart_rx|bit_index[2]             ; 0.490             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[31]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
-; UART:uart_inst|UART_TX:uart_tx|parity_calc              ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.465             ;
-; UART:uart_inst|UART_RX:uart_rx|bit_index[3]             ; UART:uart_inst|UART_RX:uart_rx|current_state.PARITY_BIT ; 0.460             ;
-; UART:uart_inst|Baud_Tick:baud_gen|accumulator[30]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.460             ;
-; UART:uart_inst|UART_RX:uart_rx|bit_index[1]             ; UART:uart_inst|UART_RX:uart_rx|bit_index[3]             ; 0.439             ;
-; UART:uart_inst|FIFO:fifo_tx|elements[0]                 ; UART:uart_inst|FIFO:fifo_tx|elements[1]                 ; 0.430             ;
-; RXD                                                     ; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; 0.429             ;
-; UART:uart_inst|FIFO:fifo_tx|data~102                    ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|data~110                    ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|data~118                    ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|data~126                    ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|head[0]                     ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|head[1]                     ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|elements[1]                 ; UART:uart_inst|FIFO:fifo_tx|data_out[6]                 ; 0.423             ;
-; UART:uart_inst|FIFO:fifo_tx|data~122                    ; UART:uart_inst|FIFO:fifo_tx|data_out[2]                 ; 0.422             ;
-; UART:uart_inst|FIFO:fifo_tx|elements[4]                 ; UART:uart_inst|FIFO:fifo_tx|elements[0]                 ; 0.406             ;
-; UART:uart_inst|FIFO:fifo_rx|data~85                     ; UART:uart_inst|FIFO:fifo_rx|data_out[5]                 ; 0.384             ;
-; keypress:k1|key_state.KEY_RELEASED                      ; keypress:k1|key_state.KEY_PRESSED                       ; 0.382             ;
-; UART:uart_inst|FIFO:fifo_tx|elements[3]                 ; UART:uart_inst|FIFO:fifo_tx|elements[3]                 ; 0.378             ;
-; UART:uart_inst|FIFO:fifo_tx|data~98                     ; UART:uart_inst|FIFO:fifo_tx|data_out[2]                 ; 0.378             ;
-; UART:uart_inst|FIFO:fifo_tx|data~106                    ; UART:uart_inst|FIFO:fifo_tx|data_out[2]                 ; 0.378             ;
-; UART:uart_inst|FIFO:fifo_tx|data~114                    ; UART:uart_inst|FIFO:fifo_tx|data_out[2]                 ; 0.378             ;
-; UART:uart_inst|start                                    ; UART:uart_inst|pending                                  ; 0.372             ;
-; UART:uart_inst|fifo_tx_pop                              ; UART:uart_inst|FIFO:fifo_tx|elements[0]                 ; 0.365             ;
-; keypress:k1|key_state.KEY_PRESSED                       ; keypress:k1|key_state.KEY_RELEASED                      ; 0.362             ;
-; UART:uart_inst|tx_busy_d                                ; UART:uart_inst|pending                                  ; 0.348             ;
+; UART:uart_inst|UART_RX:uart_rx|current_state.STOP_BIT   ; UART:uart_inst|data_valid_rx_d                          ; 3.513             ;
+; UART:uart_inst|UART_TX:uart_tx|tx_busy                  ; UART:uart_inst|start                                    ; 3.452             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; UART:uart_inst|FIFO:fifo_rx|data~39                     ; 3.433             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[8]             ; UART:uart_inst|FIFO:fifo_rx|data~2                      ; 3.433             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[7]             ; UART:uart_inst|FIFO:fifo_rx|data~151                    ; 3.373             ;
+; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 3.090             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[13]            ; UART:uart_inst|FIFO:fifo_rx|data~127                    ; 2.859             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[11]            ; UART:uart_inst|FIFO:fifo_rx|data~125                    ; 2.859             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[14]            ; UART:uart_inst|FIFO:fifo_rx|data~148                    ; 2.852             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[9]             ; UART:uart_inst|FIFO:fifo_rx|data~133                    ; 2.846             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[6]             ; UART:uart_inst|FIFO:fifo_rx|data~130                    ; 2.846             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[12]            ; UART:uart_inst|FIFO:fifo_rx|data~76                     ; 2.845             ;
+; UART:uart_inst|UART_RX:uart_rx|shift_reg[10]            ; UART:uart_inst|FIFO:fifo_rx|data~134                    ; 2.845             ;
+; UART:uart_inst|data_valid_rx_d                          ; UART:uart_inst|FIFO:fifo_rx|head[3]                     ; 2.066             ;
+; UART:uart_inst|FIFO:fifo_rx|elements[1]                 ; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; 1.948             ;
+; UART:uart_inst|FIFO:fifo_rx|elements[2]                 ; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; 1.948             ;
+; UART:uart_inst|FIFO:fifo_rx|elements[0]                 ; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; 1.948             ;
+; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; 1.948             ;
+; UART:uart_inst|FIFO:fifo_rx|elements[3]                 ; UART:uart_inst|FIFO:fifo_rx|elements[4]                 ; 1.948             ;
+; req_data                                                ; UART:uart_inst|FIFO:fifo_rx|data~12                     ; 1.925             ;
+; UART:uart_inst|UART_TX:uart_tx|oversample_count[2]      ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 1.545             ;
+; UART:uart_inst|UART_TX:uart_tx|oversample_count[1]      ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 1.545             ;
+; UART:uart_inst|UART_TX:uart_tx|oversample_count[0]      ; UART:uart_inst|UART_TX:uart_tx|baud_clk                 ; 1.545             ;
+; UART:uart_inst|FIFO:fifo_rx|head[3]                     ; UART:uart_inst|FIFO:fifo_rx|data~120                    ; 1.412             ;
+; UART:uart_inst|FIFO:fifo_rx|head[0]                     ; UART:uart_inst|FIFO:fifo_rx|data~120                    ; 1.412             ;
+; UART:uart_inst|FIFO:fifo_rx|head[1]                     ; UART:uart_inst|FIFO:fifo_rx|data~120                    ; 1.412             ;
+; UART:uart_inst|FIFO:fifo_rx|head[2]                     ; UART:uart_inst|FIFO:fifo_rx|data~120                    ; 1.412             ;
+; KEY[0]                                                  ; UART:uart_inst|FIFO:fifo_rx|data~120                    ; 1.412             ;
+; UART:uart_inst|UART_TX:uart_tx|bit_index[2]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 1.042             ;
+; UART:uart_inst|UART_TX:uart_tx|bit_index[3]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 1.039             ;
+; UART:uart_inst|UART_TX:uart_tx|bit_index[4]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.997             ;
+; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; UART:uart_inst|UART_RX:uart_rx|shift_reg[14]            ; 0.970             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[0]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; 0.941             ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.IDLE       ; UART:uart_inst|UART_TX:uart_tx|current_state.START_BIT  ; 0.936             ;
+; UART:uart_inst|UART_TX:uart_tx|bit_index[1]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.934             ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.DATA_BITS  ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.921             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[1]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; 0.910             ;
+; UART:uart_inst|UART_TX:uart_tx|parity_calc              ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.906             ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.STOP_BIT   ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.896             ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.889             ;
+; UART:uart_inst|UART_TX:uart_tx|bit_index[0]             ; UART:uart_inst|UART_TX:uart_tx|current_state.PARITY_BIT ; 0.838             ;
+; UART:uart_inst|UART_RX:uart_rx|current_state.IDLE       ; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; 0.828             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[0]             ; UART:uart_inst|UART_TX:uart_tx|tx                       ; 0.823             ;
+; UART:uart_inst|UART_RX:uart_rx|current_state.DATA_BITS  ; UART:uart_inst|UART_RX:uart_rx|shift_reg[6]             ; 0.794             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[13]            ; UART:uart_inst|UART_TX:uart_tx|shift_reg[12]            ; 0.738             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[11]            ; UART:uart_inst|UART_TX:uart_tx|shift_reg[10]            ; 0.738             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[9]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[8]             ; 0.738             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[7]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[6]             ; 0.738             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[14]            ; UART:uart_inst|UART_TX:uart_tx|shift_reg[13]            ; 0.725             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[12]            ; UART:uart_inst|UART_TX:uart_tx|shift_reg[11]            ; 0.725             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[10]            ; UART:uart_inst|UART_TX:uart_tx|shift_reg[9]             ; 0.725             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[8]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[7]             ; 0.725             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[15]            ; UART:uart_inst|UART_TX:uart_tx|shift_reg[14]            ; 0.714             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[2]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.704             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_sum[1]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; 0.629             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[29]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.612             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[6]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[5]             ; 0.605             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_sum[3]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; 0.600             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[5]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[4]             ; 0.581             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[3]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[2]             ; 0.581             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_sum[2]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; 0.577             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[4]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[3]             ; 0.575             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[2]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[1]             ; 0.573             ;
+; UART:uart_inst|UART_TX:uart_tx|shift_reg[1]             ; UART:uart_inst|UART_TX:uart_tx|shift_reg[0]             ; 0.573             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[1]        ; UART:uart_inst|Baud_Tick:baud_gen|accumulator[31]       ; 0.547             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[5]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.545             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_sum[0]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; 0.541             ;
+; UART:uart_inst|UART_TX:uart_tx|current_state.START_BIT  ; UART:uart_inst|UART_TX:uart_tx|current_state.DATA_BITS  ; 0.539             ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[2]             ; UART:uart_inst|UART_RX:uart_rx|current_state.PARITY_BIT ; 0.534             ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[3]             ; UART:uart_inst|UART_RX:uart_rx|current_state.PARITY_BIT ; 0.531             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[28]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.527             ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[0]             ; UART:uart_inst|UART_RX:uart_rx|current_state.PARITY_BIT ; 0.514             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[31]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.503             ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[1]             ; UART:uart_inst|UART_RX:uart_rx|current_state.PARITY_BIT ; 0.490             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[27]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[26]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[25]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[24]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[23]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[22]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[21]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[20]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[19]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[18]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[17]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[16]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.488             ;
+; UART:uart_inst|Baud_Tick:baud_gen|accumulator[30]       ; UART:uart_inst|Baud_Tick:baud_gen|baud_tick             ; 0.443             ;
+; UART:uart_inst|FIFO:fifo_tx|elements[0]                 ; UART:uart_inst|FIFO:fifo_tx|elements[1]                 ; 0.437             ;
+; UART:uart_inst|UART_RX:uart_rx|current_state.START_BIT  ; UART:uart_inst|UART_RX:uart_rx|current_state.DATA_BITS  ; 0.436             ;
+; UART:uart_inst|FIFO:fifo_tx|elements[4]                 ; UART:uart_inst|FIFO:fifo_tx|elements[1]                 ; 0.423             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_sum[4]        ; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; 0.421             ;
+; UART:uart_inst|UART_RX:uart_rx|bit_index[4]             ; UART:uart_inst|UART_RX:uart_rx|current_state.PARITY_BIT ; 0.405             ;
+; UART:uart_inst|FIFO:fifo_tx|elements[3]                 ; UART:uart_inst|FIFO:fifo_tx|elements[4]                 ; 0.400             ;
+; RXD                                                     ; UART:uart_inst|UART_RX:uart_rx|shift_reg[15]            ; 0.395             ;
+; UART:uart_inst|tx_busy_d                                ; UART:uart_inst|pending                                  ; 0.395             ;
+; UART:uart_inst|FIFO:fifo_tx|head[0]                     ; UART:uart_inst|FIFO:fifo_tx|head[1]                     ; 0.391             ;
+; keypress:k1|key_state.KEY_RELEASED                      ; keypress:k1|key_state.KEY_PRESSED                       ; 0.391             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.391             ;
+; UART:uart_inst|UART_RX:uart_rx|oversample_count[3]      ; UART:uart_inst|UART_RX:uart_rx|oversample_count[4]      ; 0.391             ;
+; UART:uart_inst|FIFO:fifo_tx|elements[1]                 ; UART:uart_inst|FIFO:fifo_tx|elements[4]                 ; 0.379             ;
 +---------------------------------------------------------+---------------------------------------------------------+-------------------+
 Note: This table only shows the top 100 path(s) that have the largest delay added for hold.
 
@@ -2231,8 +2265,8 @@ Warning (292013): Feature LogicLock is only available with a valid subscription 
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
 Info (184020): Starting Fitter periphery placement operations
 Info (11191): Automatically promoted 2 clocks (2 global)
-    Info (11162): CLOCK_50~inputCLKENA0 with 338 fanout uses global clock CLKCTRL_G4
-    Info (11162): KEY[0]~inputCLKENA0 with 133 fanout uses global clock CLKCTRL_G7
+    Info (11162): CLOCK_50~inputCLKENA0 with 408 fanout uses global clock CLKCTRL_G4
+    Info (11162): KEY[0]~inputCLKENA0 with 151 fanout uses global clock CLKCTRL_G7
         Info (12525): This signal is driven by core routing -- it may be moved during placement to reduce routing delays
 Warning (16406): 1 global input pin(s) will use non-dedicated clock routing
     Warning (16407): Source REFCLK I/O is not placed onto a dedicated REFCLK input pin for global clock driver KEY[0]~inputCLKENA0, placed at CLKCTRL_G7
@@ -2318,32 +2352,32 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "VGA_R[7]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_SYNC_N" is assigned to location or region, but does not exist in design
     Warning (15706): Node "VGA_VS" is assigned to location or region, but does not exist in design
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:15
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:03
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:06
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:02
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 4% of the available device resources in the region that extends from location X45_Y0 to location X55_Y10
+    Info (170196): Router estimated peak interconnect usage is 5% of the available device resources in the region that extends from location X45_Y0 to location X55_Y10
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:10
-Info (11888): Total time spent on timing analysis during the Fitter is 1.50 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:07
+Info (11888): Total time spent on timing analysis during the Fitter is 1.53 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:06
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Digital_Design_2/PRJ_Final/uart_test/output_files/UART_test.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 79 warnings
-    Info: Peak virtual memory: 6647 megabytes
-    Info: Processing ended: Mon Apr 14 20:07:27 2025
-    Info: Elapsed time: 00:01:00
-    Info: Total CPU time (on all processors): 00:01:50
+    Info: Peak virtual memory: 6582 megabytes
+    Info: Processing ended: Thu May  1 16:21:33 2025
+    Info: Elapsed time: 00:00:46
+    Info: Total CPU time (on all processors): 00:01:40
 
 
 +----------------------------+
