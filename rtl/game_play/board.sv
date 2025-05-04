@@ -33,18 +33,11 @@ module board (
     logic [2:0] x_pos, y_pos, old_xpos, old_ypos;
     logic [3:0] updated_board [8][8];
     logic [3:0] sel_val;
-    // logic [2:0] stall;
 
     always_ff @(posedge CLOCK_50 or negedge reset_n) begin
         if (!reset_n) begin
-            // Initialize disp_board on reset
-            disp_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
-            disp_board[1] <= '{default: 11};
-            disp_board[6] <= '{default: 5};
-            disp_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
-
-            // Set middle rows to default (15)
-            for (int i = 2; i <= 5; i++) begin
+            // Set board to blank
+            for (int i = 0; i < 8; i++) begin
                 disp_board[i] <= '{default: 15};
             end
 
@@ -56,7 +49,6 @@ module board (
 
             move_state <= PLAYER_SEL;
             moved <= 0;
-            // stall <= 0;
 
             sel_val <= 15;
         end else begin
@@ -70,7 +62,8 @@ module board (
                             move_state <= PIECE_SEL;
                             x_pos <= 3;
                             y_pos <= 3;
-                            // stall <= 0;
+                            old_xpos <= 3;
+                            old_ypos <= 3;
                         end
                     end
                     PIECE_SEL: begin
@@ -127,12 +120,6 @@ module board (
                         disp_board <= updated_board;
                         moved <= 1'b0;
                         move_state <= PLAYER_SEL;
-                        // if (stall == 7) begin
-                        //     // update board
-                        //     moved <= 1'b0;
-                        //     move_state <= PLAYER_SEL;
-                        // end
-                        // stall <= stall + 1;
                     end
                     default: /* do nothing */;
                 endcase

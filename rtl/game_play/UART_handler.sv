@@ -28,6 +28,7 @@ module UART_handler(
     output logic        curr_player,
     output logic [15:0] data_out_rx,
     output logic [1:0]  mode_sel,
+    output logic        load_counter,
 
     // RX/TX
     input  logic RX,
@@ -57,7 +58,7 @@ module UART_handler(
         .req_data(req_data),
         .data_out_rx(data_out_rx),
         .pending_data_rx(pending_data_rx),
-        .parity_error_rx()
+        .parity_error_rx(parity_error_rx)
     );
 
     uart_state_t uart_state;
@@ -72,9 +73,9 @@ module UART_handler(
             override <= 0;
             start_counter <= 0;
             data_in_tx <= 0;
-            data_in_valid <= 1;
+            data_in_valid <= 0;
 
-            // Stable Board default (player 0)
+            // Stable Board default (player 0) -> White
             stable_board[0] <= '{0, 1, 2, 3, 4, 2, 1, 0};
             stable_board[1] <= '{default: 5};
             stable_board[2] <= '{default: 15};
@@ -87,7 +88,6 @@ module UART_handler(
             curr_player <= 0;
             uart_state <= WAIT_DATA;
             mode_sel_selector <= 0;
-            mode_sel_tx <= 0;
         end else begin
             // RX Port Handler
             case(uart_state)
@@ -112,13 +112,12 @@ module UART_handler(
                             override <= 1;
                             start_counter <= 0;
                             if (!data_out_rx[13]) begin
-                                stable_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                                stable_board[0] <= '{6, 7, 8, 10, 9, 8, 7, 6};
                                 stable_board[1] <= '{default: 11};
                                 stable_board[6] <= '{default: 5};
-                                stable_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+                                stable_board[7] <= '{0, 1, 2, 4, 3, 2, 1, 0};
                             end
                             mode_sel_selector <= 1;
-                            mode_sel_tx <= data_out_rx[12:11];
                         end
                         2'b00: begin
                             stable_board[pos2_x][pos2_y] <= stable_board[pos1_x][pos1_y];
@@ -144,13 +143,15 @@ module UART_handler(
 
                 // Setup Stable board
                 if (SW[3]) begin
-                    stable_board[0] <= '{6, 7, 8, 9, 10, 8, 7, 6};
+                    stable_board[0] <= '{6, 7, 8, 10, 9, 8, 7, 6};
                     stable_board[1] <= '{default: 11};
                     stable_board[6] <= '{default: 5};
-                    stable_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
+                    stable_board[7] <= '{0, 1, 2, 4, 3, 2, 1, 0};
                 end
+                load_counter <= 1;
                 start_counter <= 0;
             end else if (moved && !override) begin
+                load_counter <= 0;
                 start_counter <= 1;
                 curr_player <= ~player;
                 
@@ -164,6 +165,7 @@ module UART_handler(
                 data_in_tx <= {2'b00, output_packet, 2'b00};
                 data_in_valid <= 1;
             end else begin
+                load_counter <= 0;
                 data_in_valid <= 0;
             end
         end
@@ -174,5 +176,7 @@ module UART_handler(
         pos1_y = 3'd7 - data_out_rx[10:8];
         pos2_x = 3'd7 - data_out_rx[7:5];
         pos2_y = 3'd7 - data_out_rx[4:2];
+
+        mode_sel_tx = data_out_rx[12:11];
     end
 endmodule

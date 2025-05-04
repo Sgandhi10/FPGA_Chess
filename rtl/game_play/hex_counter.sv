@@ -13,6 +13,7 @@ module hex_counter #(
 )(
     input  logic             clk,         // 50 MHz system clock
     input  logic             reset_n,     // Active-low reset
+    input  logic             load,
     input  logic             start,       // Start counter
     input  logic [1:0]       mode_sel,    // Mode selector for initial time
     output logic [6:0]       hex0, hex1, hex2, hex3, hex4, hex5,
@@ -23,7 +24,8 @@ module hex_counter #(
     logic [17:0] total_cs;       // Countdown time in centiseconds (1/100s)
     logic [17:0] initial_time;   // Time preset from mode_sel
     logic [25:0] clk_counter;    // Clock divider for 100Hz tick
-    logic        start_flag;     // Ensure time loads only once
+    logic        start_flag;     // starts clock
+    logic        loaded;
 
     // Time breakdown into BCD units
     logic [7:0] cs, sec, min;
@@ -45,12 +47,16 @@ module hex_counter #(
             total_cs    <= 0;
             clk_counter <= 0;
             start_flag  <= 0;
+            loaded <= 0;
         end else begin
             // Load time once when entering CHESS_SCREEN
-            if (!start_flag && start) begin
+            if (load) begin
+                loaded <= 1;
                 total_cs <= initial_time;
+            end
+            if (!start_flag && start) begin
                 start_flag <= 1;
-            end else if (!start_flag) begin
+            end else if (!start_flag && !loaded) begin
                 total_cs <= initial_time;
             end
             

@@ -152,7 +152,7 @@ module top  #(
     );
 
     // === Communication ===
-    logic start_counter;
+    logic start_counter, load_counter;
     logic [15:0] data_out_rx;
     logic [1:0] mode_sel;
     UART_handler uart_handler_inst (
@@ -173,6 +173,7 @@ module top  #(
         .curr_player(curr_player), 
         .data_out_rx(data_out_rx),
         .mode_sel(mode_sel),
+        .load_counter(load_counter),
 
         .RX(RX),
         .TX(TX)
@@ -205,6 +206,7 @@ module top  #(
         .reset_n(reset_n),
         .start(start_counter),
         .mode_sel(mode_sel),
+        .load(load_counter || override),
         .hex0(HEX0), .hex1(HEX1), .hex2(HEX2),
         .hex3(HEX3), .hex4(HEX4), .hex5(HEX5),
         .time_up(time_up)
