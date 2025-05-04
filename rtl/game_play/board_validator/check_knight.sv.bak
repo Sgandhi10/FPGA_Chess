@@ -1,0 +1,7 @@
+/*Module: check_knight.sv
+ * check_knight.sv
+ Author: Aniruddh Chauhan
+    * Date: 2025-04-27
+    * Description:
+    * This module checks if a knight can attack another piece on a chessboard.
+*/

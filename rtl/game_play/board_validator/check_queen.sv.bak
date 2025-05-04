@@ -1,0 +1,10 @@
+/*Module:
+ * check_queen.sv
+ * Author: Aniruddh Chauhan
+ * Date: 2025-04-27
+ * Description:
+ * This module checks if a queen can attack another piece on a chessboard.
+ * It takes the positions of the queen and the target piece as inputs and
+ * outputs whether the queen can attack the piece.
+ *
+*/

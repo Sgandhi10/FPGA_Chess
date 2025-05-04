@@ -1,0 +1,11 @@
+/*Module:
+ * check_rook.sv
+ * 
+ * Description:
+ * This module checks if a rook can attack another piece on a chessboard.
+ * It takes the positions of the rook and the target piece as inputs and
+ * outputs whether the rook can attack the piece.
+ *
+ * Author: Aniruddh Chauhan
+ * Date: 2025-04-27
+ */

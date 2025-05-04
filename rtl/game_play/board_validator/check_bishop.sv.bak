@@ -1,0 +1,8 @@
+/*Module: 
+ * check_bishop.sv
+ Author: Aniruddh Chauhan
+    * Date: 2025-04-27
+    * Description:
+    * This module checks if a bishop can attack another piece on a chessboard.
+    * It takes the positions of the bishop and the target piece as inputs 
+*/
