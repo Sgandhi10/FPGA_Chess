@@ -6,17 +6,16 @@
 *******************************************************************************/
 
 module check_bishop (
-    input logic CLOCK_50,
+    input logic clk,
     input logic reset_n,
-
     input logic [2:0] old_x, old_y,
     input logic [2:0] new_x, new_y,
     input logic [2:0] h_delta, v_delta,
     input logic [3:0] piece_type,
     input logic [3:0] board_in [8][8],
 
-    output logic move_valid,
-    output logic checker_done
+    output logic cb_valid_move,
+    output logic cb_valid_output
 );
 
 typedef enum logic [1:0] {
@@ -27,7 +26,7 @@ typedef enum logic [1:0] {
 
 cb_state_t cb_current_state, cb_next_state;
 
-always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+always_ff @(posedge clk or negedge reset_n) begin
     if (!reset_n)
         cb_current_state <= CB_IDLE;
     else
@@ -35,9 +34,9 @@ always_ff @(posedge CLOCK_50 or negedge reset_n) begin
 end
 
 always_comb begin
+    cb_valid_move = 0;
+    cb_valid_output = 0;
     cb_next_state = cb_current_state;
-    move_valid = 0;
-    checker_done = 0;
 
     case (cb_current_state)
         CB_IDLE: begin
@@ -46,13 +45,13 @@ always_comb begin
 
         CB_CHECK_MOVE: begin
             if (h_delta == v_delta) begin
-                move_valid = 1; // Bishop diagonal move
+                cb_valid_move = 1; // Diagonal move
             end
             cb_next_state = CB_DONE;
         end
 
         CB_DONE: begin
-            checker_done = 1;
+            cb_valid_output = 1;
         end
     endcase
 end

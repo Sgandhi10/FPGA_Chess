@@ -35,8 +35,7 @@ module screen_gen #(
         24'h69923E,  // 2 – background
         24'hFFFFFF,  // 3 – white/piece
         24'h000000,  // 4 – transparent (will be ignored in logic)
-        24'hF5F682,  // 5 - light square highlight
-        24'hB9CA43   // 6 - dark square highlight
+        24'hF5F682  // 5 - light square highlight
     };
 
     // --- Constants for layout
@@ -107,7 +106,7 @@ module screen_gen #(
                     vcount >= BOARD_ORIGIN_Y && vcount < BOARD_ORIGIN_Y + 8 * CHESS_TILE_SIZE) begin
                     
                     if (square_highlight[tile_row][tile_col] == 1)
-                        selected_pixel = (board_pixel == 1) ? 6 : 5;
+                        selected_pixel = 5;
 
                     if (board[tile_row][tile_col] < 12) begin
                         piece_rom_addr = board[tile_row][tile_col] * CHESS_PIECE_SIZE * CHESS_PIECE_SIZE +

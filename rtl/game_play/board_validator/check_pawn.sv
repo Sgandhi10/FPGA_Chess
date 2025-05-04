@@ -8,15 +8,16 @@
 */
 
 module check_pawn (
-    input logic CLOCK_50,
+    input logic clk,
     input logic reset_n,
     input logic [2:0] old_x, old_y,
     input logic [2:0] new_x, new_y,
     input logic [2:0] h_delta, v_delta,
     input logic [3:0] piece_type,
     input logic [3:0] board_in [8][8],
-    output logic move_valid, // this will say MOVE (1) or REJECT (0)
-    output logic checker_done
+
+    output logic valid_move,    // Whether the move was valid
+    output logic valid_output   // Whether checker is done
 );
 
 typedef enum logic [1:0] {
@@ -28,7 +29,7 @@ typedef enum logic [1:0] {
 
 cp_state_t cp_current_state, cp_next_state;
 
-always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+always_ff @(posedge clk or negedge reset_n) begin
     if (!reset_n) begin
         cp_current_state <= CP_IDLE;
     end else begin
@@ -37,9 +38,9 @@ always_ff @(posedge CLOCK_50 or negedge reset_n) begin
 end
 
 always_comb begin
+    cp_valid_move = 0;
+    cp_valid_output = 0;
     cp_next_state = cp_current_state;
-    move_valid = 0;
-    checker_done = 0;
 
     case (cp_current_state)
         CP_IDLE: begin
@@ -55,11 +56,11 @@ always_comb begin
             if (piece_type == 4'd5) begin
                 if ((old_y == 6 && v_delta == 2 && board_in[old_y-1][old_x] == 4'd15 && board_in[new_y][new_x] == 4'd15) ||
                     (v_delta == 1 && board_in[new_y][new_x] == 4'd15 && new_y < old_y))
-                    move_valid = 1;
+                    cp_valid_move = 1;
             end else if (piece_type == 4'd11) begin
                 if ((old_y == 1 && v_delta == 2 && board_in[old_y+1][old_x] == 4'd15 && board_in[new_y][new_x] == 4'd15) ||
                     (v_delta == 1 && board_in[new_y][new_x] == 4'd15 && new_y > old_y))
-                    move_valid = 1;
+                    cp_valid_move = 1;
             end
             cp_next_state = CP_DONE;
         end
@@ -67,16 +68,16 @@ always_comb begin
         CP_CHECK_DIAGONAL: begin
             if (piece_type == 4'd5) begin
                 if (new_y < old_y && board_in[new_y][new_x] != 4'd15)
-                    move_valid = 1;
+                    cp_valid_move = 1;
             end else if (piece_type == 4'd11) begin
                 if (new_y > old_y && board_in[new_y][new_x] != 4'd15)
-                    move_valid = 1;
+                    cp_valid_move = 1;
             end
             cp_next_state = CP_DONE;
         end
 
         CP_DONE: begin
-            checker_done = 1;
+            cp_valid_output = 1'b1;
         end
     endcase
 end

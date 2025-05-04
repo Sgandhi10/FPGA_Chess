@@ -29,10 +29,30 @@ module board (
     // Debug
     output move_state_t move_state
 );
+    // === Board Validation Module ===
+    logic valid_input, valid_move, valid_output;
+    board_validator board_validator_inst (
+        .clk(clk),
+        .reset_n(reset_n),
+
+        .old_x(old_xpos),
+        .old_y(old_ypos),
+        .new_x(x_pos),
+        .new_y(y_pos),
+        .piece_type(sel_val),
+        .board_in(disp_board),
+        .valid_input(valid_input),
+
+        .valid_move(valid_move),
+        .valid_output(valid_output)
+
+    );
+
     // move_state_t move_state;
     logic [2:0] x_pos, y_pos, old_xpos, old_ypos;
     logic [3:0] updated_board [8][8];
     logic [3:0] sel_val;
+    logic board_updated;
 
     always_ff @(posedge CLOCK_50 or negedge reset_n) begin
         if (!reset_n) begin
@@ -51,6 +71,8 @@ module board (
             moved <= 0;
 
             sel_val <= 15;
+            valid_input <= 0;
+            board_updated <= 0;
         end else begin
             if (sys_state == CHESS_SCREEN) begin
                 // Finite State Machine for move selection
@@ -58,6 +80,8 @@ module board (
                     PLAYER_SEL: begin
                         disp_board <= stable_board;
                         moved <= 0;
+                        valid_input <= 0;
+                        board_updated <= 0;
                         if (player == curr_player) begin
                             move_state <= PIECE_SEL;
                             x_pos <= 3;
@@ -108,7 +132,6 @@ module board (
                                 (stable_board[x_pos][y_pos] <= 5  &&  ~player))) 
                             begin
                                 move_state <= MOVE_VAL;
-                                moved <= 1'b1;
                             end else if (((stable_board[x_pos][y_pos] <= 5 && player) || 
                                 (stable_board[x_pos][y_pos] > 5  &&  ~player))) begin
                                 move_state <= PLAYER_SEL;
@@ -118,8 +141,19 @@ module board (
                     MOVE_VAL: begin
                         // if valid
                         disp_board <= updated_board;
-                        moved <= 1'b0;
-                        move_state <= PLAYER_SEL;
+                        board_updated <= 1;
+                        
+                        if (valid_output) begin
+                            valid_input <= 0;
+                            move_state <= PLAYER_SEL;
+                            if (valid_move) begin
+                                moved <= 1;
+                            end else begin
+                                moved <= 0;
+                            end
+                        end else if (board_updated) begin
+                            valid_input <= 1;
+                        end 
                     end
                     default: /* do nothing */;
                 endcase
