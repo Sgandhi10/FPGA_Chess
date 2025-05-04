@@ -16,8 +16,8 @@ module check_pawn (
     input logic [3:0] piece_type,
     input logic [3:0] board_in [8][8],
 
-    output logic valid_move,    // Whether the move was valid
-    output logic valid_output   // Whether checker is done
+    output logic cp_valid_move,    // Whether the move was valid
+    output logic cp_valid_output   // Whether checker is done
 );
 
 typedef enum logic [1:0] {

@@ -39,6 +39,12 @@ logic ck_valid_move;//knight
 logic cb_valid_move;//bishop
 logic cq_valid_move;//queen
 
+logic cp_valid_output;//pawn
+logic cr_valid_output;//rook
+logic ck_valid_output;//knight
+logic cb_valid_output;//bishop
+logic cq_valid_output;//queen
+
 
 // Instantiate checker modules
 check_pawn pawn_checker (
@@ -54,10 +60,10 @@ check_pawn pawn_checker (
     .piece_type(piece_type),
     .board_in(board_in),
     //valid_move is the if the move itself was valid or invalid
-    .valid_move(cp_valid_move),
+    .cp_valid_move(cp_valid_move),
     //valid_output is a checkpoint...when it toggles to 1 this means that the move checker files has 
     //gone throught the FSM to validate if the move is valid or not
-    .valid_output(valid_output)
+    .cp_valid_output(cp_valid_output)
    
 );
 
@@ -73,8 +79,8 @@ check_knight knight_checker (
     .v_delta(v_delta_reg),
     .piece_type(piece_type),
     .board_in(board_in),
-    .valid_move(ck_valid_move),
-    .valid_output(valid_output) // shared valid_output signal
+    .ck_valid_move(ck_valid_move),
+    .ck_valid_output(ck_valid_output) // shared valid_output signal
 );
 
 // Instantiate Bishop Checker
@@ -89,8 +95,8 @@ check_bishop bishop_checker (
     .v_delta(v_delta_reg),
     .piece_type(piece_type),
     .board_in(board_in),
-    .valid_move(cb_valid_move),
-    .valid_output(valid_output) // shared valid_output signal
+    .cb_valid_move(cb_valid_move),
+    .cb_valid_output(cb_valid_output) // shared valid_output signal
 );
 
 // Instantiate Queen Checker
@@ -105,8 +111,8 @@ check_queen queen_checker (
     .v_delta(v_delta_reg),
     .piece_type(piece_type),
     .board_in(board_in),
-    .valid_move(cq_valid_move),
-    .valid_output(valid_output) // shared valid_output signal
+    .cq_valid_move(cq_valid_move),
+    .cq_valid_output(cq_valid_output) // shared valid_output signal
 );
 
 // similar instantiations for rook, knight, bishop, queen checkers
@@ -137,32 +143,37 @@ always_ff @(posedge clk or negedge reset_n) begin
                 end
             end
             CHECK_PAWN: begin
-                if (valid_output) begin
-                    valid_move <= cp_valid_move;
+                if (cp_valid_output) begin
+                    valid_move   <= cp_valid_move;
+						  valid_output <= cp_valid_output;
                 end
             end
 
             CHECK_ROOK: begin
-                if (valid_output) begin
-                    valid_move <= cr_valid_move;
+                if (cr_valid_output) begin
+                    valid_move   <= cr_valid_move;
+						  valid_output <= cr_valid_output;
                 end
             end
 
             CHECK_KNIGHT: begin
-                if (valid_output) begin
-                    valid_move <= ck_valid_move;              
+                if (ck_valid_output) begin
+                    valid_move   <= ck_valid_move;
+						  valid_output <= ck_valid_output;						  
                 end
             end
 
             CHECK_BISHOP: begin
-                if (valid_output) begin
-                    valid_move <= cb_valid_move;
+                if (cb_valid_output) begin
+                    valid_move   <= cb_valid_move;
+						  valid_output <= cb_valid_output;				
                 end
             end
 
             CHECK_QUEEN: begin
-                if (valid_output) begin
+                if (cq_valid_output) begin
                     valid_move <= cq_valid_move;
+						  valid_move <= cq_valid_output;
                 end
             end
 

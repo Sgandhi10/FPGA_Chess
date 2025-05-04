@@ -29,7 +29,7 @@ module screen_gen #(
 );
    
     // --- Color Palette: index to RGB mapping
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [7] = '{
+    logic [(COLOR_DEPTH * 3)-1:0] color_array [6] = '{
         24'hEEEED2,  // 0 – light square (tan)
         24'h4B4847,  // 1 – dark square (green)
         24'h69923E,  // 2 – background
