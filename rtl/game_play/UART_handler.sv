@@ -71,6 +71,8 @@ module UART_handler(
             player <= 0;
             override <= 0;
             start_counter <= 0;
+            data_in_tx <= 0;
+            data_in_valid <= 1;
 
             // Stable Board default (player 0)
             stable_board[0] <= '{0, 1, 2, 3, 4, 2, 1, 0};
@@ -83,7 +85,6 @@ module UART_handler(
             stable_board[7] <= '{6, 7, 8, 9, 10, 8, 7, 6};
 
             curr_player <= 0;
-            data_in_tx <= '0;
             uart_state <= WAIT_DATA;
             mode_sel_selector <= 0;
             mode_sel_tx <= 0;
@@ -124,9 +125,11 @@ module UART_handler(
                             stable_board[pos1_x][pos1_y] <= 15;
                             start_counter <= 1;
                             curr_player <= ~curr_player;
+                            override <= 0;
                         end
                         default: begin
                             start_counter <= 0;
+                            override <= 0;
                         end
                     endcase
                     uart_state <= WAIT_DATA;
@@ -147,7 +150,7 @@ module UART_handler(
                     stable_board[7] <= '{0, 1, 2, 3, 4, 2, 1, 0};
                 end
                 start_counter <= 0;
-            end else if (moved) begin
+            end else if (moved && !override) begin
                 start_counter <= 1;
                 curr_player <= ~player;
                 
@@ -167,9 +170,9 @@ module UART_handler(
     end
 
     always_comb begin
-        pos1_x = data_out_rx[13:11] + 3'd7;
-        pos1_y = data_out_rx[10:8] + 3'd7;
-        pos2_x = data_out_rx[7:5] + 3'd7;
-        pos2_y = data_out_rx[4:2] + 3'd7;
+        pos1_x = 3'd7 - data_out_rx[13:11];
+        pos1_y = 3'd7 - data_out_rx[10:8];
+        pos2_x = 3'd7 - data_out_rx[7:5];
+        pos2_y = 3'd7 - data_out_rx[4:2];
     end
 endmodule
