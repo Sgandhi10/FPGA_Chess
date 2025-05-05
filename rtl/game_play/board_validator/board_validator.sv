@@ -124,106 +124,107 @@ module board_validator (
     // (I'll show this separately if you want)
 
 
-    assign h_delta_reg = (new_x > old_x) ? (new_x - old_x) : (old_x - new_x);
-    assign v_delta_reg = (new_y > old_y) ? (new_y - old_y) : (old_y - new_y);
+   // assign h_delta_reg = (new_x > old_x) ? (new_x - old_x) : (old_x - new_x);
+  //  assign v_delta_reg = (new_y > old_y) ? (new_y - old_y) : (old_y - new_y);
 
-    always_ff @(posedge clk or negedge reset_n) begin
+    always_ff @(posedge clk or negedge reset_n) 
+    begin
         if (!reset_n) begin
             current_state <= IDLE;
             valid_move <= 0;
             valid_output <= 0;
         end 
         else begin          
-            if (valid_input) begin
-                // PAWN
-                if ((piece_type == 5 || piece_type == 11) && cp_valid_output) begin
-                    valid_move   <= cp_valid_move;
-                    valid_output <= 1;
-                end
-                else begin
-                    valid_move   <= 0;
-                    valid_output <= 0;
-                end
-            end
-            // case (current_state)
-            //     IDLE: begin 
+            // if (valid_input) begin
+            //     // PAWN
+            //     if ((piece_type == 5 || piece_type == 11) && cp_valid_output) begin
+            //         valid_move   <= cp_valid_move;
+            //         valid_output <= cp_valid_output;
+            //     end
+            //     else begin
+            //         valid_move   <= 0;
             //         valid_output <= 0;
-			// 		valid_move <= 0;
-            //         if (valid_input) begin
-            //             h_delta_reg <= (new_x > old_x) ? (new_x - old_x) : (old_x - new_x);
-            //             v_delta_reg <= (new_y > old_y) ? (new_y - old_y) : (old_y - new_y);
-            //             case (piece_type)
-            //                 4'd5:  current_state <= CHECK_PAWN;
-			// 				4'd11: current_state <= CHECK_PAWN;
+            //     end
+                 // end
+            case (current_state)
+                IDLE: begin 
+                    valid_output <= 0;
+					valid_move <= 0;
+                    if (valid_input) begin
+                        h_delta_reg <= (new_x > old_x) ? (new_x - old_x) : (old_x - new_x);
+                        v_delta_reg <= (new_y > old_y) ? (new_y - old_y) : (old_y - new_y);
+                        case (piece_type)
+                            4'd5:  current_state <= CHECK_PAWN;
+							4'd11: current_state <= CHECK_PAWN;
 
-            //                 4'd0:  current_state <= CHECK_ROOK;
-			// 				4'd6:  current_state <= CHECK_ROOK;
+                            4'd0:  current_state <= CHECK_ROOK;
+							4'd6:  current_state <= CHECK_ROOK;
 
-            //                 4'd1:  current_state <= CHECK_KNIGHT;
-            //                 4'd7:  current_state <= CHECK_KNIGHT;
+                            4'd1:  current_state <= CHECK_KNIGHT;
+                            4'd7:  current_state <= CHECK_KNIGHT;
 
-            //                 4'd2:  current_state <= CHECK_BISHOP;
-            //                 4'd8:  current_state <= CHECK_BISHOP;
+                            4'd2:  current_state <= CHECK_BISHOP;
+                            4'd8:  current_state <= CHECK_BISHOP;
 
-            //                 4'd3:  current_state <= CHECK_QUEEN;
-            //                 4'd9:  current_state <= CHECK_QUEEN;
+                            4'd3:  current_state <= CHECK_QUEEN;
+                            4'd9:  current_state <= CHECK_QUEEN;
                             
-            //                 default:     current_state <= IDLE;
-            //             endcase
-            //         end
-            //     end
-            //     CHECK_PAWN: begin
-            //     // if (cp_valid_output)
-            //     // begin
-			// 		if (cp_valid_output) begin
-            //             valid_move   <= cp_valid_move;
-            //             valid_output <= 1;
-            //             current_state <= IDLE;
-            //         end
-            //     end
+                            default:     current_state <= IDLE;
+                        endcase
+                    end
+                end
+                CHECK_PAWN: begin
+                // if (cp_valid_output)
+                // begin
+					//if (cp_valid_output) begin
+                        valid_move   <= cp_valid_move;
+                        valid_output <= cp_valid_output;
+                        current_state <= IDLE;
+                  //  end
+                end
 
-            //     CHECK_ROOK: begin
-            //         valid_move <= 0;
-            //         valid_output <= 1;
-            //         // if (cr_valid_output) begin
-            //         //     valid_move   <= cr_valid_move;
-            //         //         valid_output <= cr_valid_output;
-            //         // end
-            //         current_state <= IDLE;
-            //     end
+                CHECK_ROOK: begin
+                    valid_move <= 0;
+                    valid_output <= 1;
+                    // if (cr_valid_output) begin
+                    //     valid_move   <= cr_valid_move;
+                    //         valid_output <= cr_valid_output;
+                    // end
+                    current_state <= IDLE;
+                end
 
-            //     CHECK_KNIGHT: begin
-            //         valid_move <= 0;
-            //         valid_output <= 1;
-            //         // if (ck_valid_output) begin
-            //         //     valid_move   <= ck_valid_move;
-            //         //         valid_output <= ck_valid_output;						  
-            //         // end
-            //         current_state <= IDLE;
-            //     end
+                CHECK_KNIGHT: begin
+                    valid_move <= 0;
+                    valid_output <= 1;
+                    // if (ck_valid_output) begin
+                    //     valid_move   <= ck_valid_move;
+                    //         valid_output <= ck_valid_output;						  
+                    // end
+                    current_state <= IDLE;
+                end
 
-            //     CHECK_BISHOP: begin
-            //         valid_move <= 0;
-            //         valid_output <= 1;
-            //         // if (cb_valid_output) begin
-            //         //     valid_move   <= cb_valid_move;
-            //         //         valid_output <= cb_valid_output;				
-            //         // end
-            //         current_state <= IDLE;
-            //     end
+                CHECK_BISHOP: begin
+                    valid_move <= 0;
+                    valid_output <= 1;
+                    // if (cb_valid_output) begin
+                    //     valid_move   <= cb_valid_move;
+                    //         valid_output <= cb_valid_output;				
+                    // end
+                    current_state <= IDLE;
+                end
 
-            //     CHECK_QUEEN: begin
-            //         valid_move <= 0;
-            //         valid_output <= 1;
-            //         // if (cq_valid_output) begin
-            //         //     valid_move <= cq_valid_move;
-            //         //         valid_output <= cq_valid_output;
-            //         // end
-            //         current_state <= IDLE;
-            //     end
+                CHECK_QUEEN: begin
+                    valid_move <= 0;
+                    valid_output <= 1;
+                    // if (cq_valid_output) begin
+                    //     valid_move <= cq_valid_move;
+                    //         valid_output <= cq_valid_output;
+                    // end
+                    current_state <= IDLE;
+                end
 
-            //     default: current_state <= IDLE;
-            // endcase
+                default: current_state <= IDLE;
+            endcase
         end
     end
 

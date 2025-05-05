@@ -34,8 +34,36 @@ module check_pawn (
     cp_state_t cp_current_state, cp_next_state;
 
 
-   assign cp_valid_move = 1'b1;
-   assign cp_valid_output = 1'b1;
+ //  assign cp_valid_move = 1'b1;
+ //  assign cp_valid_output = 1'b1;
+
+   always_ff @(posedge clk or negedge reset_n) begin
+    if (!reset_n) begin
+        cp_valid_move <= 1'b0;
+        cp_valid_output <= 1'b0;
+    end
+    else if (valid_input) begin
+        if (h_delta == 0) begin
+            if (old_y == 6 && v_delta == 2) begin
+                if (new_y == 4 &&
+                    board_in[5][old_x] == 4'd15 &&
+                    board_in[4][old_x] == 4'd15)
+                    cp_valid_move <= 1'b1;
+            end
+            else if (v_delta == 1) begin
+                if (board_in[new_y][new_x] == 4'd15)
+                    cp_valid_move <= 1'b1;
+            end
+        end
+        else if (h_delta == 1 && v_delta == 1) begin
+            if (board_in[new_y][new_x] != 4'd15)
+                cp_valid_move <= 1'b1;
+        end
+
+        cp_valid_output <= 1'b1; // <-- Always set output done at the end
+    end
+end
+
     // State update
     // always_ff @(posedge clk or negedge reset_n) begin
     //     if (!reset_n)

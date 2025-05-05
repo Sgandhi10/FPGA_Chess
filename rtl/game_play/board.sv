@@ -148,24 +148,39 @@ module board (
                             end
                         end
                     end
+                    // MOVE_VAL: 
+                    // begin
+                    //     // if valid
+                    //     disp_board <= updated_board;
+                    //     valid_input <= 0;
+                    //     if (stall) begin
+                    //         moved <= 0;
+                    //         stall <= 0;
+                    //         move_state <= PLAYER_SEL;
+                    //     end else if (valid_output) begin
+                    //         if (valid_move) begin
+                    //             moved <= 1;
+                    //             move_state <= PLAYER_SEL;
+                    //         end else begin
+                    //             moved <= 0;
+                    //             stall <= 1;
+                    //         end    
+                    //     end
+                    // end
                     MOVE_VAL: begin
-                        // if valid
-                        disp_board <= updated_board;
-                        valid_input <= 0;
-                        if (stall) begin
-                            moved <= 0;
-                            stall <= 0;
+                    disp_board <= updated_board;
+                    if (valid_output) begin
+                        valid_input <= 0;  // Only clear after board_validator is done
+                        if (valid_move) begin
+                            moved <= 1;
+									 stall <= 0;
                             move_state <= PLAYER_SEL;
-                        end else if (valid_output) begin
-                            if (valid_move) begin
-                                moved <= 1;
-                                move_state <= PLAYER_SEL;
-                            end else begin
-                                moved <= 0;
-                                stall <= 1;
-                            end    
-                        end
-                    end
+                        end else begin
+                            moved <= 0;
+                            stall <= 1;
+                        end    
+    end
+end
                     default: /* do nothing */;
                 endcase
             end
