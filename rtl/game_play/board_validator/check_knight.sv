@@ -13,6 +13,7 @@ module check_knight (
     input logic [2:0] h_delta, v_delta,
     input logic [3:0] piece_type,
     input logic [3:0] board_in [8][8],
+    input logic       valid_input,
 
     output logic ck_valid_move,
     output logic ck_valid_output

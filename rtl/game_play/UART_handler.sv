@@ -120,8 +120,8 @@ module UART_handler(
                             mode_sel_selector <= 1;
                         end
                         2'b00: begin
-                            stable_board[pos2_x][pos2_y] <= stable_board[pos1_x][pos1_y];
-                            stable_board[pos1_x][pos1_y] <= 15;
+                            stable_board[pos2_y][pos2_x] <= stable_board[pos1_y][pos1_x];
+                            stable_board[pos1_y][pos1_x] <= 15;
                             start_counter <= 1;
                             curr_player <= ~curr_player;
                             override <= 0;

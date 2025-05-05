@@ -271,7 +271,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE rtl/game_play/board.sv
 set_global_assignment -name QIP_FILE altera_ip/ROMs/player_screen_rom.qip
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/common_enums.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_rgb_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/vga_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/test_pattern_gen.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rtl/vga/screen_gen.sv

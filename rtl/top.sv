@@ -118,17 +118,18 @@ module top  #(
 
     // For debugging purposes, assign the state to LEDs
     assign LED[1:0] = state; 
-    assign LED[4] = curr_player;
+    // assign LED[4] = curr_player;
 
     move_state_t move_state;
-    assign LED[3:2] = move_state;
+    // assign LED[3:2] = move_state;
 
     logic moved;
     logic [11:0] output_packet;
+    logic valid_move, valid_output;
 
     // === Board Controller ===
     board board_inst(
-        .CLOCK_50(CLOCK_50),
+        .clk(CLOCK_50),
         .reset_n(reset_n),
         
         .player(player),
@@ -148,8 +149,26 @@ module top  #(
         .output_packet(output_packet),
 
         // debug
-        .move_state(move_state)
+        .move_state(move_state),
+        .valid_move(valid_move),
+        .valid_output(valid_output),
+        .h_delta_reg(),
+        .v_delta_reg(),
+        .sel_val()
     );
+
+    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n) begin
+            LED[7] <= 0;
+            LED[8] <= 8;
+        end else begin
+            if (valid_move) begin
+                LED[7] <= 1;
+            end
+            if (valid_output)
+                LED[8] <= 1;
+        end
+    end
 
     // === Communication ===
     logic start_counter, load_counter;

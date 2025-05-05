@@ -8,7 +8,7 @@
 import common_enums::*;
 
 module board (
-    input logic             CLOCK_50,
+    input logic             clk,
     input logic             reset_n,
     input logic             player,
     input logic             curr_player,
@@ -27,10 +27,16 @@ module board (
     output logic [11:0] output_packet,
 
     // Debug
-    output move_state_t move_state
-);
+    output move_state_t move_state,
+    output logic        valid_move,
+    output logic        valid_output,
+    output logic [2:0]  h_delta_reg,
+    output logic [2:0]  v_delta_reg,
+    output logic [3:0]  sel_val
+ );
     // === Board Validation Module ===
-    logic valid_input, valid_move, valid_output;
+    logic valid_input;
+	 //logic valid_move, valid_output;
     board_validator board_validator_inst (
         .clk(clk),
         .reset_n(reset_n),
@@ -40,21 +46,23 @@ module board (
         .new_x(x_pos),
         .new_y(y_pos),
         .piece_type(sel_val),
-        .board_in(disp_board),
+        .board_in(stable_board),
         .valid_input(valid_input),
 
         .valid_move(valid_move),
-        .valid_output(valid_output)
+        .valid_output(valid_output),
 
+        .h_delta_reg(h_delta_reg),
+        .v_delta_reg(v_delta_reg)
     );
 
     // move_state_t move_state;
     logic [2:0] x_pos, y_pos, old_xpos, old_ypos;
     logic [3:0] updated_board [8][8];
-    logic [3:0] sel_val;
-    logic board_updated;
+    // logic [3:0] sel_val;
+    logic stall;
 
-    always_ff @(posedge CLOCK_50 or negedge reset_n) begin
+    always_ff @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
             // Set board to blank
             for (int i = 0; i < 8; i++) begin
@@ -72,16 +80,16 @@ module board (
 
             sel_val <= 15;
             valid_input <= 0;
-            board_updated <= 0;
+            stall <= 0;
         end else begin
             if (sys_state == CHESS_SCREEN) begin
                 // Finite State Machine for move selection
                 case (move_state) 
                     PLAYER_SEL: begin
+                        stall <= 0;
                         disp_board <= stable_board;
                         moved <= 0;
                         valid_input <= 0;
-                        board_updated <= 0;
                         if (player == curr_player) begin
                             move_state <= PIECE_SEL;
                             x_pos <= 3;
@@ -91,25 +99,26 @@ module board (
                         end
                     end
                     PIECE_SEL: begin
-                        if (dir) begin
+						      if (dir) begin
                             if (key1out)
-                                x_pos <= x_pos - 1;
+                                y_pos <= y_pos - 1;
                             else if (key2out)
-                                x_pos <= x_pos + 1;
+                                y_pos <= y_pos + 1;
                         end else begin
                             if (key1out)
-                                y_pos <= y_pos + 1;
+                                x_pos <= x_pos + 1;
                             else if (key2out)
-                                y_pos <= y_pos - 1; 
+                                x_pos <= x_pos - 1; 
                         end
+                     
                         if (key3out) begin
-                            if (stable_board[x_pos][y_pos] != 15 &&
-                                ((stable_board[x_pos][y_pos] > 5 && ~player) || 
-                                (stable_board[x_pos][y_pos] <= 5  &&  player))) 
+                            if (stable_board[y_pos][x_pos] != 15 &&
+                                ((stable_board[y_pos][x_pos] > 5 && ~player) || 
+                                (stable_board[y_pos][x_pos] <= 5  &&  player))) 
                             begin
                                 old_xpos  <= x_pos;
                                 old_ypos  <= y_pos;
-                                sel_val   <= stable_board[x_pos][y_pos];
+                                sel_val   <= stable_board[y_pos][x_pos];
                                 move_state <= POS_SEL;
                             end
                         end
@@ -118,22 +127,23 @@ module board (
                         disp_board <= updated_board;
                         if (dir) begin
                             if (key1out)
-                                x_pos <= x_pos - 1;
+                                y_pos <= y_pos - 1;
                             else if (key2out)
-                                x_pos <= x_pos + 1;
+                                y_pos <= y_pos + 1;
                         end else begin
                             if (key1out)
-                                y_pos <= y_pos + 1;
+                                x_pos <= x_pos + 1;
                             else if (key2out)
-                                y_pos <= y_pos - 1; 
+                                x_pos <= x_pos - 1; 
                         end
                         if (key3out) begin
-                            if (stable_board[x_pos][y_pos] == 15 || ((stable_board[x_pos][y_pos] > 5 && player) || 
-                                (stable_board[x_pos][y_pos] <= 5  &&  ~player))) 
+                            if (stable_board[y_pos][x_pos] == 15 || ((stable_board[y_pos][x_pos] > 5 && player) || 
+                                (stable_board[y_pos][x_pos] <= 5  &&  ~player))) 
                             begin
                                 move_state <= MOVE_VAL;
-                            end else if (((stable_board[x_pos][y_pos] <= 5 && player) || 
-                                (stable_board[x_pos][y_pos] > 5  &&  ~player))) begin
+                                valid_input <= 1;
+                            end else if (((stable_board[y_pos][x_pos] <= 5 && player) || 
+                                (stable_board[y_pos][x_pos] > 5  &&  ~player))) begin
                                 move_state <= PLAYER_SEL;
                             end
                         end
@@ -141,19 +151,20 @@ module board (
                     MOVE_VAL: begin
                         // if valid
                         disp_board <= updated_board;
-                        board_updated <= 1;
-                        
-                        if (valid_output) begin
-                            valid_input <= 0;
+                        valid_input <= 0;
+                        if (stall) begin
+                            moved <= 0;
+                            stall <= 0;
                             move_state <= PLAYER_SEL;
+                        end else if (valid_output) begin
                             if (valid_move) begin
                                 moved <= 1;
+                                move_state <= PLAYER_SEL;
                             end else begin
                                 moved <= 0;
-                            end
-                        end else if (board_updated) begin
-                            valid_input <= 1;
-                        end 
+                                stall <= 1;
+                            end    
+                        end
                     end
                     default: /* do nothing */;
                 endcase
@@ -164,7 +175,7 @@ module board (
     always_comb begin
         square_highlight = '{default: 0};
         if (player == curr_player) begin
-            square_highlight[x_pos][y_pos] = 1;
+            square_highlight[y_pos][x_pos] = 1;
         end
 
         for (int i = 0; i < 8; i++) begin
@@ -172,8 +183,8 @@ module board (
                 updated_board[i][j] = stable_board[i][j];
             end
         end
-        updated_board[old_xpos][old_ypos] = 15;
-        updated_board[x_pos][y_pos] = sel_val;
+        updated_board[old_ypos][old_xpos] = 15;
+        updated_board[y_pos][x_pos] = sel_val;
 
         output_packet = {old_xpos, old_ypos, x_pos, y_pos};
     end
