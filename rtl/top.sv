@@ -93,6 +93,7 @@ module top  #(
 
     // === FSM for screen transitions ===
     logic setup_complete, override;
+    logic won, lost, won_out;
     screen_fsm #(
         .CLK_FREQ_HZ(SYS_CLK_FREQ_HZ)
     ) screen_fsm_inst (
@@ -100,6 +101,8 @@ module top  #(
         .reset_n(reset_n),
         .enter(key3out),
         .override(override),
+        // .won(won || won_out),
+        // .lost(time_up || lost),
 
         .state(state),
         .setup_complete(setup_complete)
@@ -109,7 +112,7 @@ module top  #(
     // Synchronize the state signal to the VGA_CLK domain
 	screen_state_t state_vga;
     state_sync #(
-        .bits(2)
+        .bits(3)
     ) state_sync_inst (
         .clk_vga(VGA_CLK),       // VGA clock domain
         .state_50(state),        // State signal from screen_fsm (CLOCK_50 domain)
@@ -117,11 +120,14 @@ module top  #(
     );
 
     // For debugging purposes, assign the state to LEDs
-    assign LED[1:0] = state; 
-    assign LED[4] = curr_player;
+    assign LED[2:0] = state; 
+    assign LED[5] = time_up;
+    // assign LED[6] = lost;
+    // assign LED[7] = won;
+    // assign LED[8] = won_out;
 
     move_state_t move_state;
-    assign LED[3:2] = move_state;
+    assign LED[4:3] = move_state;
 
     logic moved;
     logic [11:0] output_packet;
@@ -146,6 +152,7 @@ module top  #(
         .square_highlight(square_highlight), // 8x8 board output
         .moved(moved),
         .output_packet(output_packet),
+        // .won(won),
 
         // debug
         .move_state(move_state)
@@ -164,6 +171,8 @@ module top  #(
         .SW(SW[3:1]),
         .setup_complete(setup_complete),
         .moved(moved),
+        .won(won),
+        .lost_in(time_up),
 
         .stable_board(stable_board),
         .parity_error_rx(LED[9]),
@@ -174,6 +183,8 @@ module top  #(
         .data_out_rx(data_out_rx),
         .mode_sel(mode_sel),
         .load_counter(load_counter),
+        // .lost_out(lost_out),
+        // .won_out(won_out),
 
         .RX(RX),
         .TX(TX)
@@ -205,6 +216,7 @@ module top  #(
         .clk(CLOCK_50),
         .reset_n(reset_n),
         .start(start_counter),
+        .count((player == curr_player) && (state == CHESS_SCREEN)),
         .mode_sel(mode_sel),
         .load(load_counter || override),
         .hex0(HEX0), .hex1(HEX1), .hex2(HEX2),

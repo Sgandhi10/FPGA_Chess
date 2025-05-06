@@ -14,6 +14,8 @@ module screen_fsm #(
     input  logic        reset_n,
     input  logic        enter,
     input  logic        override,
+    // input  logic        won,
+    // input  logic        lost,
 
     output screen_state_t  state,
     output logic        setup_complete
@@ -60,10 +62,18 @@ module screen_fsm #(
                 if (override)
                     next_state = CHESS_SCREEN;
             end
-            CHESS_SCREEN:
+            CHESS_SCREEN: begin
                 next_state = CHESS_SCREEN;
-            default:
-                next_state = TITLE_SCREEN;
+                // if (won) begin
+                //     next_state = WON_END_SCREEN;
+                // end else if (lost) begin
+                //     next_state = LOST_END_SCREEN;
+                // end
+            end
+            WON_END_SCREEN: next_state = WON_END_SCREEN;
+            LOST_END_SCREEN: next_state = LOST_END_SCREEN;
+            default: next_state = TITLE_SCREEN;
+            
         endcase
     end
 endmodule

@@ -29,14 +29,13 @@ module screen_gen #(
 );
    
     // --- Color Palette: index to RGB mapping
-    logic [(COLOR_DEPTH * 3)-1:0] color_array [7] = '{
+    logic [(COLOR_DEPTH * 3)-1:0] color_array [6] = '{
         24'hEEEED2,  // 0 – light square (tan)
         24'h4B4847,  // 1 – dark square (green)
         24'h69923E,  // 2 – background
         24'hFFFFFF,  // 3 – white/piece
         24'h000000,  // 4 – transparent (will be ignored in logic)
-        24'hF5F682,  // 5 - light square highlight
-        24'hB9CA43   // 6 - dark square highlight
+        24'hF5F682   // 5 - light square highlight
     };
 
     // --- Constants for layout
@@ -46,7 +45,7 @@ module screen_gen #(
     localparam BOARD_ORIGIN_Y = 16;
 
     // ROM output wires
-    logic [2:0] title_pixel, player_pixel, board_pixel, piece_pixel, selected_pixel;
+    logic [2:0] title_pixel, player_pixel, board_pixel, piece_pixel, selected_pixel, end_pixel;
 
     // Addressing for all screens
     logic [18:0] rom_address;
@@ -87,6 +86,12 @@ module screen_gen #(
         .q(board_pixel)
     );
 
+    end_screen_rom end_screen_rom_inst (
+        .address(rom_address),
+        .clock(vga_clk),
+        .q(end_pixel)
+    );
+
     chess_piece_rom pieces_rom (
         .address(piece_rom_addr),
         .clock(vga_clk),
@@ -117,6 +122,8 @@ module screen_gen #(
                     end
                 end
             end
+            WON_END_SCREEN: selected_pixel = end_pixel;
+            LOST_END_SCREEN: selected_pixel = end_pixel;
             default: selected_pixel = board_pixel;
         endcase
     end

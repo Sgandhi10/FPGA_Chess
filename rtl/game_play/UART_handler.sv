@@ -19,6 +19,8 @@ module UART_handler(
     input  logic [3:1]  SW,
     input  logic 		setup_complete,
     input  logic        moved,
+    input  logic        won,
+    input  logic        lost_in,
 
     output logic [3:0]  stable_board[8][8],
     output logic        parity_error_rx,
@@ -29,6 +31,8 @@ module UART_handler(
     output logic [15:0] data_out_rx,
     output logic [1:0]  mode_sel,
     output logic        load_counter,
+    // output logic        lost_out,
+    // output logic        won_out,
 
     // RX/TX
     input  logic RX,
@@ -88,6 +92,9 @@ module UART_handler(
             curr_player <= 0;
             uart_state <= WAIT_DATA;
             mode_sel_selector <= 0;
+            load_counter <= 0;
+            // lost_out <= 0;
+            // won_out <= 0;
         end else begin
             // RX Port Handler
             case(uart_state)
@@ -120,12 +127,18 @@ module UART_handler(
                             mode_sel_selector <= 1;
                         end
                         2'b00: begin
-                            stable_board[pos2_x][pos2_y] <= stable_board[pos1_x][pos1_y];
-                            stable_board[pos1_x][pos1_y] <= 15;
+                            stable_board[pos2_y][pos2_x] <= stable_board[pos1_y][pos1_x];
+                            stable_board[pos1_y][pos1_x] <= 15;
                             start_counter <= 1;
                             curr_player <= ~curr_player;
                             override <= 0;
                         end
+                        // 2'b11: begin
+                        //     lost_out <= data_out_rx[13];
+                        //     won_out <= ~data_out_rx[13];
+                        //     override <= 0;
+                        //     start_counter <= 0;
+                        // end
                         default: begin
                             start_counter <= 0;
                             override <= 0;
@@ -164,10 +177,13 @@ module UART_handler(
                 
                 data_in_tx <= {2'b00, output_packet, 2'b00};
                 data_in_valid <= 1;
+            // end else if (won || lost_in) begin
+            //     data_in_tx <= {2'b11, won, 13'b0};
+            //     data_in_valid <= 1;
             end else begin
                 load_counter <= 0;
                 data_in_valid <= 0;
-            end
+            end 
         end
     end
 
