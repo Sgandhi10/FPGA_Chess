@@ -96,8 +96,44 @@ module UART_handler(
             // lost_out <= 0;
             // won_out <= 0;
         end else begin
-            // RX Port Handler
-            case(uart_state)
+            // TX Port Handler
+            if (setup_complete) begin
+                player <= SW[3]; // Toggle player on key press
+                data_in_tx <= {2'b10, SW[3], mode_sel, 11'b0};
+                data_in_valid <= 1;
+
+                // Setup Stable board
+                if (SW[3]) begin
+                    stable_board[0] <= '{6, 7, 8, 10, 9, 8, 7, 6};
+                    stable_board[1] <= '{default: 11};
+                    stable_board[6] <= '{default: 5};
+                    stable_board[7] <= '{0, 1, 2, 4, 3, 2, 1, 0};
+                end
+                load_counter <= 1;
+                start_counter <= 0;
+            end else if (moved && !override) begin
+                load_counter <= 0;
+                start_counter <= 1;
+                curr_player <= ~player;
+                
+                // Update Board
+                for (int i = 0; i < 8; i++) begin
+                    for (int j = 0; j < 8; j++) begin
+                        stable_board[i][j] <= disp_board[i][j];
+                    end
+                end
+                
+                data_in_tx <= {2'b00, output_packet, 2'b00};
+                data_in_valid <= 1;
+            // end else if (won || lost_in) begin
+            //     data_in_tx <= {2'b11, won, 13'b0};
+            //     data_in_valid <= 1;
+            end else begin
+                load_counter <= 0;
+                data_in_valid <= 0;
+
+                // RX handler
+                case(uart_state)
                 WAIT_DATA: begin
                     override <= 0;
                     start_counter <= 0;
@@ -147,42 +183,6 @@ module UART_handler(
                     uart_state <= WAIT_DATA;
                 end
             endcase
-
-            // TX Port Handler
-            if (setup_complete) begin
-                player <= SW[3]; // Toggle player on key press
-                data_in_tx <= {2'b10, SW[3], mode_sel, 11'b0};
-                data_in_valid <= 1;
-
-                // Setup Stable board
-                if (SW[3]) begin
-                    stable_board[0] <= '{6, 7, 8, 10, 9, 8, 7, 6};
-                    stable_board[1] <= '{default: 11};
-                    stable_board[6] <= '{default: 5};
-                    stable_board[7] <= '{0, 1, 2, 4, 3, 2, 1, 0};
-                end
-                load_counter <= 1;
-                start_counter <= 0;
-            end else if (moved && !override) begin
-                load_counter <= 0;
-                start_counter <= 1;
-                curr_player <= ~player;
-                
-                // Update Board
-                for (int i = 0; i < 8; i++) begin
-                    for (int j = 0; j < 8; j++) begin
-                        stable_board[i][j] <= disp_board[i][j];
-                    end
-                end
-                
-                data_in_tx <= {2'b00, output_packet, 2'b00};
-                data_in_valid <= 1;
-            // end else if (won || lost_in) begin
-            //     data_in_tx <= {2'b11, won, 13'b0};
-            //     data_in_valid <= 1;
-            end else begin
-                load_counter <= 0;
-                data_in_valid <= 0;
             end 
         end
     end
