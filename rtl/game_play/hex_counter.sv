@@ -15,6 +15,7 @@ module hex_counter #(
     input  logic             reset_n,     // Active-low reset
     input  logic             load,
     input  logic             start,       // Start counter
+    input  logic             count,
     input  logic [1:0]       mode_sel,    // Mode selector for initial time
     output logic [6:0]       hex0, hex1, hex2, hex3, hex4, hex5,
     output logic             time_up      // Active-high when countdown ends
@@ -60,7 +61,7 @@ module hex_counter #(
                 total_cs <= initial_time;
             end
             
-            if (start_flag && total_cs > 0) begin
+            if (start_flag && total_cs > 0 && count) begin
                 clk_counter <= clk_counter + 1;
                 if (clk_counter == (CLK_FREQ_HZ / 100 - 1)) begin
                     clk_counter <= 0;

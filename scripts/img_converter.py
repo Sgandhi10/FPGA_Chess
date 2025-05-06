@@ -12,10 +12,10 @@ import os
 
 # --- 1. Define the fixed 4-color palette ---
 PALETTE = {
-    (238, 238, 210): 3,  # #EEEED2 – light squares
-     (105, 146, 62): 2,   # #69923E – dark green squares
-     (75, 72, 71): 0,     # #4B4847 – background
-     (255, 255, 255): 1   # #FFFFFF – text
+     (238, 238, 210):  0,  # #EEEED2 – light squares
+     (105, 146, 62):   2,  # #69923E – dark green squares
+     (75, 72, 71):     1,  # #4B4847 – background
+     (255, 255, 255):  3   # #FFFFFF – text
 }
 
 PALETTE_RGB = list(PALETTE.keys())
@@ -64,8 +64,8 @@ def convert_image_to_mif(input_path, output_path):
         f.write("END;\n")
 
     # Save and show the remapped image
-    # output_img_path = output_path.replace(".mif", "_remapped.png")
-    # remapped_img.save(output_img_path)
+    output_img_path = output_path.replace(".mif", "_remapped.png")
+    remapped_img.save(output_img_path)
 
     print(f"MIF written to: {output_path}")
     print(f"Remapped image saved to: {output_path}")
