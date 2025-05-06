@@ -39,7 +39,7 @@ module board_validator (
             case (piece_type)
                 // PAWN
                 5, 11: begin
-                    if (h_delta == 0) begin
+                    if (h_delta == 0 && (old_y > new_y)) begin
                         if (old_y == 6 && v_delta == 2) begin
                             if (new_y == 4 &&
                                 board_in[5][old_x] == 4'd15 &&
