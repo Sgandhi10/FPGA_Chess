@@ -1,0 +1,137 @@
+Archive Project report for top
+Tue May  6 17:05:25 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Tue May  6 17:05:25 2025 ;
+; Revision Name          ; top                                   ;
+; Top-level Entity Name  ; top                                   ;
+; Family                 ; Cyclone V                             ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Warning: Hierarchical Platform Designer systems and custom IP components(_hw.tcl and associated files) are not archived by the Quartus Archiver
+Info: Archive will store files relative to the closest common parent directory
+Info (13213): Using common directory C:/Digital_Design_2/PRJ_Final/
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'C:/Digital_Design_2/PRJ_Final/FPGA_CHESS.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'top.archive.rpt'
+Info (23030): Evaluation of Tcl script c:/intelfpga_lite/23.1std/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4852 megabytes
+    Info: Processing ended: Tue May  6 17:05:25 2025
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++-----------------------------------------------------------------+
+; Files Archived                                                  ;
++-----------------------------------------------------------------+
+; File Name                                                       ;
++-----------------------------------------------------------------+
+; altera_ip/ROMs/chess_board_rom.bsf                              ;
+; altera_ip/ROMs/chess_board_rom.qip                              ;
+; altera_ip/ROMs/chess_board_rom.v                                ;
+; altera_ip/ROMs/chess_board_rom_bb.v                             ;
+; altera_ip/ROMs/chess_board_rom_inst.v                           ;
+; altera_ip/ROMs/chess_piece_rom.bsf                              ;
+; altera_ip/ROMs/chess_piece_rom.qip                              ;
+; altera_ip/ROMs/chess_piece_rom.v                                ;
+; altera_ip/ROMs/chess_piece_rom_bb.v                             ;
+; altera_ip/ROMs/chess_piece_rom_inst.v                           ;
+; altera_ip/ROMs/end_screen_rom.qip                               ;
+; altera_ip/ROMs/end_screen_rom.v                                 ;
+; altera_ip/ROMs/end_screen_rom_bb.v                              ;
+; altera_ip/ROMs/end_screen_rom_inst.v                            ;
+; altera_ip/ROMs/player_screen_rom.bsf                            ;
+; altera_ip/ROMs/player_screen_rom.qip                            ;
+; altera_ip/ROMs/player_screen_rom.v                              ;
+; altera_ip/ROMs/player_screen_rom_bb.v                           ;
+; altera_ip/ROMs/player_screen_rom_inst.v                         ;
+; altera_ip/ROMs/title_screen_rom.bsf                             ;
+; altera_ip/ROMs/title_screen_rom.qip                             ;
+; altera_ip/ROMs/title_screen_rom.v                               ;
+; altera_ip/ROMs/title_screen_rom_bb.v                            ;
+; altera_ip/ROMs/title_screen_rom_inst.v                          ;
+; altera_ip/vga_pll_25_175.cmp                                    ;
+; altera_ip/vga_pll_25_175.qip                                    ;
+; altera_ip/vga_pll_25_175.v                                      ;
+; altera_ip/vga_pll_25_175/vga_pll_25_175_0002.qip                ;
+; altera_ip/vga_pll_25_175/vga_pll_25_175_0002.v                  ;
+; bitmaps/2-bit-transp/chess_pieces_single562.mif                 ;
+; bitmaps/2-bit/chess_board.mif                                   ;
+; bitmaps/2-bit/end_screen.mif                                    ;
+; bitmaps/2-bit/player_screen.mif                                 ;
+; bitmaps/2-bit/title_screen.mif                                  ;
+; c:/intelfpga_lite/23.1std/quartus/bin64/assignment_defaults.qdf ;
+; rtl/common_enums.sv                                             ;
+; rtl/game_play/board.sv                                          ;
+; rtl/game_play/board_validator.sv                                ;
+; rtl/game_play/hex_counter.sv                                    ;
+; rtl/game_play/hex_display.sv                                    ;
+; rtl/game_play/screen_fsm.sv                                     ;
+; rtl/game_play/UART_handler.sv                                   ;
+; rtl/gen_elements/FIFO.sv                                        ;
+; rtl/gen_elements/keypress.v                                     ;
+; rtl/gen_elements/state_sync.sv                                  ;
+; rtl/gen_elements/tb_FIFO.sv                                     ;
+; rtl/top.sv                                                      ;
+; rtl/uart/Baud_Tick.sv                                           ;
+; rtl/uart/tb/tb_UART.sv                                          ;
+; rtl/uart/tb/tb_UART_Individual.sv                               ;
+; rtl/uart/tb/tb_UART_RX.sv                                       ;
+; rtl/uart/tb/tb_UART_TX.sv                                       ;
+; rtl/uart/UART.sv                                                ;
+; rtl/uart/UART_RX.sv                                             ;
+; rtl/uart/UART_TX.sv                                             ;
+; rtl/vga/screen_gen.sv                                           ;
+; rtl/vga/test_pattern_gen.sv                                     ;
+; rtl/vga/vga_controller.sv                                       ;
+; top.qpf                                                         ;
+; top.qsf                                                         ;
+; top.sdc                                                         ;
++-----------------------------------------------------------------+
+
+

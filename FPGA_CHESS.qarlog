@@ -1,0 +1,72 @@
+Quartus Prime Archive log --	C:/Digital_Design_2/PRJ_Final/FPGA_CHESS.qarlog
+
+Archive:	C:/Digital_Design_2/PRJ_Final/FPGA_CHESS.qar
+Date:		Tue May  6 17:05:24 2025
+Quartus Prime		23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+	=========== Files Selected: ===========
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_board_rom.bsf
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_board_rom.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_board_rom.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_board_rom_bb.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_board_rom_inst.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_piece_rom.bsf
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_piece_rom.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_piece_rom.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_piece_rom_bb.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/chess_piece_rom_inst.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/end_screen_rom.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/end_screen_rom.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/end_screen_rom_bb.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/end_screen_rom_inst.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/player_screen_rom.bsf
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/player_screen_rom.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/player_screen_rom.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/player_screen_rom_bb.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/player_screen_rom_inst.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/title_screen_rom.bsf
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/title_screen_rom.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/title_screen_rom.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/title_screen_rom_bb.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/ROMs/title_screen_rom_inst.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/vga_pll_25_175.cmp
+C:/Digital_Design_2/PRJ_Final/altera_ip/vga_pll_25_175.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/vga_pll_25_175.v
+C:/Digital_Design_2/PRJ_Final/altera_ip/vga_pll_25_175/vga_pll_25_175_0002.qip
+C:/Digital_Design_2/PRJ_Final/altera_ip/vga_pll_25_175/vga_pll_25_175_0002.v
+C:/Digital_Design_2/PRJ_Final/bitmaps/2-bit-transp/chess_pieces_single562.mif
+C:/Digital_Design_2/PRJ_Final/bitmaps/2-bit/chess_board.mif
+C:/Digital_Design_2/PRJ_Final/bitmaps/2-bit/end_screen.mif
+C:/Digital_Design_2/PRJ_Final/bitmaps/2-bit/player_screen.mif
+C:/Digital_Design_2/PRJ_Final/bitmaps/2-bit/title_screen.mif
+C:/Digital_Design_2/PRJ_Final/rtl/common_enums.sv
+C:/Digital_Design_2/PRJ_Final/rtl/game_play/UART_handler.sv
+C:/Digital_Design_2/PRJ_Final/rtl/game_play/board.sv
+C:/Digital_Design_2/PRJ_Final/rtl/game_play/board_validator.sv
+C:/Digital_Design_2/PRJ_Final/rtl/game_play/hex_counter.sv
+C:/Digital_Design_2/PRJ_Final/rtl/game_play/hex_display.sv
+C:/Digital_Design_2/PRJ_Final/rtl/game_play/screen_fsm.sv
+C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/FIFO.sv
+C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/keypress.v
+C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/state_sync.sv
+C:/Digital_Design_2/PRJ_Final/rtl/gen_elements/tb_FIFO.sv
+C:/Digital_Design_2/PRJ_Final/rtl/top.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/Baud_Tick.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/UART.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_RX.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/UART_TX.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/tb/tb_UART.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/tb/tb_UART_Individual.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/tb/tb_UART_RX.sv
+C:/Digital_Design_2/PRJ_Final/rtl/uart/tb/tb_UART_TX.sv
+C:/Digital_Design_2/PRJ_Final/rtl/vga/screen_gen.sv
+C:/Digital_Design_2/PRJ_Final/rtl/vga/test_pattern_gen.sv
+C:/Digital_Design_2/PRJ_Final/rtl/vga/vga_controller.sv
+C:/Digital_Design_2/PRJ_Final/top.qpf
+C:/Digital_Design_2/PRJ_Final/top.qsf
+C:/Digital_Design_2/PRJ_Final/top.sdc
+c:/intelfpga_lite/23.1std/quartus/bin64/assignment_defaults.qdf
+	======= Total: 61 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
